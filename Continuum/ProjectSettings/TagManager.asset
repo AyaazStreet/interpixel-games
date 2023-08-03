@@ -17,10 +17,10 @@ TagManager:
   - PostProcessing
   - Water
   - UI
+  - Background
   - Player
   - CineMachine
-  - 
-  - 
+  - Foreground
   - 
   - 
   - 
