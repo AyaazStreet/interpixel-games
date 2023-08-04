@@ -58,6 +58,14 @@ public class EnemyPatrol : MonoBehaviour
         //Adjust animation speed based on timeMod
         anim.speed = timeMod;
 
+        //Adjust move direction and aim angle based on target point
+        moveDir = targetPoint.position - transform.position;
+        float aimAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
+
+        //Rotate FOV
+        Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+        FOV.transform.rotation = q;
+
         //Check if point reached
         if (Vector2.Distance(transform.position, targetPoint.position) < 0.05)
         {
