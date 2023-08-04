@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using System;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
 {
