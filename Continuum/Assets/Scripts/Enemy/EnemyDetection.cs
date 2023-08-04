@@ -38,13 +38,13 @@ public class EnemyDetection : MonoBehaviour
         if (detected)
         {
             distance = Vector3.Distance(transform.position, player.transform.position);
-            detectionLevel += (300f / distance) * Time.deltaTime * timeMod;
+            detectionLevel += (500f / distance) * Time.deltaTime * timeMod;
         }
         else
         {
             if(detectionLevel > 0f)
             {
-                detectionLevel -= 100f * Time.deltaTime * timeMod;
+                detectionLevel -= 200f * Time.deltaTime * timeMod;
             }
         }
         

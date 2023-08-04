@@ -20,7 +20,8 @@ public class EnemyFOV : MonoBehaviour
     public float edgeDistanceThreshold;
 
     public MeshFilter viewMeshFilter;
-    private Mesh viewMesh;
+    public Mesh viewMesh;
+    public PolygonCollider2D polygonCollider;
 
     public EnemyDetection enemyDetection;
 
@@ -29,6 +30,7 @@ public class EnemyFOV : MonoBehaviour
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
+        polygonCollider = GetComponent<PolygonCollider2D>();
 
         StartCoroutine("FindTargetsWithDelay", .1f);
     }
@@ -132,6 +134,8 @@ public class EnemyFOV : MonoBehaviour
         viewMesh.vertices = vertices;
         viewMesh.triangles = triangles;
         viewMesh.RecalculateNormals();
+
+        polygonCollider.points = ConvertVerticesToColliderPoints(viewMesh.vertices);
     }
 
     EdgeInfo FindEdge(ViewCastInfo minViewCast, ViewCastInfo maxViewCast)
@@ -185,6 +189,16 @@ public class EnemyFOV : MonoBehaviour
         }
 
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), 0);
+    }
+
+    public Vector2[] ConvertVerticesToColliderPoints(Vector3[] vertices)
+    {
+        Vector2[] points = new Vector2[vertices.Length];
+        for (int i = 0; i < vertices.Length; i++)
+        {
+            points[i] = new Vector2(vertices[i].x, vertices[i].y);
+        }
+        return points;
     }
 
     public struct ViewCastInfo
