@@ -21,6 +21,7 @@ public class ThrowController : MonoBehaviour
     
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Animator anim;
+    [SerializeField] private PlayerController pc;
 
     private Rigidbody2D rb;
 
@@ -28,9 +29,7 @@ public class ThrowController : MonoBehaviour
     private Vector2 GamepadAimDir;
     private Vector2 MouseAimDir;
     private float aimAngle;
-    private float throwCooldownDuration = 1f;
-    private float throwCooldownTimer = 0f;
-
+    
     private void Awake()
     {
         //Initialise components
@@ -64,11 +63,6 @@ public class ThrowController : MonoBehaviour
         //Calculate quaternion and apply to rotation
         Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, 10 * Time.deltaTime);
-
-        if (throwCooldownTimer > 0)
-        {
-            throwCooldownTimer -= Time.deltaTime;
-        }
     }
 
     public void ControllerAim_performed(InputAction.CallbackContext context)
@@ -82,10 +76,10 @@ public class ThrowController : MonoBehaviour
 
     public void Throw_performed(InputAction.CallbackContext context)
     {
-        if(context.performed && gameObject.activeSelf && throwCooldownTimer <= 0)
+        if(context.performed && gameObject.activeSelf && pc.throwCooldownTimer <= 0)
         {
             //Cooldown
-            throwCooldownTimer = throwCooldownDuration;
+            pc.throwCooldownTimer = pc.throwCooldownDuration;
 
             //Instantiate throwable object
             switch (selected)

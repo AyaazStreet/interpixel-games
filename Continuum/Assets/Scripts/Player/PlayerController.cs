@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public bool comboActive = false;
 
     public ThrowController throwController;
+    public float throwCooldownDuration = 1f;
+    public float throwCooldownTimer = 0f;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -144,6 +146,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
             break;
+        }
+
+        if (throwCooldownTimer > 0)
+        {
+            throwCooldownTimer -= Time.deltaTime;
         }
     }
 
@@ -310,10 +317,8 @@ public class PlayerController : MonoBehaviour
 
     void Animate()
     {
-        anim.SetFloat("AnimMoveX", moveDir.x);
-        anim.SetFloat("AnimMoveY", moveDir.y);
         anim.SetFloat("AnimMoveMagnitude", moveDir.magnitude);
-        anim.SetFloat("AnimLastMoveX", lastMoveDir.x);
-        anim.SetFloat("AnimLastMoveY", lastMoveDir.y);
+        anim.SetFloat("AnimMoveX", lastMoveDir.x);
+        anim.SetFloat("AnimMoveY", lastMoveDir.y);
     }
 }

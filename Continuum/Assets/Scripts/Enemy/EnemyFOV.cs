@@ -25,6 +25,8 @@ public class EnemyFOV : MonoBehaviour
 
     public EnemyDetection enemyDetection;
 
+   
+
     private void Start()
     {
         viewMesh = new Mesh();
@@ -32,21 +34,14 @@ public class EnemyFOV : MonoBehaviour
         viewMeshFilter.mesh = viewMesh;
         polygonCollider = GetComponent<PolygonCollider2D>();
 
+        
+
         StartCoroutine("FindTargetsWithDelay", .1f);
     }
 
     private void LateUpdate()
     {
         DrawFieldOfView();
-
-        /*if (visibleTargets.Count > 0)
-        {
-            enemyDetection.detected = true;
-        }
-        else
-        {
-            enemyDetection.detected = false;
-        }*/
     }
 
     IEnumerator FindTargetsWithDelay(float delay)

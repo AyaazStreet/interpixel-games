@@ -5,9 +5,7 @@ using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public const float MOVE_SPEED = 2f;
-
-    public float globalTimescale;
+    public const float MOVE_SPEED = 1.5f;public float globalTimescale;
     public float? localTimescale;
     private float timeMod;
 
@@ -38,9 +36,6 @@ public class EnemyPatrol : MonoBehaviour
         moveDir = targetPoint.position - transform.position;
         float aimAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
 
-        //Rotate FOV
-        Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-        FOV.transform.rotation = q;
 
         //Initialise timescales
         localTimescale = gameObject.GetComponent<LocalModifier>().value;
@@ -60,11 +55,11 @@ public class EnemyPatrol : MonoBehaviour
 
         //Adjust move direction and aim angle based on target point
         moveDir = targetPoint.position - transform.position;
-        float aimAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
+        float aimAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg-90;
 
         //Rotate FOV
         Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-        FOV.transform.rotation = q;
+        FOV.transform.rotation = Quaternion.Slerp(FOV.transform.rotation, q, 10 * Time.deltaTime * timeMod);
 
         //Check if point reached
         if (Vector2.Distance(transform.position, targetPoint.position) < 0.05)
@@ -127,9 +122,6 @@ public class EnemyPatrol : MonoBehaviour
         moveDir = targetPoint.position - transform.position;
         float aimAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
 
-        //Rotate FOV
-        Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-        FOV.transform.rotation = q;
     }
 
     private void circularPointSwitch()
@@ -150,9 +142,6 @@ public class EnemyPatrol : MonoBehaviour
         moveDir = targetPoint.position - transform.position;
         float aimAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90f;
 
-        //Rotate FOV
-        Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-        FOV.transform.rotation = q;
     }
 
     void Animate()
