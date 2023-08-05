@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 398481732380164832}
   - component: {fileID: 1743173885365319710}
   - component: {fileID: 4856297957318187750}
+  - component: {fileID: -8885328612814205442}
   m_Layer: 12
   m_Name: Canister
   m_TagString: Untagged
@@ -187,6 +188,18 @@ MonoBehaviour:
   globalTimescale: 0
   fieldPrefab: {fileID: 0}
   moveDir: {x: 0, y: 0}
+--- !u!114 &-8885328612814205442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6832803833438270169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687a499df9e973a4394185a5c4035f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7925345860197519732
 GameObject:
   m_ObjectHideFlags: 0
