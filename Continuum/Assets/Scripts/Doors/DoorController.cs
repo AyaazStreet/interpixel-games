@@ -46,13 +46,32 @@ public class DoorController : MonoBehaviour
         //Check if door should open or close
         if(timeMod > 0f)
         {
-            if (CheckSignal())
+            if (numSignals == 0)
+            {
+                if (Vector2.Distance(GameObject.Find("Player").transform.position, transform.position) < 2)
+                {
+                    if (!anim.GetBool("IsOpen"))
+                    {
+                        anim.SetBool("IsOpen", true);
+                    }
+                    timer = OPEN_TIME;
+                }
+                else if (timer > 0f)
+                {
+                    timer -= Time.deltaTime * timeMod;
+                    if (timer <= 0f)
+                    {
+                        anim.SetBool("IsOpen", false);
+                    }
+                }
+            }
+            else if (CheckSignal())
             {
                 if (!anim.GetBool("IsOpen"))
                 {
                     anim.SetBool("IsOpen", true);
-                    timer = OPEN_TIME;
                 }
+                timer = OPEN_TIME;
             }
             else if (timer > 0f)
             {
@@ -60,17 +79,6 @@ public class DoorController : MonoBehaviour
                 if (timer <= 0f)
                 {
                     anim.SetBool("IsOpen", false);
-                }
-            }
-            else if (numSignals == 0)
-            {
-                if (Vector2.Distance(GameObject.Find("Player").transform.position, transform.position) < 2)
-                {
-                    if (!anim.GetBool("IsOpen"))
-                    {
-                        anim.SetBool("IsOpen", true);
-                        timer = OPEN_TIME;
-                    }
                 }
             }
         }
@@ -113,23 +121,76 @@ public class DoorController : MonoBehaviour
         switch (numSignals)
         {
             case 1: 
-            { 
-
+            {
+                if (!signal1)
+                {
+                    sr.sprite = spriteArray[0];
+                }
+                else if (signal1)
+                {
+                    sr.sprite = spriteArray[1];
+                }
             } 
             break;
             case 2: 
-            { 
-
+            {
+                if (!signal1 && !signal2)
+                {
+                    sr.sprite = spriteArray[2];
+                }
+                else if (signal1 && !signal2)
+                {
+                    sr.sprite = spriteArray[3];
+                }
+                else if (!signal1 && signal2)
+                {
+                    sr.sprite = spriteArray[4];
+                }
+                else if (signal1 && signal2)
+                {
+                    sr.sprite = spriteArray[5];
+                }
             } 
             break;
             case 3: 
-            { 
-
+            {
+                if (!signal1 && !signal2 && !signal3)
+                {
+                    sr.sprite = spriteArray[6];
+                }
+                else if (signal1 && !signal2 && !signal3)
+                {
+                    sr.sprite = spriteArray[7];
+                }
+                else if (!signal1 && signal2 && !signal3)
+                {
+                    sr.sprite = spriteArray[8];
+                }
+                else if (!signal1 && !signal2 && signal3)
+                {
+                    sr.sprite = spriteArray[9];
+                }
+                else if (signal1 && signal2 && !signal3)
+                {
+                    sr.sprite = spriteArray[10];
+                }
+                else if (signal1 && !signal2 && signal3)
+                {
+                    sr.sprite = spriteArray[11];
+                }
+                else if (!signal1 && signal2 && signal3)
+                {
+                    sr.sprite = spriteArray[12];
+                }
+                else if (signal1 && signal2 && signal3)
+                {
+                    sr.sprite = spriteArray[13];
+                }
             } 
             break;
             default: 
-            { 
-
+            {
+                sr.sprite = spriteArray[14];
             } 
             break;
         }

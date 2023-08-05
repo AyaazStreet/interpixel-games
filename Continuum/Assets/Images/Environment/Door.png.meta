@@ -187,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63b3916652576ee4ea64259833a2c20e
+      spriteID: fc5c654996d634847abf2358f81438ef
       internalID: -623340402
       vertices: []
       indices: 
@@ -208,7 +208,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a61ee155792b364792e7ef9b10baf4a
+      spriteID: aa7d7a66c7b6654449d2ce16ef33ebc3
       internalID: -650593172
       vertices: []
       indices: 
@@ -229,7 +229,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ed90052133e4a2499713d0ed08b30bc
+      spriteID: 71142a589efe16b4dad8db27796202e9
       internalID: -1557747435
       vertices: []
       indices: 
@@ -250,7 +250,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b13a15e661749845b5bff9a60657d57
+      spriteID: 062747c6cce69a045942d52a885f48bb
       internalID: -1525147794
       vertices: []
       indices: 
@@ -271,7 +271,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62c74ac3bed8a35469315476cfeb998a
+      spriteID: ba8530899ad2a9e49bdb08e3d05a1825
       internalID: 1851521303
       vertices: []
       indices: 
@@ -292,7 +292,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f57ae22073e211447bc3bea3a493d18f
+      spriteID: 977547b74a76d1141b9a87b564d414b9
       internalID: 1899785869
       vertices: []
       indices: 
@@ -313,7 +313,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 399ccc9df94d4fe4bad18b3ea180a7da
+      spriteID: ef04ffcdbbb154741b010b1fad3958e1
       internalID: 920012829
       vertices: []
       indices: 
@@ -334,7 +334,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e13b15ae2931b8645a8a813eb5b2cd8f
+      spriteID: be38d75bddd58dc468d24909c1456e20
       internalID: -1580146186
       vertices: []
       indices: 
@@ -355,7 +355,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1dec10989a1daa34484c3664c1ed9a61
+      spriteID: 2c435fb5c750f6f48962921349bf0c8a
       internalID: 169020476
       vertices: []
       indices: 
@@ -376,7 +376,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd56068c51b7d2b41a6999fdf0909d4f
+      spriteID: 87a1cbe02e4872442bd44250758b5003
       internalID: -525265418
       vertices: []
       indices: 
@@ -397,7 +397,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e362997fef98f146a3839e8574d0c35
+      spriteID: fec93568c7c30af488163d60a893f52c
       internalID: 2003668453
       vertices: []
       indices: 
@@ -418,7 +418,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a26dc9b29715a9e49b7da67418cca166
+      spriteID: ff73cf1543bd1f34580a938d0f021e08
       internalID: 655526383
       vertices: []
       indices: 
@@ -439,8 +439,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d32daddd32fc04418ce8249b2af8e20
+      spriteID: 2a1313ea6b732bc4c825a89ddc2a6565
       internalID: 1107053315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108b0fb36d470374180679cc271db516
+      internalID: -777987247
       vertices: []
       indices: 
       edges: []
@@ -464,6 +485,7 @@ TextureImporter:
       Door_13: 2003668453
       Door_14: 655526383
       Door_15: 1107053315
+      Door_16: -777987247
       Door_2: -2129222155
       Door_3: -623340402
       Door_4: -650593172

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public const float MOVE_SPEED = 5f;
+    public const float MOVE_SPEED = 4f;
     public const float A1_DUR = 5f;
     public const float A2_DUR = 5f;
     public const float A3_DUR = 5f;
