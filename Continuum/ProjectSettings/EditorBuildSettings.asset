@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestSceneFOV.unity
     guid: 831279129b20afc428eb874a209002ae
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: c49eb308ceea805418791ab2892289e9
+  - enabled: 1
+    path: Assets/Scenes/Level_Tutorial.unity
+    guid: 60f9d9cce82d0a64f961047efc889731
   m_configObjects: {}

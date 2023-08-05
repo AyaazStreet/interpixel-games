@@ -15,9 +15,11 @@ public class DoorController : MonoBehaviour
     private SpriteRenderer sr;
     [SerializeField] private Sprite[] spriteArray;
     private float timeMod; 
-    private bool signal1;
-    private bool signal2;
-    //private bool signal3;
+    [SerializeField] private bool signal1;
+    [SerializeField] private bool signal2;
+    [SerializeField] private bool signal3;
+    [Range(0, 3)]
+    public int numSignals;
 
     private void Awake()
     {
@@ -42,23 +44,37 @@ public class DoorController : MonoBehaviour
         anim.speed = timeMod;
         
         //Check if door should open or close
-        if (CheckSignal())
+        if(timeMod > 0f)
         {
-            if (!anim.GetBool("IsOpen"))
+            if (CheckSignal())
             {
-                anim.SetBool("IsOpen", true);
-                timer = OPEN_TIME;
+                if (!anim.GetBool("IsOpen"))
+                {
+                    anim.SetBool("IsOpen", true);
+                    timer = OPEN_TIME;
+                }
+            }
+            else if (timer > 0f)
+            {
+                timer -= Time.deltaTime * timeMod;
+                if (timer <= 0f)
+                {
+                    anim.SetBool("IsOpen", false);
+                }
+            }
+            else if (numSignals == 0)
+            {
+                if (Vector2.Distance(GameObject.Find("Player").transform.position, transform.position) < 2)
+                {
+                    if (!anim.GetBool("IsOpen"))
+                    {
+                        anim.SetBool("IsOpen", true);
+                        timer = OPEN_TIME;
+                    }
+                }
             }
         }
-        else if (timer > 0f)
-        {
-            timer -= Time.deltaTime * timeMod;
-            if (timer <= 0f)
-            {
-                anim.SetBool("IsOpen", false);
-            }
-        }
-
+        
         //Animate
         setLight();
     }
@@ -66,7 +82,13 @@ public class DoorController : MonoBehaviour
     private bool CheckSignal()
     {
         //Check all signals active
-        return signal1 && signal2 /*&& signal3*/;
+        switch (numSignals)
+        {
+            case 1: return signal1;
+            case 2: return signal1 && signal2;
+            case 3: return signal1 && signal2 && signal3;
+            default: return false;
+        }
     }
 
     private void setLight()
@@ -87,6 +109,30 @@ public class DoorController : MonoBehaviour
         {
             sr.sprite = spriteArray[3];
         }
+
+        switch (numSignals)
+        {
+            case 1: 
+            { 
+
+            } 
+            break;
+            case 2: 
+            { 
+
+            } 
+            break;
+            case 3: 
+            { 
+
+            } 
+            break;
+            default: 
+            { 
+
+            } 
+            break;
+        }
     }
 
     public void SignalActive(int signalNum)
@@ -99,7 +145,9 @@ public class DoorController : MonoBehaviour
             case 2: signal2 = true;
                 Debug.Log("Signal 2 Active");
                 break;
-            //case 3: signal3 = true;
+            case 3: signal3 = true;
+                Debug.Log("Signal 3 Active");
+                break;
         }
         
     }
@@ -114,7 +162,10 @@ public class DoorController : MonoBehaviour
             case 2: signal2 = false;
                 Debug.Log("Signal 2 Inctive");
                 break;
-            //case 3: signal3 = false;
+            case 3:
+                signal3 = false;
+                Debug.Log("Signal 3 Inctive");
+                break;
         }
     }
 }
