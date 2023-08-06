@@ -48,7 +48,7 @@ public class PlayerFallCollision : MonoBehaviour
             tmp.r -= 1f * Time.deltaTime;
             tmp.g -= 1f * Time.deltaTime;
             tmp.b -= 1f * Time.deltaTime;
-            tmp.a -= 0.2f * Time.deltaTime;
+            tmp.a -= 1f * Time.deltaTime;
 
             player.GetComponent<SpriteRenderer>().color = tmp;
 

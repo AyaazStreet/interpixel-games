@@ -19,6 +19,13 @@ public class PlayerController : MonoBehaviour
     public bool comboActive = false;
     public bool falling = false;
 
+    public bool A1_Unlocked = false;
+    public bool A2_Unlocked = false;
+    public bool A3_Unlocked = false;
+    public bool T1_Unlocked = false;
+    public bool T2_Unlocked = false;
+    public bool T3_Unlocked = false;
+
     public ThrowController throwController;
     public float throwCooldownDuration = 1f;
     public float throwCooldownTimer = 0f;
@@ -29,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private float abilityCooldownTimer;
     [SerializeField] private int activeAbility;
     private Vector2 moveDir;
-    private Vector2 lastMoveDir;
+    public Vector2 lastMoveDir;
 
     public Vector2 externalVelocity = Vector2.zero;
 
@@ -187,7 +194,7 @@ public class PlayerController : MonoBehaviour
 
     public void Ability_1_performed(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && A1_Unlocked)
         {
             if (activeAbility == 0 && !comboActive)
             {
@@ -197,6 +204,12 @@ public class PlayerController : MonoBehaviour
             if (abilityCooldownTimer > 0f)
             {
                 Debug.Log("Time Abilities On Cooldown");
+            }
+
+            if (infusing)
+            {
+                throwController.infused = 1;
+                Debug.Log("Infuse 1");
             }
         }
         else if (context.canceled && activeAbility == 1) //check if button released + ability still active
@@ -212,16 +225,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (context.performed && infusing)
-        {
-            throwController.infused = 1;
-            Debug.Log("Infuse 1");
-        }
+        
     }
     
     public void Ability_2_performed(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && A2_Unlocked)
         {
             if (!a1active && !comboActive)
             {
@@ -231,6 +240,12 @@ public class PlayerController : MonoBehaviour
             if (abilityCooldownTimer > 0f)
             {
                 Debug.Log("Time Abilities On Cooldown");
+            }
+
+            if (infusing)
+            {
+                throwController.infused = 2;
+                Debug.Log("Infuse 2");
             }
         }
         else if (context.canceled && activeAbility == 2)
@@ -245,16 +260,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (context.performed && infusing)
-        {
-            throwController.infused = 2;
-            Debug.Log("Infuse 2");
-        }
+        
     }
 
     public void Ability_3_performed(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && A3_Unlocked)
         {
             if (!a1active && !a2active)
             {
@@ -271,6 +282,12 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Time Abilities On Cooldown");
             }
+
+            if (infusing)
+            {
+                throwController.infused = 3;
+                Debug.Log("Infuse 3");
+            }
         }
         else if (context.canceled && activeAbility == 3)
         {
@@ -284,11 +301,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (context.performed && infusing)
-        {
-            throwController.infused = 3;
-            Debug.Log("Infuse 3");
-        }
+        
     }
 
     private IEnumerator WaitForInput2(InputAction.CallbackContext c)

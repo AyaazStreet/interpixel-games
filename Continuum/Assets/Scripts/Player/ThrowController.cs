@@ -16,7 +16,7 @@ public class ThrowController : MonoBehaviour
 
     public Transform throwPoint;
 
-    public int selected = 1;
+    public int selected = 0;
     public int infused = 0;
     
     [SerializeField] private PlayerInput playerInput;
@@ -48,16 +48,18 @@ public class ThrowController : MonoBehaviour
             aimAngle = Mathf.Atan2(MouseAimDir.y, MouseAimDir.x) * Mathf.Rad2Deg - 90f;
 
             //Animation
-            anim.SetFloat("AnimLastMoveX", MouseAimDir.x);
-            anim.SetFloat("AnimLastMoveY", MouseAimDir.y);
+            pc.lastMoveDir = MouseAimDir;
+            anim.SetFloat("AnimMoveX", MouseAimDir.x);
+            anim.SetFloat("AnimMoveY", MouseAimDir.y);
         }
         else if (playerInput.currentControlScheme == "Gamepad")
         {
             aimAngle = Mathf.Atan2(GamepadAimDir.y, GamepadAimDir.x) * Mathf.Rad2Deg - 90f;
 
             //Animation
-            anim.SetFloat("AnimLastMoveX", GamepadAimDir.x);
-            anim.SetFloat("AnimLastMoveY", GamepadAimDir.y);
+            pc.lastMoveDir = MouseAimDir;
+            anim.SetFloat("AnimMoveX", GamepadAimDir.x);
+            anim.SetFloat("AnimMoveY", GamepadAimDir.y);
         }
 
         //Calculate quaternion and apply to rotation
@@ -115,6 +117,8 @@ public class ThrowController : MonoBehaviour
                 }
                     break;
                 case 3: _ = Instantiate(rodPrefab, throwPoint.position, throwPoint.rotation);
+                    break;
+                default: Debug.Log("No Throwable Selected");
                     break;
             }
         }
