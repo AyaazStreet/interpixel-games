@@ -23,6 +23,9 @@ public class EnemyPatrol : MonoBehaviour
     private Vector2 moveDir;
     private Vector2 lastMoveDir;
 
+    public float waitTimeTotal = 2f;
+    public float waitTime = 0;
+
     private void Start()
     {
         //Init components
@@ -72,6 +75,9 @@ public class EnemyPatrol : MonoBehaviour
             {
                 linearPointSwitch();
             }
+
+            waitTime = waitTimeTotal;
+            rb.velocity = Vector2.zero;
         }
 
         Animate();
@@ -79,7 +85,14 @@ public class EnemyPatrol : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = MOVE_SPEED * timeMod * moveDir.normalized;
+        if (waitTime > 0)
+        {
+            waitTime -= Time.deltaTime * timeMod;
+        }
+        else
+        {
+            rb.velocity = MOVE_SPEED * timeMod * moveDir.normalized;
+        }
 
         if (moveDir.x != 0 || moveDir.y != 0)
         {

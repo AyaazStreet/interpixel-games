@@ -23,8 +23,8 @@ public class PlatformMove : MonoBehaviour
     private Vector2 moveDir;
     private Vector2 lastMoveDir;
 
-    private float waitTimeTotal = 2f;
-   [SerializeField] private float waitTime = 0;
+    public float waitTimeTotal = 2f;
+    public float waitTime = 0;
 
     private void Start()
     {
