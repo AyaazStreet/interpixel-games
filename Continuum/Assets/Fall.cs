@@ -12,8 +12,10 @@ public class Fall : MonoBehaviour
     public Transform parentTransform;
     public Rigidbody2D parentRb;
 
-    private float fallFactor = 1f;
+    private float fallFactor = 1.2f;
     private float fallDistance = 0.3f;
+
+    private bool falling = false;
 
     private void Start()
     {
@@ -29,7 +31,7 @@ public class Fall : MonoBehaviour
         {
             if (parentTransform.localScale.y <= (1f - fallDistance))
             {
-                parentTransform.localScale -= new Vector3(fallFactor * Time.deltaTime * timeMod, fallFactor * Time.deltaTime * timeMod, 0);
+                falling = true;
             }
         }
     }
@@ -38,7 +40,7 @@ public class Fall : MonoBehaviour
     {
         if (parentRb.velocity.magnitude < 10f)
         {
-            if (parentTransform.localScale.y > (1f - fallDistance))
+            if (parentTransform.localScale.y > (1f - fallDistance) || (falling && parentTransform.localScale.y > 0))
             {
                 parentTransform.localScale -= new Vector3(fallFactor * Time.deltaTime * timeMod, fallFactor * Time.deltaTime * timeMod, 0);
             }
