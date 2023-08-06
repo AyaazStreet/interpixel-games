@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e62e262e74091e645a41f05e452dec34
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - LoRes 12 OT
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 96f869a6be794b4458d76ccda8ed0e4b, type: 3}
+  - {fileID: 12800000, guid: 237b0f458a6285f449d57c57e808f6ec, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

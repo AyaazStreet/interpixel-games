@@ -184,11 +184,11 @@ public class PlayerController : MonoBehaviour
         moveDir = context.ReadValue<Vector2>();
     }
 
-    public void Interact_performed(InputAction.CallbackContext context)
+    public void Restart_performed(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && GameManager.Instance.deathScreen.activeSelf)
         {
-            //Debug.Log("Player Interact");
+            GameManager.Instance.RestartGame();
         }
     }
 
@@ -334,6 +334,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
     void Animate()
     {
         anim.SetFloat("AnimMoveMagnitude", (rb.velocity - externalVelocity).magnitude);

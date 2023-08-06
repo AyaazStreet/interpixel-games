@@ -51,7 +51,8 @@ public class EnemyDetection : MonoBehaviour
         //if detection bar full
         if(detectionLevel >= 100)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            detectionLevel = 0;
+            GameManager.Instance.ShowDeathScreen();
         }
         
         indicator.fillAmount = detectionLevel / 100;

@@ -56,6 +56,10 @@ public class PlayerFallCollision : MonoBehaviour
             {
                 player.transform.localScale -= new Vector3(fallFactor * Time.deltaTime, fallFactor * Time.deltaTime, 0);
             }
+            else
+            {
+                GameManager.Instance.ShowDeathScreen();
+            }
         }
     }
 

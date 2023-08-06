@@ -7,7 +7,7 @@ using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class PlatformMove : MonoBehaviour
 {
-    public const float MOVE_SPEED = 1.5f; 
+    public const float MOVE_SPEED = 1f; 
     public float globalTimescale;
     public float? localTimescale;
     private float timeMod;
