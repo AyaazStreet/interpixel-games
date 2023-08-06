@@ -18,6 +18,7 @@ public class PlatformMove : MonoBehaviour
     public int pointArrPos;
     public bool forwardTraverse;
 
+    private PlayerController pc;
     private Rigidbody2D rb;
     private Transform targetPoint;
     private Vector2 moveDir;
@@ -30,6 +31,7 @@ public class PlatformMove : MonoBehaviour
     {
         //Init components
         rb = GetComponent<Rigidbody2D>();
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
 
         pointArrPos = 0;
         targetPoint = pointArr[0].transform;
@@ -135,17 +137,17 @@ public class PlatformMove : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
         {
-            collision.GetComponent<PlayerController>().externalVelocity = rb.velocity;
+            pc.externalVelocity = rb.velocity;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
         {
-            collision.GetComponent<PlayerController>().externalVelocity = Vector2.zero;
+            pc.externalVelocity = Vector2.zero;
         }
     }
 }

@@ -9,7 +9,7 @@ public class PickupCollectable : MonoBehaviour
     private float offset = 1f;
     private bool collected = false;
 
-    [Range(1, 3)]
+    [Range(1, 4)]
     public int unlockNum;
 
     private Rigidbody2D rb;
@@ -83,6 +83,9 @@ public class PickupCollectable : MonoBehaviour
                 case 3:
                     collision.GetComponent<PlayerController>().T3_Unlocked = true;
                     break; 
+                case 4:
+                    collision.GetComponent<PlayerController>().hasKey = true;
+                    break;
                 default:
                     break;
             }

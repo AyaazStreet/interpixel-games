@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
     public bool T2_Unlocked = false;
     public bool T3_Unlocked = false;
 
+    public bool hasKey = false;
+
+    public int numberCrushes = 0;
+
     public ThrowController throwController;
     public float throwCooldownDuration = 1f;
     public float throwCooldownTimer = 0f;
@@ -161,6 +165,12 @@ public class PlayerController : MonoBehaviour
         if (throwCooldownTimer > 0)
         {
             throwCooldownTimer -= Time.deltaTime;
+        }
+
+        if (numberCrushes >= 2)
+        {
+            StartCoroutine(CrushPlayer());
+            numberCrushes = 0;
         }
     }
 
@@ -334,7 +344,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    private IEnumerator CrushPlayer()
+    {
+        while (transform.localScale.y > 0.01) 
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y - 100f * Time.deltaTime, transform.localScale.z);
+            yield return new WaitForSeconds(0.05f);
+        }
+        transform.localScale = Vector3.zero;
+        GameManager.Instance.ShowDeathScreen();
+
+        yield break;
+    }
+
     void Animate()
     {
         anim.SetFloat("AnimMoveMagnitude", (rb.velocity - externalVelocity).magnitude);
