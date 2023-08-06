@@ -5,7 +5,8 @@ using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public const float MOVE_SPEED = 1.5f;public float globalTimescale;
+    public const float MOVE_SPEED = 1.5f;
+    public float globalTimescale;
     public float? localTimescale;
     private float timeMod;
 
@@ -58,7 +59,7 @@ public class EnemyPatrol : MonoBehaviour
 
         //Adjust move direction and aim angle based on target point
         moveDir = targetPoint.position - transform.position;
-        float aimAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg-90;
+        float aimAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90;
 
         //Rotate FOV
         Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);

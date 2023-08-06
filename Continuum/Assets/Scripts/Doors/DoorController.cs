@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    public const float OPEN_TIME = 1f;
+    public const float OPEN_TIME = 0.5f;
     public float timer;
 
     public float globalTimescale;
