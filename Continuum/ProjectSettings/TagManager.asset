@@ -10,6 +10,7 @@ TagManager:
   - Acc Field
   - Stop Field
   - FOV
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

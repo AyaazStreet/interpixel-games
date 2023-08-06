@@ -59,6 +59,11 @@ public class PlayerFallCollision : MonoBehaviour
             else
             {
                 GameManager.Instance.ShowDeathScreen();
+
+                falling = false;
+                shouldFall = false;
+                stable = false;
+                player.GetComponent<PlayerController>().falling = false;
             }
         }
     }
