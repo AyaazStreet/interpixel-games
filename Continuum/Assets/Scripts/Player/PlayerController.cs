@@ -196,7 +196,7 @@ public class PlayerController : MonoBehaviour
 
     public void Restart_performed(InputAction.CallbackContext context)
     {
-        if (context.performed && GameManager.Instance.deathScreen.activeSelf)
+        if (context.performed)
         {
             GameManager.Instance.RestartGame();
         }
@@ -363,4 +363,6 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("AnimMoveX", lastMoveDir.x);
         anim.SetFloat("AnimMoveY", lastMoveDir.y);
     }
+
+    
 }
