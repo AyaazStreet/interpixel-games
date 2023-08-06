@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 externalVelocity = Vector2.zero;
 
+    public Image fillIndi;
+
     private void Awake()
     {
         //Initialise components
@@ -59,6 +62,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (abilityCooldownTimer > 0)
+        {
+            fillIndi.fillAmount = 1 - (abilityCooldownTimer / 2f);
+            fillIndi.color = Color.grey;
+        }
+
+        if (abilityActiveTimer > 0)
+        {
+            fillIndi.fillAmount = abilityActiveTimer / 5f;
+            fillIndi.color = Color.cyan;
+        }
+
         Animate(); //run animations
 
         //Perform the correct action based on active ability

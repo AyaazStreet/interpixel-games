@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
     {
         // Set the player's position to the last activated checkpoint position.
         player.transform.position = respawnPosition;
-        player.GetComponent<PlayerController>().hasKey = false;
 
         player.transform.localScale = new Vector3(1, 1, 1);
 
