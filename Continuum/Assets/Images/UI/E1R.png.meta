@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-guid: b8313bff210114f9cad6fda656b4788e
-=======
-guid: b0d506350065e5e4ea66db5170e37cf1
->>>>>>> Stashed changes
+guid: 631794916a8894477b83743827893f5e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -85,7 +81,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-<<<<<<< Updated upstream
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -99,8 +94,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-=======
->>>>>>> Stashed changes
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -130,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buttons1_0
+      name: E1R_0
       rect:
         serializedVersion: 2
         x: 0
@@ -138,29 +131,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0.5, y: 0.5}
-=======
       pivot: {x: 0, y: 0}
->>>>>>> Stashed changes
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-<<<<<<< Updated upstream
-      spriteID: 1201a34f345ea431392ebfa8a1c69695
-      internalID: -1061415461
-=======
-      spriteID: af87f63ed5942f94bbcca3d7c490dc0a
-      internalID: -2098545548
->>>>>>> Stashed changes
+      spriteID: bf557a0553a694c3b96bd665ddf96aca
+      internalID: -2108035048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buttons1_1
+      name: E1R_1
       rect:
         serializedVersion: 2
         x: 16
@@ -168,29 +152,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0.5, y: 0.5}
-=======
       pivot: {x: 0, y: 0}
->>>>>>> Stashed changes
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-<<<<<<< Updated upstream
-      spriteID: 45d09b72dd7de4a6f80637955f8dee58
-      internalID: -1475287369
-=======
-      spriteID: b77183e819195c342aaa668228b699eb
-      internalID: 289702118
->>>>>>> Stashed changes
+      spriteID: bb21de7718adb43ab8a210c226fd40d8
+      internalID: -812486933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buttons1_2
+      name: E1R_2
       rect:
         serializedVersion: 2
         x: 32
@@ -198,23 +173,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0.5, y: 0.5}
-=======
       pivot: {x: 0, y: 0}
->>>>>>> Stashed changes
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-<<<<<<< Updated upstream
-      spriteID: 6761bb5aab2d94103a6d824db0ce5f70
-      internalID: -657893792
-=======
-      spriteID: 7a15b41490548c246b208fe0b52f1f72
-      internalID: 858056599
->>>>>>> Stashed changes
+      spriteID: d0cdb17e02e3d4f3292fdb587b042612
+      internalID: -1636045812
       vertices: []
       indices: 
       edges: []
@@ -230,15 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-<<<<<<< Updated upstream
-      Buttons1_0: -1061415461
-      Buttons1_1: -1475287369
-      Buttons1_2: -657893792
-=======
-      Buttons1_0: -2098545548
-      Buttons1_1: 289702118
-      Buttons1_2: 858056599
->>>>>>> Stashed changes
+      E1R_0: -2108035048
+      E1R_1: -812486933
+      E1R_2: -1636045812
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
