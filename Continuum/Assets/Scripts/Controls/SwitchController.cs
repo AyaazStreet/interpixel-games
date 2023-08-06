@@ -14,9 +14,14 @@ public class SwitchController : MonoBehaviour
     public UnityEvent SendSignal_Active;
     public UnityEvent SendSignal_Inactive;
 
+    private SpriteRenderer sr;
+
+    public Sprite sOn;
+    public Sprite sOff;
+
     private void Awake()
     {
-        
+        sr = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -47,15 +52,17 @@ public class SwitchController : MonoBehaviour
         {
             if (on)
             {
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90); //TEMP!!!
+                
                 SendSignal_Inactive.Invoke();
                 on = false;
+                sr.sprite = sOff;
             }
             else
             {
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90); //TEMP!!!
+                
                 SendSignal_Active.Invoke();
                 on = true;
+                sr.sprite = sOn;
             }
         }
     }
@@ -74,15 +81,15 @@ public class SwitchController : MonoBehaviour
         {
             if (on)
             {
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90); //TEMP!!!
                 SendSignal_Inactive.Invoke();
                 on = false;
+                sr.sprite = sOff;
             }
             else
             {
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 90); //TEMP!!!
                 SendSignal_Active.Invoke();
                 on = true;
+                sr.sprite = sOn;
             }
         }
     }
