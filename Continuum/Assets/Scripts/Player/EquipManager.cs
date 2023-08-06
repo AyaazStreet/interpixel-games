@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class EquipManager : MonoBehaviour
 {
     [SerializeField] private GameObject throwPointer;
+    [SerializeField] private PlayerController pc;
 
     void Awake()
     {
@@ -30,7 +31,7 @@ public class EquipManager : MonoBehaviour
 
     public void Equip_1_performed(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && pc.T1_Unlocked)
         {
             //Activate throw mode for bolts
             throwPointer.GetComponent<ThrowController>().selected = 1;
@@ -43,7 +44,7 @@ public class EquipManager : MonoBehaviour
 
     public void Equip_2_performed(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && pc.T2_Unlocked)
         {
             //Activate throw mode for cannisters
             throwPointer.GetComponent<ThrowController>().selected = 2;
@@ -61,7 +62,7 @@ public class EquipManager : MonoBehaviour
 
     public void Equip_3_performed(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && pc.T3_Unlocked)
         {
             //Activate throw mode for rods
             throwPointer.GetComponent<ThrowController>().selected = 3;
