@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
-public class ButtonController : MonoBehaviour
+public class KeyScannerController : MonoBehaviour
 {
-    public const float ACTIVE_TIME = 2f;
     public bool interactable = false;
-    public float timer;
 
     public float globalTimescale;
     public float? localTimescale;
@@ -20,6 +17,7 @@ public class ButtonController : MonoBehaviour
     private float timeMod;
 
     private SpriteRenderer sr;
+    private PlayerController pc;
 
     public Sprite btnIn;
     public Sprite btnOut;
@@ -32,6 +30,7 @@ public class ButtonController : MonoBehaviour
         timeMod = 1f;
 
         sr = gameObject.GetComponentInChildren<SpriteRenderer>();
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     private void OnEnable()
@@ -51,15 +50,6 @@ public class ButtonController : MonoBehaviour
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = localTimescale ?? globalTimescale;
 
-        if (timer > 0f)
-        {
-            timer -= Time.deltaTime * timeMod;
-            if (timer <= 0f)
-            {
-                SendSignal_Inactive.Invoke();
-                sr.sprite = btnOut;
-            }
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -68,14 +58,6 @@ public class ButtonController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             interactable = true;
-        }
-        
-        //Check throwable collision
-        if (collision.gameObject.CompareTag("Bolt"))
-        {
-            sr.sprite = btnIn;
-            SendSignal_Active.Invoke();
-            timer = ACTIVE_TIME;
         }
     }
 
@@ -89,11 +71,12 @@ public class ButtonController : MonoBehaviour
 
     public void Interact_performed(InputAction.CallbackContext context)
     {
-        if (interactable && context.performed)
+        
+        if (interactable && context.performed && pc.hasKey)
         {
             sr.sprite = btnIn;
             SendSignal_Active.Invoke();
-            timer = ACTIVE_TIME;
+            pc.hasKey = false;
         }
     }
 }
