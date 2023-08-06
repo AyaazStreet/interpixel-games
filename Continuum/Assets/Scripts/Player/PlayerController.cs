@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool a1active = false;
     public bool a2active = false;
     public bool comboActive = false;
+    public bool falling = false;
 
     public ThrowController throwController;
     public float throwCooldownDuration = 1f;
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int activeAbility;
     private Vector2 moveDir;
     private Vector2 lastMoveDir;
+
+    public Vector2 externalVelocity = Vector2.zero;
 
     private void Awake()
     {
@@ -157,7 +160,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //Move
-        rb.velocity = MOVE_SPEED * moveDir;
+        if (!falling)
+        {
+            rb.velocity = (MOVE_SPEED * moveDir) + externalVelocity;
+        }
 
         if (moveDir.x != 0 || moveDir.y != 0)
         {
@@ -317,7 +323,7 @@ public class PlayerController : MonoBehaviour
 
     void Animate()
     {
-        anim.SetFloat("AnimMoveMagnitude", moveDir.magnitude);
+        anim.SetFloat("AnimMoveMagnitude", (rb.velocity - externalVelocity).magnitude);
         anim.SetFloat("AnimMoveX", lastMoveDir.x);
         anim.SetFloat("AnimMoveY", lastMoveDir.y);
     }
