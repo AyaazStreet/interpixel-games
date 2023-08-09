@@ -209,11 +209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b40dbc32197414fba3390a28f89dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
   openDelay: 0
   openTimeTotal: 4
   openTime: 0
   globalTimescale: 0
+  timeMod: 0
 --- !u!114 &1008619800051459031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 16587427928721776}
   m_Layer: 0
   m_Name: DeathTrigger
-  m_TagString: Untagged
+  m_TagString: CrushTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,7 +441,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000023841858, y: -0.042773247}
+  m_Offset: {x: -0.0017595291, y: -0.16860342}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -452,7 +452,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8725724, y: 0.062412262}
+  m_Size: {x: 1.749382, y: 0.3140726}
   m_EdgeRadius: 0
 --- !u!114 &16587427928721776
 MonoBehaviour:
@@ -466,3 +466,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d428f5c20a29d2c4f91f69a4db0bf475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  a: 0

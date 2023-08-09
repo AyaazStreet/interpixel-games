@@ -9,10 +9,14 @@ public class EquipManager : MonoBehaviour
     [SerializeField] private GameObject throwPointer;
     [SerializeField] private PlayerController pc;
 
+    public int selected;
+
     void Awake()
     {
         //deactivate throw mode at start
         throwPointer.SetActive(false); 
+
+        selected = 0;
     }
 
     public void Manual_Aim_Performed(InputAction.CallbackContext context)
@@ -34,7 +38,7 @@ public class EquipManager : MonoBehaviour
         if(context.performed && pc.T1_Unlocked)
         {
             //Activate throw mode for bolts
-            throwPointer.GetComponent<ThrowController>().selected = 1;
+            selected = 1;   
 
             //Change infusing mode
             GetComponent<PlayerController>().infusing = false;
@@ -47,7 +51,7 @@ public class EquipManager : MonoBehaviour
         if (context.performed && pc.T2_Unlocked)
         {
             //Activate throw mode for cannisters
-            throwPointer.GetComponent<ThrowController>().selected = 2;
+            selected = 2;
 
             //Change infusing mode
             GetComponent<PlayerController>().infusing = true;
@@ -65,7 +69,7 @@ public class EquipManager : MonoBehaviour
         if (context.performed && pc.T3_Unlocked)
         {
             //Activate throw mode for rods
-            throwPointer.GetComponent<ThrowController>().selected = 3;
+            selected = 3;
 
             //Change infusing mode
             GetComponent<PlayerController>().infusing = false;
@@ -78,7 +82,6 @@ public class EquipManager : MonoBehaviour
         if (context.performed)
         {
             //Deactivate throw mode
-            throwPointer.GetComponent<ThrowController>().selected = 0;
             throwPointer.SetActive(false);
 
             //Change to infusing mode

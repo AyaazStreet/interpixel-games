@@ -29,7 +29,10 @@ public class PlayerController : MonoBehaviour
 
     public bool hasKey = false;
 
-    public int numberCrushes = 0;
+    public bool crushA = false;
+    public bool crushB = false;
+
+    public bool alive = true;
 
     public ThrowController throwController;
     public float throwCooldownDuration = 1f;
@@ -37,15 +40,18 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
-    private float abilityActiveTimer;
-    private float abilityCooldownTimer;
-    [SerializeField] private int activeAbility;
+    public float abilityActiveTimer;
+    public float abilityCooldownTimer;
+    public int activeAbility;
     private Vector2 moveDir;
     public Vector2 lastMoveDir;
 
     public Vector2 externalVelocity = Vector2.zero;
 
     public Image fillIndi;
+
+    public CapsuleCollider2D cc1;
+    public CapsuleCollider2D cc2;
 
     private void Awake()
     {
@@ -182,17 +188,27 @@ public class PlayerController : MonoBehaviour
             throwCooldownTimer -= Time.deltaTime;
         }
 
-        if (numberCrushes >= 2)
+        if (crushA && crushB)
         {
-            StartCoroutine(CrushPlayer());
-            numberCrushes = 0;
+            crushA = false;
+            crushB = false;
+
+            cc1.enabled = false;
+            cc2.enabled = false;
+
+            if (alive)
+            {
+                StartCoroutine(CrushPlayer());
+            }
+            
+            alive = false;
         }
     }
 
     private void FixedUpdate()
     {
         //Move
-        if (!falling)
+        if (!falling && alive)
         {
             rb.velocity = (MOVE_SPEED * moveDir) + externalVelocity;
         }
@@ -379,5 +395,39 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("AnimMoveY", lastMoveDir.y);
     }
 
-    
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("CrushTrigger"))
+        {
+            if(!collision.GetComponent<DeathTrigger>().isOpen)
+            {
+                if (collision.GetComponent<DeathTrigger>().a)
+                {
+                    crushA = true;
+                }
+                else
+                {
+                    crushB = true;
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("CrushTrigger"))
+        {
+            if (!collision.GetComponent<DeathTrigger>().isOpen)
+            {
+                if (collision.GetComponent<DeathTrigger>().a)
+                {
+                    crushA = false;
+                }
+                else
+                {
+                    crushB = false;
+                }
+            }
+        }
+    }
 }

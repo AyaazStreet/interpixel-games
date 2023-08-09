@@ -6,7 +6,8 @@ public class PistonOpening : MonoBehaviour
 {
     private Animator anim;
 
-    public bool isOpen = false;
+    public  bool isOpen = false;
+    private bool waiting = true;
 
     public float openDelay = 0f;
     public float openTimeTotal = 2f;
@@ -16,14 +17,20 @@ public class PistonOpening : MonoBehaviour
     public float? localTimescale;
     public float timeMod;
 
+    private DeathTrigger dt;
+
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        dt = GetComponentInChildren<DeathTrigger>();
 
         //Initialise timescales
         localTimescale = gameObject.GetComponent<LocalModifier>().value;
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = 1f;
+
+        Open();
     }
 
     void Update()
@@ -33,15 +40,36 @@ public class PistonOpening : MonoBehaviour
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = localTimescale ?? globalTimescale;
 
-        if (openTime > 0f)
+        if (!waiting) 
         {
-            openTime -= Time.deltaTime * timeMod;
+            if (isOpen)
+            {
+                if (openTime > 0f)
+                {
+                    openTime -= Time.deltaTime * timeMod;
+                }
+                else
+                {
+                    isOpen = false;
+                    dt.isOpen = false;
+                    openTime = openTimeTotal;
+                }
+            }
+            else
+            {
+                if (openTime > 0f)
+                {
+                    openTime -= Time.deltaTime * timeMod;
+                }
+                else
+                {
+                    isOpen = true;
+                    dt.isOpen = true;
+                    openTime = openTimeTotal;
+                }
+            }
         }
-        else
-        {
-            isOpen = false;
-        }
-        
+
         anim.SetBool("Open", isOpen);
         anim.speed = timeMod;
     }
@@ -54,8 +82,7 @@ public class PistonOpening : MonoBehaviour
     IEnumerator WaitDelay()
     {
         yield return new WaitForSeconds(openDelay);
-        isOpen = true;
-        openTime = openTimeTotal;
+        waiting = false;
         yield break;
     }
 }

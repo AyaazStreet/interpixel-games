@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PickupCollectable : MonoBehaviour
+public class PickupUpgrade : MonoBehaviour
 {
     private Vector2 targetPoint;
     private float movementSpeed = 10f;
     private float offset = 1f;
     private bool collected = false;
-    private bool close = false;
+
+    [Range(1, 4)]
+    public int unlockNum;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -40,17 +41,14 @@ public class PickupCollectable : MonoBehaviour
             float distance = Vector2.Distance(rb.position, targetPoint);
 
             // Check if the object has reached the target point
-            if (distance < 0.5f)
+            if (distance < 0.05f)
             {
-                close = true;
-            }
+                rb.velocity = Vector2.zero;
 
-            if (close)
-            {
                 Color tmp = sr.color;
                 if (tmp.a > 0)
                 {
-                    tmp.a -= 2f * Time.deltaTime;
+                    tmp.a -= 10f * Time.deltaTime;
                     sr.color = tmp;
                 }
 
@@ -58,6 +56,8 @@ public class PickupCollectable : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
+
+                return;
             }
 
             // Move the object towards the target point using interpolation
@@ -71,7 +71,24 @@ public class PickupCollectable : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             collected = true;
-            collision.GetComponent<PlayerController>().hasKey = true;
+
+            switch (unlockNum)
+            {
+                case 1:
+                    collision.GetComponent<PlayerController>().T1_Unlocked = true;
+                    collision.GetComponent<EquipManager>().selected = 1;
+                    break;
+                case 2:
+                    collision.GetComponent<PlayerController>().T2_Unlocked = true;
+                    collision.GetComponent<EquipManager>().selected = 2;
+                    break;
+                case 3:
+                    collision.GetComponent<PlayerController>().T3_Unlocked = true;
+                    collision.GetComponent<EquipManager>().selected = 3;
+                    break; 
+                default:
+                    break;
+            }
         }
     }
 }

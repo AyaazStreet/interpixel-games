@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject deathScreen;
 
-    private GameObject player;
+    public GameObject player;
     private Vector3 respawnPosition;
 
     private void Awake()
@@ -52,6 +52,21 @@ public class GameManager : MonoBehaviour
         tmp1.a = 1f;
 
         player.GetComponent<SpriteRenderer>().color = tmp1;
+
+        player.GetComponent<PlayerController>().crushA = false;
+        player.GetComponent<PlayerController>().crushB = false;
+
+        player.GetComponent<PlayerController>().cc1.enabled = true;
+        player.GetComponent<PlayerController>().cc2.enabled = true;
+
+        player.GetComponent<PlayerController>().alive = true;
+
+        player.GetComponent<PlayerController>().abilityActiveTimer = 0f;
+        player.GetComponent<PlayerController>().abilityCooldownTimer = 0.1f;
+
+        player.GetComponent<PlayerController>().fillIndi.fillAmount = 1f;
+
+        player.GetComponent<PlayerController>().activeAbility = 0;
 
         deathScreen.SetActive(false);
     }

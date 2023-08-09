@@ -22,6 +22,7 @@ public class ThrowController : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Animator anim;
     [SerializeField] private PlayerController pc;
+    [SerializeField] private EquipManager em;
 
     private Rigidbody2D rb;
 
@@ -34,10 +35,14 @@ public class ThrowController : MonoBehaviour
     {
         //Initialise components
         rb = GetComponent<Rigidbody2D>();
+
+        selected = em.selected;
     }
 
     void Update()
     {
+        selected = em.selected;
+
         //Get mouse aim direction
         mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         MouseAimDir = mousePos - rb.position;
