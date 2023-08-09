@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public void RespawnPlayer()
     {
         // Set the player's position to the last activated checkpoint position.
+        respawnPosition.z = 0f;
         player.transform.position = respawnPosition;
 
         player.transform.localScale = new Vector3(1, 1, 1);
