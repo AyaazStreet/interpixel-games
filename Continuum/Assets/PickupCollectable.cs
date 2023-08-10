@@ -11,6 +11,9 @@ public class PickupCollectable : MonoBehaviour
     private bool collected = false;
     private bool close = false;
 
+    [Range(0, 2)]
+    public int collectableType;
+
     private Rigidbody2D rb;
     private SpriteRenderer sr;
 
@@ -70,8 +73,11 @@ public class PickupCollectable : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            if (!collected) 
+            {
+                collision.GetComponent<InventoryManager>().AddInventoryItem(collectableType, transform.position);
+            }
             collected = true;
-            collision.GetComponent<PlayerController>().hasKey = true;
         }
     }
 }

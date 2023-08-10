@@ -71,13 +71,16 @@ public class PlayerController : MonoBehaviour
         if (abilityCooldownTimer > 0)
         {
             fillIndi.fillAmount = 1 - (abilityCooldownTimer / 2f);
-            fillIndi.color = Color.grey;
+            fillIndi.color = new Color(0.7725491f, 0.7921569f, 0.8000001f, 0.6f);
         }
-
-        if (abilityActiveTimer > 0)
+        else if (abilityActiveTimer > 0)
         {
             fillIndi.fillAmount = abilityActiveTimer / 5f;
-            fillIndi.color = Color.cyan;
+            fillIndi.color = new Color(0.572549f, 0.909804f, 0.7529413f, 0.6f);
+        }
+        else
+        {
+            fillIndi.fillAmount = 1;
         }
 
         Animate(); //run animations

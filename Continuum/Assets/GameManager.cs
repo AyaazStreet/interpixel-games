@@ -43,8 +43,10 @@ public class GameManager : MonoBehaviour
         respawnPosition.z = 0f;
         player.transform.position = respawnPosition;
 
+        //Rescale the player back to normal
         player.transform.localScale = new Vector3(1, 1, 1);
 
+        //Reset player colour alpha
         Color tmp1 = player.GetComponent<SpriteRenderer>().color;
 
         tmp1.r = 1f;
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
 
         player.GetComponent<SpriteRenderer>().color = tmp1;
 
+        //Reset player variables
         player.GetComponent<PlayerController>().crushA = false;
         player.GetComponent<PlayerController>().crushB = false;
 
@@ -69,6 +72,10 @@ public class GameManager : MonoBehaviour
 
         player.GetComponent<PlayerController>().activeAbility = 0;
 
+        //Reset player items
+        player.GetComponent<InventoryManager>().ReturnItemsFromInventory();
+
+        //Remove death screen
         deathScreen.SetActive(false);
     }
 

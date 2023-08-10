@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -18,6 +19,7 @@ public class KeyScannerController : MonoBehaviour
 
     private SpriteRenderer sr;
     private PlayerController pc;
+    private InventoryManager im;
 
     public Sprite btnIn;
     public Sprite btnOut;
@@ -31,6 +33,7 @@ public class KeyScannerController : MonoBehaviour
 
         sr = gameObject.GetComponentInChildren<SpriteRenderer>();
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        im = GameObject.Find("Player").GetComponent<InventoryManager>();
     }
 
     private void OnEnable()
@@ -71,12 +74,12 @@ public class KeyScannerController : MonoBehaviour
 
     public void Interact_performed(InputAction.CallbackContext context)
     {
-        
-        if (interactable && context.performed && pc.hasKey)
+        if (interactable && context.performed && im.inventory.Any(item => item.type == 0))
         {
             sr.sprite = btnIn;
             SendSignal_Active.Invoke();
-            pc.hasKey = false;
+
+            im.RemoveInventoryItem(0);
         }
     }
 }

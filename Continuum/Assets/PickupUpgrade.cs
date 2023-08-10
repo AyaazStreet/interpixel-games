@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PickupUpgrade : MonoBehaviour
@@ -8,8 +9,9 @@ public class PickupUpgrade : MonoBehaviour
     private float movementSpeed = 10f;
     private float offset = 1f;
     private bool collected = false;
+    private bool close;
 
-    [Range(1, 4)]
+    [Range(1, 3)]
     public int unlockNum;
 
     private Rigidbody2D rb;
@@ -41,14 +43,17 @@ public class PickupUpgrade : MonoBehaviour
             float distance = Vector2.Distance(rb.position, targetPoint);
 
             // Check if the object has reached the target point
-            if (distance < 0.05f)
+            if (distance < 0.5f)
             {
-                rb.velocity = Vector2.zero;
+                close = true;
+            }
 
+            if (close)
+            {
                 Color tmp = sr.color;
                 if (tmp.a > 0)
                 {
-                    tmp.a -= 10f * Time.deltaTime;
+                    tmp.a -= 2f * Time.deltaTime;
                     sr.color = tmp;
                 }
 
@@ -56,8 +61,6 @@ public class PickupUpgrade : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
-
-                return;
             }
 
             // Move the object towards the target point using interpolation
