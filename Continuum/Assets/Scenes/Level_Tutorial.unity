@@ -3670,6 +3670,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8349cddc-7e35-4b8b-8e5f-07883e0398c0
     m_ActionName: Player/Restart[/Keyboard/r,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 929063642}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: ResetScene
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 172fce56-73f6-494d-b65a-0442c5efa034
+    m_ActionName: Player/DevControl[/Keyboard/backslash]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -7159,6 +7175,18 @@ PrefabInstance:
       value: SignalActive
       objectReference: {fileID: 0}
     - target: {fileID: 3021098931706800646, guid: 2784e0a305511f247861a90600473fbe, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021098931706800646, guid: 2784e0a305511f247861a90600473fbe, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021098931706800646, guid: 2784e0a305511f247861a90600473fbe, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021098931706800646, guid: 2784e0a305511f247861a90600473fbe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.5
       objectReference: {fileID: 0}
@@ -7185,6 +7213,10 @@ PrefabInstance:
     - target: {fileID: 3021098931706800646, guid: 2784e0a305511f247861a90600473fbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021098931706800646, guid: 2784e0a305511f247861a90600473fbe, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8502575725067584954, guid: 2784e0a305511f247861a90600473fbe, type: 3}
       propertyPath: m_LocalPosition.x

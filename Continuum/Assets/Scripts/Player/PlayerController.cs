@@ -398,6 +398,12 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("AnimMoveY", lastMoveDir.y);
     }
 
+
+    public void ResetScene(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("CrushTrigger"))
