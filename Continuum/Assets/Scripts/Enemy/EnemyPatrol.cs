@@ -22,7 +22,6 @@ public class EnemyPatrol : MonoBehaviour
     private Animator anim;
     private Transform targetPoint;
     private Vector2 moveDir;
-    private Vector2 lastMoveDir;
 
     public float waitTimeTotal = 2f;
     public float waitTime = 0;
@@ -55,7 +54,7 @@ public class EnemyPatrol : MonoBehaviour
         timeMod = localTimescale ?? globalTimescale;
 
         //Adjust animation speed based on timeMod
-        anim.speed = timeMod;
+        anim.speed = 0.75f * timeMod;
 
         //Adjust move direction and aim angle based on target point
         moveDir = targetPoint.position - transform.position;
@@ -93,12 +92,6 @@ public class EnemyPatrol : MonoBehaviour
         else
         {
             rb.velocity = MOVE_SPEED * timeMod * moveDir.normalized;
-        }
-
-        if (moveDir.x != 0 || moveDir.y != 0)
-        {
-            //Not idle
-            lastMoveDir = moveDir;
         }
     }
 
@@ -162,8 +155,6 @@ public class EnemyPatrol : MonoBehaviour
     {
         anim.SetFloat("AnimMoveX", moveDir.x);
         anim.SetFloat("AnimMoveY", moveDir.y);
-        anim.SetFloat("AnimMoveMagnitude", moveDir.magnitude);
-        anim.SetFloat("AnimLastMoveX", lastMoveDir.x);
-        anim.SetFloat("AnimLastMoveY", lastMoveDir.y);
+        anim.SetFloat("AnimMoveMagnitude", rb.velocity.magnitude);
     }
 }
