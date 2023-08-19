@@ -315,10 +315,11 @@ public class PlayerController : MonoBehaviour
             {
                 if (activeAbility == 0 && abilityCooldownTimer <= 0 && !infusing)
                 {
-                    Debug.Log("Time Stop Active");
                     comboActive = true;
                     activeAbility = 3;
                     abilityActiveTimer = A3_DUR;
+                    Debug.Log("Time Stop Active");
+                    SoundManager.PlaySound(SoundManager.Sound.snd_stopTime);
                 }
             }
 
@@ -359,6 +360,7 @@ public class PlayerController : MonoBehaviour
                 activeAbility = 1; //change active ability 
                 abilityActiveTimer = A1_DUR; //set ability duration
                 Debug.Log("Time Slow Active");
+                SoundManager.PlaySound(SoundManager.Sound.snd_slowTime);
             }
         }
     }
@@ -374,6 +376,7 @@ public class PlayerController : MonoBehaviour
                 activeAbility = 2;
                 abilityActiveTimer = A2_DUR;
                 Debug.Log("Time Accelerate Active");
+                SoundManager.PlaySound(SoundManager.Sound.snd_accelTime);
             }
         }
     }

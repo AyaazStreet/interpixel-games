@@ -92,6 +92,7 @@ public class ThrowController : MonoBehaviour
             switch (selected)
             {
                 case 1: _ = Instantiate(boltPrefab, throwPoint.position, throwPoint.rotation);
+                    SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                     break;
                 case 2:
                 {
@@ -104,24 +105,28 @@ public class ThrowController : MonoBehaviour
                         {
                             GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
                             obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_slow; //set the correct infuse type
+                            SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                         }
                             break; 
                         case 2:
                         {
                             GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
                             obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_acc; //set the correct infuse type
+                            SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                         }
                             break;
                         case 3:
                         {
                             GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
                             obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_stop; //set the correct infuse type
+                            SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                         }
                             break;
                     }
                 }
                     break;
                 case 3: _ = Instantiate(rodPrefab, throwPoint.position, throwPoint.rotation);
+                    SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                     break;
                 default: Debug.Log("No Throwable Selected");
                     break;

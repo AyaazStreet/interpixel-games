@@ -53,6 +53,7 @@ public class DoorController : MonoBehaviour
                     if (!anim.GetBool("IsOpen"))
                     {
                         anim.SetBool("IsOpen", true);
+                        SoundManager.PlaySound(SoundManager.Sound.snd_doorOpen, transform.position);
                     }
                     timer = OPEN_TIME;
                 }
@@ -62,6 +63,7 @@ public class DoorController : MonoBehaviour
                     if (timer <= 0f)
                     {
                         anim.SetBool("IsOpen", false);
+                        SoundManager.PlaySound(SoundManager.Sound.snd_doorOpen, transform.position);
                     }
                 }
             }
@@ -70,6 +72,7 @@ public class DoorController : MonoBehaviour
                 if (!anim.GetBool("IsOpen"))
                 {
                     anim.SetBool("IsOpen", true);
+                    SoundManager.PlaySound(SoundManager.Sound.snd_doorOpen, transform.position);
                 }
                 timer = OPEN_TIME;
             }
@@ -79,6 +82,7 @@ public class DoorController : MonoBehaviour
                 if (timer <= 0f)
                 {
                     anim.SetBool("IsOpen", false);
+                    SoundManager.PlaySound(SoundManager.Sound.snd_doorOpen, transform.position);
                 }
             }
         }
