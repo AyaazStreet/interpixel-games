@@ -10,9 +10,13 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public const float MOVE_SPEED = 4f;
+    public const float ANIM_SPEED_MULTI = 0.5f;
     public const float A1_DUR = 5f;
     public const float A2_DUR = 5f;
     public const float A3_DUR = 5f;
+
+    public float stepCounter = 0f;
+    public float stepInterval;
 
     public bool infusing = false;
     public bool a1active = false;
@@ -57,7 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         //Initialise components
         anim = GetComponent<Animator>();
-        anim.speed = 0.5f;
+        anim.speed = ANIM_SPEED_MULTI;
         rb = GetComponent<Rigidbody2D>();
 
         //Initialise other variables
@@ -68,6 +72,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Animate(); //run animations
+
+        //Clock
         if (abilityCooldownTimer > 0)
         {
             fillIndi.fillAmount = 1 - (abilityCooldownTimer / 2f);
@@ -82,8 +89,6 @@ public class PlayerController : MonoBehaviour
         {
             fillIndi.fillAmount = 1;
         }
-
-        Animate(); //run animations
 
         //Perform the correct action based on active ability
         switch (activeAbility)
@@ -213,7 +218,15 @@ public class PlayerController : MonoBehaviour
         //Move
         if (!falling && alive)
         {
-            rb.velocity = (MOVE_SPEED * moveDir) + externalVelocity;
+            //sound
+            stepCounter += (rb.velocity - externalVelocity).magnitude;
+            if (stepCounter > stepInterval)
+            {
+                stepCounter = 0;
+                SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+            }
+
+            UpdateVelocity();
         }
 
         if (moveDir.x != 0 || moveDir.y != 0)
@@ -221,6 +234,16 @@ public class PlayerController : MonoBehaviour
             //Not idle
             lastMoveDir = moveDir;
         }
+        else
+        {
+            stepCounter = stepInterval-1;
+        }
+    }
+
+    public void UpdateVelocity()
+    {
+        //Update velocity
+        rb.velocity = (MOVE_SPEED * moveDir) + externalVelocity;
     }
 
     public void Movement_performed(InputAction.CallbackContext context)
@@ -396,6 +419,9 @@ public class PlayerController : MonoBehaviour
 
     void Animate()
     {
+        anim.speed = ((rb.velocity - externalVelocity).magnitude / MOVE_SPEED) * ANIM_SPEED_MULTI;
+        Debug.Log((rb.velocity - externalVelocity).magnitude / MOVE_SPEED);
+
         anim.SetFloat("AnimMoveMagnitude", (rb.velocity - externalVelocity).magnitude);
         anim.SetFloat("AnimMoveX", lastMoveDir.x);
         anim.SetFloat("AnimMoveY", lastMoveDir.y);

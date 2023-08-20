@@ -13,6 +13,7 @@ public class PlatformMove : MonoBehaviour
     private float timeMod;
 
     public bool circular;
+    public bool contact = false;
 
     public GameObject[] pointArr;
     public int pointArrPos;
@@ -82,6 +83,17 @@ public class PlatformMove : MonoBehaviour
         {
             rb.velocity = MOVE_SPEED * timeMod * moveDir.normalized;
         }
+
+        if (contact)
+        {
+            pc.externalVelocity = rb.velocity;
+            pc.UpdateVelocity();
+        }
+        else
+        {
+            pc.externalVelocity = Vector2.zero;
+            pc.UpdateVelocity();
+        }
     }
     private void LinearPointSwitch()
     {
@@ -135,11 +147,19 @@ public class PlatformMove : MonoBehaviour
         moveDir = targetPoint.position - transform.position;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
+        {
+            contact = true;
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
         {
-            pc.externalVelocity = rb.velocity;
+            contact = true;
         }
     }
 
@@ -147,7 +167,7 @@ public class PlatformMove : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
         {
-            pc.externalVelocity = Vector2.zero;
+            contact = false;
         }
     }
 }

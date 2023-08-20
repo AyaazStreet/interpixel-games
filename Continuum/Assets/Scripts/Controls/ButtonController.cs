@@ -77,7 +77,7 @@ public class ButtonController : MonoBehaviour
             SendSignal_Active.Invoke();
             timer = ACTIVE_TIME;
 
-            SoundManager.PlaySound(SoundManager.Sound.snd_interact, transform.position);
+            SoundManager.PlaySound(SoundManager.Sound.snd_interact_btn, transform.position);
         }
     }
 
@@ -97,7 +97,7 @@ public class ButtonController : MonoBehaviour
             SendSignal_Active.Invoke();
             timer = ACTIVE_TIME;
 
-            SoundManager.PlaySound(SoundManager.Sound.snd_interact, transform.position);
+            SoundManager.PlaySound(SoundManager.Sound.snd_interact_btn, transform.position);
         }
     }
 }

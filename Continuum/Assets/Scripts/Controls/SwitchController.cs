@@ -57,7 +57,7 @@ public class SwitchController : MonoBehaviour
                 on = false;
                 sr.sprite = sOff;
 
-                SoundManager.PlaySound(SoundManager.Sound.snd_interact, transform.position);
+                SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
             }
             else
             {
@@ -66,7 +66,7 @@ public class SwitchController : MonoBehaviour
                 on = true;
                 sr.sprite = sOn;
 
-                SoundManager.PlaySound(SoundManager.Sound.snd_interact, transform.position);
+                SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
             }
         }
     }
@@ -89,7 +89,7 @@ public class SwitchController : MonoBehaviour
                 on = false;
                 sr.sprite = sOff;
 
-                SoundManager.PlaySound(SoundManager.Sound.snd_interact, transform.position);
+                SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
             }
             else
             {
@@ -97,7 +97,7 @@ public class SwitchController : MonoBehaviour
                 on = true;
                 sr.sprite = sOn;
 
-                SoundManager.PlaySound(SoundManager.Sound.snd_interact, transform.position);
+                SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
             }
         }
     }

@@ -19,8 +19,10 @@ public class SoundManager : MonoBehaviour
         snd_accelTime,
         snd_stopTime,
         snd_throw,
-        snd_interact,
+        snd_interact_btn,
+        snd_interact_switch,
         snd_doorOpen,
+        snd_footstep,
     }
 
     [Serializable]
