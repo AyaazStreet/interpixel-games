@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour
 
     public void Restart_performed(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !alive && !falling)
         {
             GameManager.Instance.RestartGame();
         }

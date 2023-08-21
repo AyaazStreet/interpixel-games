@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
         // Find the player's GameObject and store its Transform component.
         player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     public void ShowDeathScreen()

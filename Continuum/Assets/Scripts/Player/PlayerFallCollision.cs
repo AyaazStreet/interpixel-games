@@ -29,10 +29,12 @@ public class PlayerFallCollision : MonoBehaviour
 
     private void Update()
     {
-       if(shouldFall && !stable)
+       if(shouldFall && !stable && !falling)
        {
            player.GetComponent<PlayerController>().falling = true;
            falling = true;
+
+            SoundManager.PlaySound(SoundManager.Sound.snd_fall);
        }
     }
 
@@ -58,12 +60,11 @@ public class PlayerFallCollision : MonoBehaviour
             }
             else
             {
-                GameManager.Instance.ShowDeathScreen();
-
-                falling = false;
-                shouldFall = false;
-                stable = false;
-                player.GetComponent<PlayerController>().falling = false;
+                if (player.GetComponent<PlayerController>().alive)
+                {
+                    player.GetComponent<PlayerController>().alive = false;
+                    StartCoroutine(delayedDeath(1f));
+                }
             }
         }
     }
@@ -94,5 +95,21 @@ public class PlayerFallCollision : MonoBehaviour
         {
             shouldFall = false;
         }
+    }
+
+    private IEnumerator delayedDeath(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        SoundManager.PlaySound(SoundManager.Sound.snd_splat);
+
+        GameManager.Instance.ShowDeathScreen();
+
+        falling = false;
+        shouldFall = false;
+        stable = false;
+        player.GetComponent<PlayerController>().falling = false;
+
+        yield break;
     }
 }
