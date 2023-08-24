@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class KeyScannerController : MonoBehaviour
 {
@@ -58,18 +59,29 @@ public class KeyScannerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Check player collision
-        if (collision.gameObject.CompareTag("Player"))
+        /*if (collision.gameObject.CompareTag("Player"))
         {
             interactable = true;
+        }*/
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (im.inventory.Any(item => item.type == 0))
+            {
+                sr.sprite = btnIn;
+                SendSignal_Active.Invoke();
+
+                im.RemoveInventoryItem(0);
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        /*if (collision.gameObject.CompareTag("Player"))
         {
             interactable = false;
-        }
+        }*/
     }
 
     public void Interact_performed(InputAction.CallbackContext context)

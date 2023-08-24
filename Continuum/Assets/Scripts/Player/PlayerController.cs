@@ -420,7 +420,7 @@ public class PlayerController : MonoBehaviour
     void Animate()
     {
         anim.speed = ((rb.velocity - externalVelocity).magnitude / MOVE_SPEED) * ANIM_SPEED_MULTI;
-        Debug.Log((rb.velocity - externalVelocity).magnitude / MOVE_SPEED);
+        //Debug.Log((rb.velocity - externalVelocity).magnitude / MOVE_SPEED);
 
         anim.SetFloat("AnimMoveMagnitude", (rb.velocity - externalVelocity).magnitude);
         anim.SetFloat("AnimMoveX", lastMoveDir.x);

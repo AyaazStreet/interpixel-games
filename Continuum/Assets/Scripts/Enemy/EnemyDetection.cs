@@ -52,6 +52,7 @@ public class EnemyDetection : MonoBehaviour
         if(detectionLevel >= 100)
         {
             detectionLevel = 0;
+            player.GetComponent<PlayerController>().alive = false;
             GameManager.Instance.ShowDeathScreen();
         }
         
