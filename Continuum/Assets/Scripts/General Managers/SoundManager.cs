@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UIElements;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
+
+    public AudioMixerGroup mixer_SFX;
 
     private void Awake()
     {
@@ -58,6 +61,7 @@ public class SoundManager : MonoBehaviour
         audioSource.rolloffMode = AudioRolloffMode.Linear;
         audioSource.dopplerLevel = 0f;
 
+        audioSource.outputAudioMixerGroup = Instance.mixer_SFX;
         audioSource.Play();
 
         Destroy(soundGameObject, audioSource.clip.length + 0.1f);
@@ -70,6 +74,7 @@ public class SoundManager : MonoBehaviour
             oneShotPlayer = new GameObject("SoundPlayer");
             oneShotAudioSource = oneShotPlayer.AddComponent<AudioSource>();
         }
+        oneShotAudioSource.outputAudioMixerGroup = Instance.mixer_SFX;
         oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
     }
 
@@ -80,6 +85,8 @@ public class SoundManager : MonoBehaviour
 
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.clip = GetAudioClip(sound);
+
+        audioSource.outputAudioMixerGroup = Instance.mixer_SFX;
         audioSource.PlayDelayed(delay);
 
         Destroy(soundGameObject, delay + audioSource.clip.length + 0.1f);
@@ -96,6 +103,7 @@ public class SoundManager : MonoBehaviour
         loopAudioSource.loop = true;
         loopAudioSource.volume = 0.5f;
 
+        loopAudioSource.outputAudioMixerGroup = Instance.mixer_SFX;
         loopAudioSource.Play();
     }
 
