@@ -15,8 +15,8 @@ public class EquipIconSelection : MonoBehaviour
 
     private EquipManager em;
     private Image sr;
-    
-    private int active;
+
+    [SerializeField] private int active;
     [SerializeField] private bool full = false;
 
     void Start()

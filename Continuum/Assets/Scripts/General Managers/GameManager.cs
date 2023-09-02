@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject deathScreen;
 
     public GameObject player;
+    public PlayerController pc;
     private Vector3 respawnPosition;
 
     private void Awake()
@@ -23,7 +25,9 @@ public class GameManager : MonoBehaviour
 
         // Find the player's GameObject and store its Transform component.
         player = GameObject.FindGameObjectWithTag("Player");
+        pc = player.GetComponent<PlayerController>();
 
+        pc.UpdateFromSave(SaveManager.LoadData());
     }
 
     public void ShowDeathScreen()

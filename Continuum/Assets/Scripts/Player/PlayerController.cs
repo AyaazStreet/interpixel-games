@@ -9,29 +9,29 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public const float MOVE_SPEED = 4f;
-    public const float ANIM_SPEED_MULTI = 0.5f;
-    public const float A1_DUR = 5f;
-    public const float A2_DUR = 5f;
-    public const float A3_DUR = 5f;
+    private const float MOVE_SPEED = 4f;
+    private const float ANIM_SPEED_MULTI = 0.5f;
+    private const float A1_DUR = 5f;
+    private const float A2_DUR = 5f;
+    private const float A3_DUR = 5f;
 
-    public float stepCounter = 0f;
-    public float stepInterval;
+    [SerializeField] private float stepCounter = 0f;
+    [SerializeField] private float stepInterval = 67f;
 
     public bool infusing = false;
-    public bool a1active = false;
-    public bool a2active = false;
-    public bool comboActive = false;
+    private bool a1active = false;
+    private bool a2active = false;
+    private bool comboActive = false;
+
     public bool falling = false;
 
     public bool A1_Unlocked = false;
     public bool A2_Unlocked = false;
     public bool A3_Unlocked = false;
+
     public bool T1_Unlocked = false;
     public bool T2_Unlocked = false;
     public bool T3_Unlocked = false;
-
-    public bool hasKey = false;
 
     public bool crushA = false;
     public bool crushB = false;
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     public float abilityActiveTimer;
     public float abilityCooldownTimer;
     public int activeAbility;
-    private Vector2 moveDir;
+    public Vector2 moveDir;
     public Vector2 lastMoveDir;
 
     public Vector2 externalVelocity = Vector2.zero;
@@ -67,6 +67,20 @@ public class PlayerController : MonoBehaviour
         //Initialise other variables
         activeAbility = 0;
         abilityCooldownTimer = 0;
+    }
+
+    public void UpdateFromSave(PlayerData data)
+    {
+        if (data != null)
+        {
+            A1_Unlocked = data.A1_Unlocked;
+            A2_Unlocked = data.A2_Unlocked;
+            A3_Unlocked = data.A3_Unlocked;
+
+            T1_Unlocked = data.T1_Unlocked;
+            T2_Unlocked = data.T2_Unlocked;
+            T3_Unlocked = data.T3_Unlocked;
+        }
     }
 
     // Update is called once per frame
@@ -222,7 +236,7 @@ public class PlayerController : MonoBehaviour
             stepCounter += (rb.velocity - externalVelocity).magnitude;
             if (stepCounter > stepInterval)
             {
-                stepCounter = 0;
+                stepCounter = stepCounter - stepInterval;
                 SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
             }
 
@@ -372,6 +386,14 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            PauseManager.Instance.TogglePause();
+        }
+    }
+
     private IEnumerator WaitForInput2(InputAction.CallbackContext c)
     {
         yield return new WaitForSeconds(0.1f);
@@ -426,7 +448,6 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("AnimMoveX", lastMoveDir.x);
         anim.SetFloat("AnimMoveY", lastMoveDir.y);
     }
-
 
     public void ResetScene(InputAction.CallbackContext context)
     {

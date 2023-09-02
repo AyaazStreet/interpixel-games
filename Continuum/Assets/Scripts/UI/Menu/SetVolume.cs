@@ -12,6 +12,10 @@ public class SetVolume : MonoBehaviour
     public void SetLevel(float sliderVal)
     {
         mixer.SetFloat("SFX_Vol", Mathf.Log10(sliderVal) * 20);
-        txt.text = (Mathf.Round(sliderVal * 100.0f)).ToString();
+        
+        if (txt != null )
+        {
+            txt.text = (Mathf.Round(sliderVal * 100.0f)).ToString();
+        }
     }
 }
