@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Floor_drip
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 1485306821, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: -1071690207, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: -1241757847, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: 1397321158, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: 1474703895, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: 1067102579, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: 2114071781, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: 704390356, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: -242517635, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: -634617244, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: -1767771639, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: 1144087852, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: -1701786785, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: 1414330148, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: 1608814109, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  - {fileID: 1629904425, guid: 84d4ae4a1f4b781469e780a968f4126e, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
