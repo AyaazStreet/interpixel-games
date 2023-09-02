@@ -17,6 +17,7 @@ public class PauseManager : MonoBehaviour
         else Destroy(gameObject);
 
         pauseUI = GameObject.Find("PauseScreen");
+        pauseUI.SetActive(false);
     }
 
     public void TogglePause()
@@ -26,10 +27,12 @@ public class PauseManager : MonoBehaviour
             if (pauseUI.activeSelf)
             {
                 pauseUI.SetActive(false);
+                Time.timeScale = 1f;
             }
             else
             {
                 pauseUI.SetActive(true);
+                Time.timeScale = 0f;
             }
         }
         else

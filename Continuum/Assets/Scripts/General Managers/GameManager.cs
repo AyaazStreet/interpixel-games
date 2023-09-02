@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        Time.timeScale = 1f;
+
         // Find the player's GameObject and store its Transform component.
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
