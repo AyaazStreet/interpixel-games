@@ -92,7 +92,7 @@ public class PlatformMove : MonoBehaviour
         else
         {
             pc.externalVelocity = Vector2.zero;
-            pc.UpdateVelocity();
+            //pc.UpdateVelocity();
         }
     }
     private void LinearPointSwitch()

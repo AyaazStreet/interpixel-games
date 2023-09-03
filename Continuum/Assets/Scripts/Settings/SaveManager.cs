@@ -6,15 +6,16 @@ public static class SaveManager
 {
     private static readonly string savePath = Application.persistentDataPath + "/player.bin";
     
-    public static void SaveData(PlayerController pc)
+    public static void SaveData(PlayerController pc, int level)
     {
         BinaryFormatter formatter = new();
         FileStream stream = new(savePath, FileMode.Create);
-        PlayerData data = new(pc);
+        PlayerData data = new(pc, level);
 
         formatter.Serialize(stream, data);
         stream.Close();
 
+        Debug.Log("Saved Level" + data.level);
         Debug.Log("Saved data to " + savePath);
     }
 

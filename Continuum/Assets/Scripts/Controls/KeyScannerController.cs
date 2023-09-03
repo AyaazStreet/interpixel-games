@@ -10,6 +10,8 @@ public class KeyScannerController : MonoBehaviour
 {
     public bool interactable = false;
 
+    public bool activated = false;
+
     public float globalTimescale;
     public float? localTimescale;
 
@@ -66,13 +68,18 @@ public class KeyScannerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (im.inventory.Any(item => item.type == 0))
+            if(!activated)
             {
-                sr.sprite = btnIn;
-                SendSignal_Active.Invoke();
+                if (im.inventory.Any(item => item.type == 0))
+                {
+                    sr.sprite = btnIn;
+                    SendSignal_Active.Invoke();
 
-                im.RemoveInventoryItem(0);
+                    im.RemoveInventoryItem(0);
+                    activated = true;
+                }
             }
+            
         }
     }
 
