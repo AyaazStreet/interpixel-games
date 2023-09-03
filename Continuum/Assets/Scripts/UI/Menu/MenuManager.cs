@@ -7,6 +7,14 @@ public class MenuManager : MonoBehaviour
 {
     public Canvas nav;
     public Canvas options;
+    public Canvas keybinds;
+
+    private void Awake()
+    {
+        if (nav) nav.gameObject.SetActive(true);
+        if (options) options.gameObject.SetActive(false);
+        if (keybinds) keybinds.gameObject.SetActive(false);
+    }
 
     public void ChangeScene(string sceneName)
     {
@@ -27,8 +35,24 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public void ToggleKeybindings()
+    {
+        if (options.gameObject.activeSelf)
+        {
+            options.gameObject.SetActive(false);
+            keybinds.gameObject.SetActive(true);
+        }
+        else if (keybinds.gameObject.activeSelf)
+        {
+            keybinds.gameObject.SetActive(false);
+            options.gameObject.SetActive(true);
+        }
+    }
+
     public void CloseGame()
     {
         Application.Quit();
     }
+
+
 }

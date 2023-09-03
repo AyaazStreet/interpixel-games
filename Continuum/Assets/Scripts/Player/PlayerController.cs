@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
     public CapsuleCollider2D cc1;
     public CapsuleCollider2D cc2;
 
+    public SoundManager.Sound walkSound;
+
     private void Awake()
     {
         //Initialise components
@@ -67,6 +69,8 @@ public class PlayerController : MonoBehaviour
         //Initialise other variables
         activeAbility = 0;
         abilityCooldownTimer = 0;
+
+        walkSound = SoundManager.Sound.snd_footstep;
     }
 
     public void UpdateFromSave(PlayerData data)
@@ -237,7 +241,7 @@ public class PlayerController : MonoBehaviour
             if (stepCounter > stepInterval)
             {
                 stepCounter = stepCounter - stepInterval;
-                SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+                SoundManager.PlaySound(walkSound);
             }
 
             UpdateVelocity();

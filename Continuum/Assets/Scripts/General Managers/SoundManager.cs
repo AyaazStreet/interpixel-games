@@ -29,6 +29,7 @@ public class SoundManager : MonoBehaviour
         snd_interact_switch,
         snd_doorOpen,
         snd_footstep,
+        snd_footstep_wet,
         loop_factory,
         snd_splat,
         snd_fall,
