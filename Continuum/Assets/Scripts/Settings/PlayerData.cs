@@ -13,7 +13,9 @@ public class PlayerData
     public bool T2_Unlocked;
     public bool T3_Unlocked;
 
-    public PlayerData(PlayerController pc)
+    public int level;
+
+    public PlayerData(PlayerController pc, int l)
     {
         A1_Unlocked = pc.A1_Unlocked;
         A2_Unlocked = pc.A2_Unlocked;
@@ -22,5 +24,7 @@ public class PlayerData
         T1_Unlocked = pc.T1_Unlocked;
         T2_Unlocked = pc.T2_Unlocked;
         T3_Unlocked = pc.T3_Unlocked;
+
+        level = l;
     }
 }

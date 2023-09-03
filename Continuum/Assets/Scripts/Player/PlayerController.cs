@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private const float A2_DUR = 5f;
     private const float A3_DUR = 5f;
 
+    
+
     [SerializeField] private float stepCounter = 0f;
     [SerializeField] private float stepInterval = 67f;
 
@@ -243,7 +245,6 @@ public class PlayerController : MonoBehaviour
                 stepCounter = stepCounter - stepInterval;
                 SoundManager.PlaySound(walkSound);
             }
-            Debug.Log("oh");
             UpdateVelocity();
         }
 
@@ -260,7 +261,6 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateVelocity()
     {
-        Debug.Log("huh");
         //Update velocity
         rb.velocity = (MOVE_SPEED * moveDir) + externalVelocity;
     }

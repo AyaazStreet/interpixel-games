@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public PlayerController pc;
     private Vector3 respawnPosition;
 
+    public int currLevel;
+
     private void Awake()
     {
         if (Instance == null)

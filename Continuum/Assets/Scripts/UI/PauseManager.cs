@@ -43,7 +43,7 @@ public class PauseManager : MonoBehaviour
 
     public void Save()
     {
-        SaveManager.SaveData(GameManager.Instance.pc);
+        SaveManager.SaveData(GameManager.Instance.pc, GameManager.Instance.currLevel);
     }
 
     public void QuitToMenu()
