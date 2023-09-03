@@ -12,6 +12,7 @@ TagManager:
   - FOV
   - Checkpoint
   - CrushTrigger
+  - Feet
   layers:
   - Default
   - TransparentFX
