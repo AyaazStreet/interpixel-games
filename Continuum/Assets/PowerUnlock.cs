@@ -26,6 +26,7 @@ public class PowerUnlock : MonoBehaviour
         {
             player.GetComponent<SpriteRenderer>().enabled = false;
             player.GetComponent<PlayerController>().enabled = false;
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
             on = false;
             started = true;
             animator.SetTrigger("StartAnim");
@@ -46,6 +47,8 @@ public class PowerUnlock : MonoBehaviour
                 
                 player.GetComponent<SpriteRenderer>().enabled = true;
                 player.GetComponent<PlayerController>().enabled = true;
+                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 player.transform.position = new Vector3(transform.position.x, transform.position.y - 1.5f, player.transform.position.z);
             }
         }
