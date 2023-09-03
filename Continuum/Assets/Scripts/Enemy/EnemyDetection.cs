@@ -13,12 +13,15 @@ public class EnemyDetection : MonoBehaviour
     public float detectionLevel = 0f;
     public float distance;
     public bool detected = false;
-    public Image indicator;
+
+    public GameObject indicator;
+    public Image indicatorFill;
     public GameObject player;
 
     private void Start()
     {
-        indicator.fillAmount = 0;
+        indicator.SetActive(false);
+        indicatorFill.fillAmount = 0;
         player = GameObject.Find("Player");
 
         //Initialise timescales
@@ -56,7 +59,7 @@ public class EnemyDetection : MonoBehaviour
             GameManager.Instance.ShowDeathScreen();
         }
         
-        indicator.fillAmount = detectionLevel / 100;
+        indicatorFill.fillAmount = detectionLevel / 100;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -64,6 +67,7 @@ public class EnemyDetection : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             detected = true;
+            indicator.SetActive(true);
         }
     }
 
@@ -72,6 +76,7 @@ public class EnemyDetection : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             detected = false;
+            indicator.SetActive(false);
         }
     }
 }
