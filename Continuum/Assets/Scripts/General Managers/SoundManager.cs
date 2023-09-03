@@ -9,7 +9,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
 
-    public AudioMixerGroup mixer_SFX;
+    public AudioMixerGroup SFX_Master;
+    public AudioMixerGroup SFX_Local;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class SoundManager : MonoBehaviour
         loop_factory,
         snd_splat,
         snd_fall,
+        snd_drip,
     }
 
     [Serializable]
@@ -57,12 +59,13 @@ public class SoundManager : MonoBehaviour
 
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.clip = GetAudioClip(sound);
-        audioSource.maxDistance = 100f;
+        audioSource.maxDistance = 15f;
+        audioSource.minDistance = 8f;
         audioSource.spatialBlend = 1f;
         audioSource.rolloffMode = AudioRolloffMode.Linear;
         audioSource.dopplerLevel = 0f;
 
-        audioSource.outputAudioMixerGroup = Instance.mixer_SFX;
+        audioSource.outputAudioMixerGroup = Instance.SFX_Master;
         audioSource.Play();
 
         Destroy(soundGameObject, audioSource.clip.length + 0.1f);
@@ -75,7 +78,7 @@ public class SoundManager : MonoBehaviour
             oneShotPlayer = new GameObject("SoundPlayer");
             oneShotAudioSource = oneShotPlayer.AddComponent<AudioSource>();
         }
-        oneShotAudioSource.outputAudioMixerGroup = Instance.mixer_SFX;
+        oneShotAudioSource.outputAudioMixerGroup = Instance.SFX_Local;
         oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
     }
 
@@ -87,7 +90,7 @@ public class SoundManager : MonoBehaviour
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.clip = GetAudioClip(sound);
 
-        audioSource.outputAudioMixerGroup = Instance.mixer_SFX;
+        audioSource.outputAudioMixerGroup = Instance.SFX_Local;
         audioSource.PlayDelayed(delay);
 
         Destroy(soundGameObject, delay + audioSource.clip.length + 0.1f);
@@ -104,7 +107,7 @@ public class SoundManager : MonoBehaviour
         loopAudioSource.loop = true;
         loopAudioSource.volume = 0.5f;
 
-        loopAudioSource.outputAudioMixerGroup = Instance.mixer_SFX;
+        loopAudioSource.outputAudioMixerGroup = Instance.SFX_Local;
         loopAudioSource.Play();
     }
 
