@@ -45,6 +45,10 @@ public class MenuManager : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            ChangeScene("Level_Tutorial");
+        }
     }
 
     public void ChangeScene(string sceneName)

@@ -366,7 +366,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         //CUSTOM
         private bool CheckDuplicateBindings(InputAction action, int bindingIndex, bool allCompositeParts = false)
         {
-            InputBinding newBinding = action.bindings[bindingIndex];
+            /*InputBinding newBinding = action.bindings[bindingIndex];
 
             foreach (InputBinding binding in action.actionMap.bindings)
             {
@@ -393,7 +393,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     }
                 }
             }
-
+            */
             return false;
         }
         //CUSTOM

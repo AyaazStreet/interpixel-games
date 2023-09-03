@@ -9,14 +9,12 @@ public class EquipManager : MonoBehaviour
     [SerializeField] private GameObject throwPointer;
     [SerializeField] private PlayerController pc;
 
-    public int selected;
+    public int selected = 0;
 
     void Awake()
     {
         //deactivate throw mode at start
-        throwPointer.SetActive(false); 
-
-        selected = 0;
+        throwPointer.SetActive(false);
     }
 
     public void Manual_Aim_Performed(InputAction.CallbackContext context)

@@ -24,6 +24,10 @@ public class EquipIconSelection : MonoBehaviour
         em = GameManager.Instance.player.GetComponent<EquipManager>();
         sr = GetComponent<Image>();
         active = em.selected;
+        if(slot == 1)
+        {
+            sr.sprite = bg0;
+        }
     }
 
     void Update()
