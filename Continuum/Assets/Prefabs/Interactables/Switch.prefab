@@ -115,8 +115,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  sOn: {fileID: -1118603607, guid: 5c50580ae77e04d4dbebc7357b8468f8, type: 3}
-  sOff: {fileID: -226661531, guid: 5c50580ae77e04d4dbebc7357b8468f8, type: 3}
+  sOn: {fileID: -754940548, guid: e2b5ecf71c2e08842b089a35e16646d7, type: 3}
+  sOff: {fileID: -387453031, guid: e2b5ecf71c2e08842b089a35e16646d7, type: 3}
 --- !u!114 &8573704426497046382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eac9a93418089dc46857c1775547f45a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -202,7 +202,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -226661531, guid: 5c50580ae77e04d4dbebc7357b8468f8, type: 3}
+  m_Sprite: {fileID: -387453031, guid: e2b5ecf71c2e08842b089a35e16646d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7853543319414791153}
   - component: {fileID: 4238392940895723720}
   - component: {fileID: 8918823143387351359}
-  - component: {fileID: 2889323027426295959}
   m_Layer: 9
   m_Name: Door_Unlocked
   m_TagString: Wall
@@ -58,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 50fb5049f12a4214e8940b3e58b491bd, type: 2}
+  - {fileID: 2100000, guid: e926c723614d8f848921b5fc5a858d9a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,19 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5f23d850877324c80c084001ab60ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2889323027426295959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835089058600618526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfa61e85a13a51447bd105e09a376aa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  val: 0
 --- !u!1 &2111675914569799752
 GameObject:
   m_ObjectHideFlags: 0

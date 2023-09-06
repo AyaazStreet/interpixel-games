@@ -11,6 +11,8 @@ public class ButtonController : MonoBehaviour
     public bool interactable = false;
     public float timer;
 
+    public const float OUTLINE_THICKNESS = 0.75f;
+
     public float globalTimescale;
     public float? localTimescale;
 
@@ -68,6 +70,7 @@ public class ButtonController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             interactable = true;
+            sr.material.SetFloat("_Outline_Thickness", OUTLINE_THICKNESS);
         }
         
         //Check throwable collision
@@ -86,6 +89,7 @@ public class ButtonController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             interactable = false;
+            sr.material.SetFloat("_Outline_Thickness", 0f);
         }
     }
 

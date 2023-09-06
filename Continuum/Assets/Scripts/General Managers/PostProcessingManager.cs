@@ -1,61 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 public class PostProcessingManager : MonoBehaviour
 {
-    private PostProcessVolume ppv;
-    private ColorGrading cg;
+    private float sat1 = 0.5f;
+    private float sat2 = 2f;
+    private float sat3 = 0f;
 
-    private float sat1 = -50f;
-    private float sat2 = 100f;
-    private float sat3 = -100f;
+    private float changeSpeed = 4f;
 
-    private float changeSpeed = 400f;
+    public Material area;
+    public Material sprite;
     
     void Awake()
     {
-        ppv = GetComponent<PostProcessVolume>();
-        ppv.profile.TryGetSettings(out cg);
+        Debug.Log(area.GetFloat("_Saturation"));
     }
 
     void Update()
     {
         if (TimeScaleManager.globalTimescale == TimeScaleManager.A1_EFFECT)
         {
-            if (cg.saturation.value > sat1 + Time.deltaTime * changeSpeed)
+            if (area.GetFloat("_Saturation") > sat1 + Time.deltaTime * changeSpeed)
             {
-                cg.saturation.value -= Time.deltaTime * changeSpeed;
+                area.SetFloat("_Saturation", area.GetFloat("_Saturation") - Time.deltaTime * changeSpeed);
+                sprite.SetFloat("_Saturation", sprite.GetFloat("_Saturation") - Time.deltaTime * changeSpeed);
             }
         }
         else if (TimeScaleManager.globalTimescale == TimeScaleManager.A2_EFFECT)
         {
-            if (cg.saturation.value < sat2 - Time.deltaTime * changeSpeed)
+            if (area.GetFloat("_Saturation") < sat2 - Time.deltaTime * changeSpeed)
             {
-                cg.saturation.value += Time.deltaTime * changeSpeed;
+                area.SetFloat("_Saturation", area.GetFloat("_Saturation") + Time.deltaTime * changeSpeed);
+                sprite.SetFloat("_Saturation", sprite.GetFloat("_Saturation") + Time.deltaTime * changeSpeed);
             }
         }
         else if (TimeScaleManager.globalTimescale == TimeScaleManager.A3_EFFECT)
         {
-            if (cg.saturation.value > sat3 + Time.deltaTime * changeSpeed)
+            if (area.GetFloat("_Saturation") > sat3 + Time.deltaTime * changeSpeed)
             {
-                cg.saturation.value -= Time.deltaTime * changeSpeed;
+                area.SetFloat("_Saturation", area.GetFloat("_Saturation") - Time.deltaTime * changeSpeed);
+                sprite.SetFloat("_Saturation", sprite.GetFloat("_Saturation") - Time.deltaTime * changeSpeed);
             }
         }
         else
         {
-            if (cg.saturation.value > 0 + Time.deltaTime * changeSpeed)
+            if (area.GetFloat("_Saturation") > 1 + Time.deltaTime * changeSpeed)
             {
-                cg.saturation.value -= Time.deltaTime * changeSpeed;
+                area.SetFloat("_Saturation", area.GetFloat("_Saturation") - Time.deltaTime * changeSpeed);
+                sprite.SetFloat("_Saturation", sprite.GetFloat("_Saturation") - Time.deltaTime * changeSpeed);
             }
-            else if (cg.saturation.value < 0 - Time.deltaTime * changeSpeed)
+            else if (area.GetFloat("_Saturation") < 1 - Time.deltaTime * changeSpeed)
             {
-                cg.saturation.value += Time.deltaTime * changeSpeed;
+                area.SetFloat("_Saturation", area.GetFloat("_Saturation") + Time.deltaTime * changeSpeed);
+                sprite.SetFloat("_Saturation", sprite.GetFloat("_Saturation") + Time.deltaTime * changeSpeed);
             }
             else
             {
-                cg.saturation.value = 0;
+                area.SetFloat("_Saturation", 1);
+                sprite.SetFloat("_Saturation", 1);
             }
         }
     }

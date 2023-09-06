@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eac9a93418089dc46857c1775547f45a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -756996700, guid: 8dc9875217c1fee478dc3861fbba4b0e, type: 3}
+  m_Sprite: {fileID: 1440986019, guid: b67b1cf66c157604595ff07ae0497865, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -200,8 +200,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  btnIn: {fileID: -1589727692, guid: 8dc9875217c1fee478dc3861fbba4b0e, type: 3}
-  btnOut: {fileID: -756996700, guid: 8dc9875217c1fee478dc3861fbba4b0e, type: 3}
+  btnIn: {fileID: 555570874, guid: b67b1cf66c157604595ff07ae0497865, type: 3}
+  btnOut: {fileID: 1440986019, guid: b67b1cf66c157604595ff07ae0497865, type: 3}
 --- !u!114 &560777842818870379
 MonoBehaviour:
   m_ObjectHideFlags: 0

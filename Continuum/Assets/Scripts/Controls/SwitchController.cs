@@ -10,6 +10,8 @@ public class SwitchController : MonoBehaviour
     public bool interactable = false;
     public bool on;
 
+    public const float OUTLINE_THICKNESS = 0.75f;
+
     [SerializeField] private InputActionReference interact;
     public UnityEvent SendSignal_Active;
     public UnityEvent SendSignal_Inactive;
@@ -45,6 +47,7 @@ public class SwitchController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             interactable = true;
+            sr.material.SetFloat("_Outline_Thickness", OUTLINE_THICKNESS);
         }
         
         //Check throwable collision
@@ -76,6 +79,7 @@ public class SwitchController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             interactable = false;
+            sr.material.SetFloat("_Outline_Thickness", 0f);
         }
     }
 
