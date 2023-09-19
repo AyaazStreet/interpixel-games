@@ -5,36 +5,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
-public class ButtonController : MonoBehaviour
+public class ButtonController : Controller
 {
-    public const float ACTIVE_TIME = 2f;
-    public bool interactable = false;
-    public float timer;
-
-    public const float OUTLINE_THICKNESS = 0.75f;
-
-    public float globalTimescale;
-    public float? localTimescale;
-
-    [SerializeField] private InputActionReference interact;
-    public UnityEvent SendSignal_Active;
-    public UnityEvent SendSignal_Inactive;
-    private float timeMod;
-
-    private SpriteRenderer sr;
-
     public Sprite btnIn;
     public Sprite btnOut;
-
-    private void Awake()
-    {
-        //Initialise timescales
-        localTimescale = gameObject.GetComponent<LocalModifier>().value;
-        globalTimescale = TimeScaleManager.globalTimescale;
-        timeMod = 1f;
-
-        sr = gameObject.GetComponentInChildren<SpriteRenderer>();
-    }
 
     private void OnEnable()
     {
@@ -53,13 +27,15 @@ public class ButtonController : MonoBehaviour
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = localTimescale ?? globalTimescale;
 
+        //
         if (timer > 0f)
         {
             timer -= Time.deltaTime * timeMod;
             if (timer <= 0f)
             {
-                SendSignal_Inactive.Invoke();
                 sr.sprite = btnOut;
+
+                active = false;
             }
         }
     }
@@ -77,8 +53,9 @@ public class ButtonController : MonoBehaviour
         if (collision.gameObject.CompareTag("Bolt"))
         {
             sr.sprite = btnIn;
-            SendSignal_Active.Invoke();
-            timer = ACTIVE_TIME;
+            timer = active_time;
+
+            active = true;
 
             SoundManager.PlaySound(SoundManager.Sound.snd_interact_btn, transform.position);
         }
@@ -98,8 +75,9 @@ public class ButtonController : MonoBehaviour
         if (interactable && context.performed)
         {
             sr.sprite = btnIn;
-            SendSignal_Active.Invoke();
-            timer = ACTIVE_TIME;
+            timer = active_time;
+
+            active = true;
 
             SoundManager.PlaySound(SoundManager.Sound.snd_interact_btn, transform.position);
         }

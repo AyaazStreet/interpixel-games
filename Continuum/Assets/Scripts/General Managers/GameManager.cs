@@ -7,10 +7,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public GameObject deathScreen;
-
+    
     public GameObject player;
     public PlayerController pc;
     private Vector3 respawnPosition;
+
+    public GameObject cmPrefab;
+    public CheckpointManager checkpointManager;
 
     public int currLevel;
 
@@ -32,6 +35,25 @@ public class GameManager : MonoBehaviour
         pc = player.GetComponent<PlayerController>();
 
         pc.UpdateFromSave(SaveManager.LoadData());
+
+        //Checkpoint Object Create
+        if (GameObject.FindGameObjectWithTag("CheckpointManager"))
+        {
+            checkpointManager = GameObject.FindGameObjectWithTag("CheckpointManager").GetComponent<CheckpointManager>();
+        }
+        else
+        {
+            GameObject cm = Instantiate(cmPrefab);
+            cm.name = "CheckpointManager";
+            checkpointManager = cm.GetComponent<CheckpointManager>();
+        }
+
+        //Load info from checkpoint manager
+        if (checkpointManager.savedLevel == currLevel) 
+        {
+            player.transform.position = checkpointManager.savedPosition;
+            Debug.Log("Moved player based on checkpoint data: " + checkpointManager.savedPosition);
+        }
     }
 
     public void ShowDeathScreen()
@@ -42,8 +64,11 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        RespawnPlayer();
-        Time.timeScale = 1f;
+        ///////////////////////////////////////////////////////////
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        //RespawnPlayer();
+        //Time.timeScale = 1f;
     }
 
     public void RespawnPlayer()
@@ -86,6 +111,8 @@ public class GameManager : MonoBehaviour
 
         //Remove death screen
         deathScreen.SetActive(false);
+
+        
     }
 
     public void SetRespawnPosition(Vector3 position)

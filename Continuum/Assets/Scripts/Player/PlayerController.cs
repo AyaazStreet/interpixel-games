@@ -13,9 +13,8 @@ public class PlayerController : MonoBehaviour
     private const float ANIM_SPEED_MULTI = 0.5f;
     private const float A1_DUR = 5f;
     private const float A2_DUR = 5f;
-    private const float A3_DUR = 5f;
-
-    
+    private const float A3_DUR = 2f;
+    private const float CD_DUR = 3f;
 
     [SerializeField] private float stepCounter = 0f;
     [SerializeField] private float stepInterval = 67f;
@@ -52,7 +51,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 moveDir;
     public Vector2 lastMoveDir;
 
-    public Vector2 externalVelocity = Vector2.zero;
+    private Vector2 externalVelocity; 
+    public List<PlatformMove> externalVelocityObjs;
 
     public Image fillIndi;
 
@@ -79,31 +79,43 @@ public class PlayerController : MonoBehaviour
     {
         if (data != null)
         {
-            A1_Unlocked = data.A1_Unlocked;
+            /*A1_Unlocked = data.A1_Unlocked;
             A2_Unlocked = data.A2_Unlocked;
             A3_Unlocked = data.A3_Unlocked;
 
             T1_Unlocked = data.T1_Unlocked;
             T2_Unlocked = data.T2_Unlocked;
-            T3_Unlocked = data.T3_Unlocked;
+            T3_Unlocked = data.T3_Unlocked;*/
         }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        Animate(); //run animations
-
         //Clock
         if (abilityCooldownTimer > 0)
         {
-            fillIndi.fillAmount = 1 - (abilityCooldownTimer / 2f);
+            fillIndi.fillAmount = 1 - (abilityCooldownTimer / CD_DUR);
             fillIndi.color = new Color(0.7725491f, 0.7921569f, 0.8000001f, 0.6f);
         }
         else if (abilityActiveTimer > 0)
         {
-            fillIndi.fillAmount = abilityActiveTimer / 5f;
-            fillIndi.color = new Color(0.572549f, 0.909804f, 0.7529413f, 0.6f);
+            switch (activeAbility)
+            {
+                case 1:
+                    fillIndi.fillAmount = abilityActiveTimer / A1_DUR;
+                    fillIndi.color = new (TimeScaleManager.A1_COLOR.r, TimeScaleManager.A1_COLOR.g, TimeScaleManager.A1_COLOR.b, 0.5f);
+                    break;
+                case 2:
+                    fillIndi.fillAmount = abilityActiveTimer / A2_DUR;
+                    fillIndi.color = new(TimeScaleManager.A2_COLOR.r, TimeScaleManager.A2_COLOR.g, TimeScaleManager.A2_COLOR.b, 0.7f);
+                    break;
+                case 3:
+                    fillIndi.fillAmount = abilityActiveTimer / A3_DUR;
+                    fillIndi.color = new(TimeScaleManager.A3_COLOR.r, TimeScaleManager.A3_COLOR.g, TimeScaleManager.A3_COLOR.b, 0.5f);
+                    break;
+            }
+            //fillIndi.color = new Color(0.572549f, 0.909804f, 0.7529413f, 0.6f);
         }
         else
         {
@@ -153,7 +165,7 @@ public class PlayerController : MonoBehaviour
                     if (abilityActiveTimer <= 0f)
                     {
                         activeAbility = 0;
-                        abilityCooldownTimer = 2f;
+                        abilityCooldownTimer = CD_DUR;
                         
                         Debug.Log("Time Slow Deactivated");
                     }
@@ -177,7 +189,7 @@ public class PlayerController : MonoBehaviour
                     if (abilityActiveTimer <= 0f)
                     {
                         activeAbility = 0;
-                        abilityCooldownTimer = 2f;
+                        abilityCooldownTimer = CD_DUR;
                         
                         Debug.Log("Time Accellerate Deactivated");
                     }
@@ -202,7 +214,7 @@ public class PlayerController : MonoBehaviour
                     {
                         comboActive = false;
                         activeAbility = 0;
-                        abilityCooldownTimer = 2f;
+                        abilityCooldownTimer = CD_DUR;
 
                         Debug.Log("Time Stop Deactivated");
                     }
@@ -231,6 +243,8 @@ public class PlayerController : MonoBehaviour
             
             alive = false;
         }
+
+        Animate(); //run animations
     }
 
     private void FixedUpdate()
@@ -261,6 +275,24 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateVelocity()
     {
+        //Update ext v
+        if (externalVelocityObjs.Count > 0)
+        {
+            externalVelocity = externalVelocityObjs[0].rb.velocity;
+
+            foreach (var v in externalVelocityObjs)
+            {
+                if (v.rb.velocity.magnitude > externalVelocity.magnitude)
+                {
+                    externalVelocity = v.rb.velocity;
+                }
+            }
+        }
+        else
+        {
+            externalVelocity = Vector2.zero;
+        }
+
         //Update velocity
         rb.velocity = (MOVE_SPEED * moveDir) + externalVelocity;
     }
@@ -303,7 +335,7 @@ public class PlayerController : MonoBehaviour
             //check if minimum duration has passed... 
             if (abilityActiveTimer < A1_DUR - 0.5f)
             {
-                abilityActiveTimer = 0.01f; //...if it has, reduce timer to near zero
+                abilityActiveTimer = 0.001f; //...if it has, reduce timer to near zero
             }
             else
             {
@@ -338,7 +370,7 @@ public class PlayerController : MonoBehaviour
         {
             if (abilityActiveTimer < A2_DUR - 0.5f)
             {
-                abilityActiveTimer = 0.01f;
+                abilityActiveTimer = 0.001f;
             }
             else
             {
@@ -380,7 +412,7 @@ public class PlayerController : MonoBehaviour
         {
             if (abilityActiveTimer < A3_DUR - 0.5f)
             {
-                abilityActiveTimer = 0.01f;
+                abilityActiveTimer = 0.001f;
             }
             else
             {
@@ -446,8 +478,14 @@ public class PlayerController : MonoBehaviour
 
     void Animate()
     {
-        anim.speed = ((rb.velocity - externalVelocity).magnitude / MOVE_SPEED) * ANIM_SPEED_MULTI;
-        //Debug.Log((rb.velocity - externalVelocity).magnitude / MOVE_SPEED);
+        if ((rb.velocity - externalVelocity).magnitude != 0)
+        {
+            anim.speed = ((rb.velocity - externalVelocity).magnitude / MOVE_SPEED) * ANIM_SPEED_MULTI;
+        }
+        else
+        {
+            anim.speed = ANIM_SPEED_MULTI;
+        }
 
         anim.SetFloat("AnimMoveMagnitude", (rb.velocity - externalVelocity).magnitude);
         anim.SetFloat("AnimMoveX", lastMoveDir.x);

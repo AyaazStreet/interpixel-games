@@ -866,6 +866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalTimescale: 0
   circular: 1
+  stationary: 0
   pointArr:
   - {fileID: 580339871373541117}
   - {fileID: 3096920183412969108}

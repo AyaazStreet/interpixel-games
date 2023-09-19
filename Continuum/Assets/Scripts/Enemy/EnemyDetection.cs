@@ -13,6 +13,7 @@ public class EnemyDetection : MonoBehaviour
     public float detectionLevel = 0f;
     public float distance;
     public bool detected = false;
+    private bool inFOV = false;
 
     public GameObject indicator;
     public Image indicatorFill;
@@ -41,7 +42,7 @@ public class EnemyDetection : MonoBehaviour
         if (detected)
         {
             distance = Vector3.Distance(transform.position, player.transform.position);
-            detectionLevel += (500f / distance) * Time.deltaTime * timeMod;
+            detectionLevel += (400f / distance) * Time.deltaTime * timeMod;
         }
         else
         {
@@ -60,23 +61,30 @@ public class EnemyDetection : MonoBehaviour
         }
         
         indicatorFill.fillAmount = detectionLevel / 100;
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (inFOV)
         {
             detected = true;
             indicator.SetActive(true);
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+            inFOV = false;
+        }
+        else
         {
             detected = false;
             indicator.SetActive(false);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            inFOV = true;
         }
     }
 }

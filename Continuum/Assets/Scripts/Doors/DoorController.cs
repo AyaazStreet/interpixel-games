@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    public const float OPEN_TIME = 0.5f;
+    public float OPEN_TIME = 0.5f;
     public float timer;
 
     public float globalTimescale;
@@ -14,13 +14,20 @@ public class DoorController : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sr;
     [SerializeField] private Sprite[] spriteArray;
-    private float timeMod; 
-    [SerializeField] private bool signal1;
-    [SerializeField] private bool signal2;
-    [SerializeField] private bool signal3;
+    private float timeMod;
+
+    [SerializeField] private Controller[] control1;
+    [SerializeField] private Controller[] control2;
+    [SerializeField] private Controller[] control3;
+
+    [SerializeField] private bool signal1 = false;
+    private bool signal2 = false;
+    private bool signal3 = false;
+
+
     [Range(0, 3)]
     public int numSignals;
-
+    
     private void Awake()
     {
         //Initialise components
@@ -31,6 +38,8 @@ public class DoorController : MonoBehaviour
         localTimescale = gameObject.GetComponent<LocalModifier>().value;
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = 1f;
+
+        
     }
 
     private void Update()
@@ -42,7 +51,10 @@ public class DoorController : MonoBehaviour
 
         //Adjust animation speed based on timeMod
         anim.speed = timeMod;
-        
+
+        //Update signals
+        UpdateSignals();
+
         //Check if door should open or close
         if(timeMod > 0f)
         {
@@ -85,10 +97,43 @@ public class DoorController : MonoBehaviour
                     SoundManager.PlaySound(SoundManager.Sound.snd_doorOpen, transform.position);
                 }
             }
+
+            //Animate
+            SetLight();
         }
-        
-        //Animate
-        setLight();
+    }
+
+    private void UpdateSignals()
+    {
+        //Update signals from signal array
+
+        signal1 = false; 
+        signal2 = false; 
+        signal3 = false;
+
+        foreach(Controller c in control1)
+        {
+            if (c != null)
+            {
+                if (c.active) signal1 = true;
+            }
+        }
+
+        foreach (Controller c in control2)
+        {
+            if (c != null)
+            {
+                if (c.active) signal2 = true;
+            }
+        }
+
+        foreach (Controller c in control3)
+        {
+            if (c != null)
+            {
+                if (c.active) signal3 = true;
+            }
+        }
     }
 
     private bool CheckSignal()
@@ -96,31 +141,40 @@ public class DoorController : MonoBehaviour
         //Check all signals active
         switch (numSignals)
         {
-            case 1: return signal1;
-            case 2: return signal1 && signal2;
-            case 3: return signal1 && signal2 && signal3;
+            case 1:
+            {
+                return signal1;
+            }
+            case 2:
+            {
+                return signal1 && signal2;
+            }
+            case 3:
+            {
+                return signal1 && signal2 && signal3;
+            }
             default: return false;
         }
     }
 
-    private void setLight()
+    private void SetLight()
     {
-        if (!signal1 && !signal2)
+        /*if (!signal1.active && !signal2.active)
         {
             sr.sprite = spriteArray[0];
         }
-        else if(signal1 && !signal2)
+        else if(signal1.active && !signal2.active)
         {
             sr.sprite = spriteArray[1];
         }
-        else if(!signal1 && signal2)
+        else if(!signal1.active && signal2.active)
         {
             sr.sprite = spriteArray[2];
         }
-        else if(signal1 && signal2)
+        else if(signal1.active && signal2.active)
         {
             sr.sprite = spriteArray[3];
-        }
+        }*/
 
         switch (numSignals)
         {
@@ -167,7 +221,7 @@ public class DoorController : MonoBehaviour
                     sr.sprite = spriteArray[7];
                 }
                 else if (!signal1 && signal2 && !signal3)
-                {
+                {   
                     sr.sprite = spriteArray[8];
                 }
                 else if (!signal1 && !signal2 && signal3)
@@ -200,7 +254,7 @@ public class DoorController : MonoBehaviour
         }
     }
 
-    public void SignalActive(int signalNum)
+    /*public void SignalActive(int signalNum)
     {
         switch (signalNum)
         {
@@ -215,9 +269,9 @@ public class DoorController : MonoBehaviour
                 break;
         }
         
-    }
+    }*/
 
-    public void SignalInactive(int signalNum)
+    /*public void SignalInactive(int signalNum)
     {
         switch (signalNum)
         {
@@ -232,5 +286,5 @@ public class DoorController : MonoBehaviour
                 Debug.Log("Signal 3 Inctive");
                 break;
         }
-    }
+    }*/
 }

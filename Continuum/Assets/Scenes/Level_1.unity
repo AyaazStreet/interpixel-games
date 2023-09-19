@@ -161,6 +161,7 @@ Transform:
   - {fileID: 725656633}
   - {fileID: 1601557468}
   - {fileID: 1931205720}
+  - {fileID: 262843488}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &62732902 stripped
@@ -416,6 +417,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70b007156596c2745ab1f305dadb9e03, type: 3}
+--- !u!4 &262843488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3108189649910230873, guid: c11b9a799d6d5e24ea4e72fa8e0f63ac, type: 3}
+  m_PrefabInstance: {fileID: 2085278498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &290416936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -668,6 +674,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2540748635224356125, guid: 70b007156596c2745ab1f305dadb9e03, type: 3}
   m_PrefabInstance: {fileID: 807437006}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &970678573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6032746297132076929, guid: 6255ddcd7e45ed740a791a1896c6f4ee, type: 3}
+  m_PrefabInstance: {fileID: 145396382}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c5b3628be36de408d4cdaa98be63a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &998364187 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7538950984591851549, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
@@ -934,6 +951,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 50536145}
     m_Modifications:
+    - target: {fileID: 835950029788441150, guid: c9da17252ee692b459be2956a04298be, type: 3}
+      propertyPath: control1.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 835950029788441150, guid: c9da17252ee692b459be2956a04298be, type: 3}
+      propertyPath: control2.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 835950029788441150, guid: c9da17252ee692b459be2956a04298be, type: 3}
+      propertyPath: control1.Array.data[0]
+      value: 
+      objectReference: {fileID: 970678573}
+    - target: {fileID: 835950029788441150, guid: c9da17252ee692b459be2956a04298be, type: 3}
+      propertyPath: control2.Array.data[0]
+      value: 
+      objectReference: {fileID: 1728641328}
     - target: {fileID: 1903525072281888175, guid: c9da17252ee692b459be2956a04298be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1286,6 +1319,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4543207289169746125, guid: 6255ddcd7e45ed740a791a1896c6f4ee, type: 3}
   m_PrefabInstance: {fileID: 1657191562}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728641328 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6032746297132076929, guid: 6255ddcd7e45ed740a791a1896c6f4ee, type: 3}
+  m_PrefabInstance: {fileID: 1657191562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c5b3628be36de408d4cdaa98be63a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1757251917 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 835950029788441150, guid: c9da17252ee692b459be2956a04298be, type: 3}
@@ -1433,7 +1477,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 50536145}
     m_Modifications:
     - target: {fileID: 1835089058600618526, guid: c11b9a799d6d5e24ea4e72fa8e0f63ac, type: 3}
       propertyPath: m_Name
@@ -10984,6 +11028,10 @@ PrefabInstance:
       propertyPath: T1_Unlocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6154136201763751127, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.0000002
+      objectReference: {fileID: 0}
     - target: {fileID: 6261843066899552603, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -11138,4 +11186,3 @@ SceneRoots:
   - {fileID: 999276681}
   - {fileID: 1555697790}
   - {fileID: 2074461853}
-  - {fileID: 2085278498}

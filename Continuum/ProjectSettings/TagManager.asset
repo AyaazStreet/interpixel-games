@@ -13,6 +13,8 @@ TagManager:
   - Checkpoint
   - CrushTrigger
   - Feet
+  - CheckpointManager
+  - Singleton
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,6 @@ using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class PlatformMove : MonoBehaviour
 {
-    public const float MOVE_SPEED = 1f; 
     public float globalTimescale;
     public float? localTimescale;
     private float timeMod;
@@ -20,11 +19,12 @@ public class PlatformMove : MonoBehaviour
     public bool forwardTraverse;
 
     private PlayerController pc;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Transform targetPoint;
     private Vector2 moveDir;
     private Vector2 lastMoveDir;
 
+    public float moveSpeed = 1f;
     public float waitTimeTotal = 2f;
     public float waitTime = 0;
 
@@ -57,7 +57,7 @@ public class PlatformMove : MonoBehaviour
         moveDir = targetPoint.position - transform.position;
 
         //Check if point reached
-        if (Vector2.Distance(transform.position, targetPoint.position) < 0.05)
+        if (Vector2.Distance(transform.position, targetPoint.position) < 0.05 * timeMod)
         {
             if (circular)
             {
@@ -81,20 +81,10 @@ public class PlatformMove : MonoBehaviour
         }
         else
         {
-            rb.velocity = MOVE_SPEED * timeMod * moveDir.normalized;
-        }
-
-        if (contact)
-        {
-            pc.externalVelocity = rb.velocity;
-            pc.UpdateVelocity();
-        }
-        else
-        {
-            pc.externalVelocity = Vector2.zero;
-            //pc.UpdateVelocity();
+            rb.velocity = moveSpeed * timeMod * moveDir.normalized;
         }
     }
+
     private void LinearPointSwitch()
     {
         if (forwardTraverse) //Going forward through point array
@@ -152,6 +142,8 @@ public class PlatformMove : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
         {
             contact = true;
+            pc.externalVelocityObjs.Add(this);
+            //pc.UpdateVelocity();
         }
     }
 
@@ -159,7 +151,7 @@ public class PlatformMove : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
         {
-            contact = true;
+            pc.UpdateVelocity();
         }
     }
 
@@ -168,6 +160,7 @@ public class PlatformMove : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
         {
             contact = false;
+            pc.externalVelocityObjs.Remove(this);
         }
     }
 }

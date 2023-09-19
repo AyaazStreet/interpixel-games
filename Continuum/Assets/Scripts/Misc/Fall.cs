@@ -38,6 +38,12 @@ public class Fall : MonoBehaviour
 
     private void Update()
     {
+        //Adjust timeMod based on timescales, preferring local over global
+        localTimescale = gameObject.GetComponent<LocalModifier>().value;
+        globalTimescale = TimeScaleManager.globalTimescale;
+        timeMod = localTimescale ?? globalTimescale;
+
+        //Fall
         if (parentRb.velocity.magnitude < 10f)
         {
             if (parentTransform.localScale.y > (1f - fallDistance) || (falling && parentTransform.localScale.y > 0))

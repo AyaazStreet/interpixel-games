@@ -10,12 +10,12 @@ public class PlayerGroundCheck : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Pits"))
         {
-            pfc.contactPoints--;
+            //pfc.contactPoints--;
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms"))
         {
-            pfc.contactPoints++;
+            //pfc.contactPoints++;
         }
     }
 
@@ -23,12 +23,12 @@ public class PlayerGroundCheck : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Pits"))
         {
-            pfc.contactPoints++;
+            //pfc.contactPoints++;
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms"))
         {
-            pfc.contactPoints--;
+            //pfc.contactPoints--;
         }
     }
 }

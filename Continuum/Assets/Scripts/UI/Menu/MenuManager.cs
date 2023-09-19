@@ -12,6 +12,9 @@ public class MenuManager : MonoBehaviour
     public Canvas keybindsK;
     public Canvas keybindsG;
 
+    private CheckpointManager checkpointManager;
+    public GameObject cmPrefab;
+
     private void Awake()
     {
         if (nav) nav.gameObject.SetActive(true);
@@ -20,34 +23,50 @@ public class MenuManager : MonoBehaviour
         if (keybinds) keybinds.gameObject.SetActive(false);
         if (keybindsK) keybindsK.gameObject.SetActive(false);
         if (keybindsG) keybindsG.gameObject.SetActive(false);
+
+        PlayerData data = SaveManager.LoadData();
+
+        //Checkpoint Object Create
+        if (GameObject.FindGameObjectWithTag("CheckpointManager"))
+        {
+            checkpointManager = GameObject.FindGameObjectWithTag("CheckpointManager").GetComponent<CheckpointManager>();
+        }
+        else
+        {
+            GameObject cm = Instantiate(cmPrefab);
+            cm.name = "CheckpointManager";
+            checkpointManager = cm.GetComponent<CheckpointManager>();
+        }
+
+        //checkpointManager.savedLevel = -1;
+
+        //Data load
+        if (data != null)
+        {
+            //loading checkpoint data
+        }
     }
 
     public void Continue()
     {
-        PlayerData data = SaveManager.LoadData();
-
-        if(data != null)
+        //Level Select
+        switch (checkpointManager.savedLevel)
         {
-            Debug.Log("Loading Level" + data.level);
-            switch (data.level)
-            {
-                case 0: 
-                    ChangeScene("Level_Tutorial");
-                    break;
-                case 1: 
-                    ChangeScene("Level_1");
-                    break; 
-                case 2:
-                    ChangeScene("Level_2");
-                    break;
-                case 3:
-                    ChangeScene("Level_3");
-                    break;
-            }
-        }
-        else
-        {
-            ChangeScene("Level_Tutorial");
+            case 1:
+                ChangeScene("Level_1");
+                break;
+            case 2:
+                ChangeScene("Level_2");
+                break;
+            case 3:
+                ChangeScene("Level_3");
+                break;
+            case 4:
+                ChangeScene("Level_4");
+                break;
+            default:
+                ChangeScene("Level_Tutorial");
+                break;
         }
     }
 

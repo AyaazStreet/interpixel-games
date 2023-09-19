@@ -17,10 +17,8 @@ public class PlayerFallCollision : MonoBehaviour
 
     [SerializeField] private bool falling = false;
     [SerializeField] private bool shouldFall = false;
-    [SerializeField] private bool stable = false;
+    [SerializeField] private int stable = 0;
     private Vector3 fallPoint;
-
-    public int contactPoints = 2;
 
     private void Start()
     {
@@ -29,12 +27,12 @@ public class PlayerFallCollision : MonoBehaviour
 
     private void Update()
     {
-       if(shouldFall && !stable && !falling)
+       if(shouldFall && stable <= 0 && !falling)
        {
            player.GetComponent<PlayerController>().falling = true;
            falling = true;
 
-            SoundManager.PlaySound(SoundManager.Sound.snd_fall);
+           SoundManager.PlaySound(SoundManager.Sound.snd_fall);
        }
     }
 
@@ -67,13 +65,22 @@ public class PlayerFallCollision : MonoBehaviour
                 }
             }
         }
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms"))
+        {
+            //stable = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Platforms"))
         {
-            stable = true;
+            stable++;
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Pits"))
@@ -87,7 +94,7 @@ public class PlayerFallCollision : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms"))
         {
-            stable = false;
+            stable--;
             fallPoint = (Vector2)transform.position + player.GetComponent<Rigidbody2D>().velocity.normalized * 0.5f;
         }
 
@@ -107,7 +114,7 @@ public class PlayerFallCollision : MonoBehaviour
 
         falling = false;
         shouldFall = false;
-        stable = false;
+        stable = 0;
         player.GetComponent<PlayerController>().falling = false;
 
         yield break;

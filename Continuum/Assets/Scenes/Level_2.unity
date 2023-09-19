@@ -1104,6 +1104,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3021098931706800646, guid: 2784e0a305511f247861a90600473fbe, type: 3}
   m_PrefabInstance: {fileID: 1238167370}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1238167373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 259162831639463735, guid: 2784e0a305511f247861a90600473fbe, type: 3}
+  m_PrefabInstance: {fileID: 1238167370}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdb7acc84603254882158a129a1aee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1297167721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1463,6 +1474,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3021098931706800646, guid: 2784e0a305511f247861a90600473fbe, type: 3}
   m_PrefabInstance: {fileID: 1603760445}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1603760448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 259162831639463735, guid: 2784e0a305511f247861a90600473fbe, type: 3}
+  m_PrefabInstance: {fileID: 1603760445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdb7acc84603254882158a129a1aee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1654177315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1533,6 +1555,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 50536145}
     m_Modifications:
+    - target: {fileID: 835950029788441150, guid: c9da17252ee692b459be2956a04298be, type: 3}
+      propertyPath: control1.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 835950029788441150, guid: c9da17252ee692b459be2956a04298be, type: 3}
+      propertyPath: control2.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 835950029788441150, guid: c9da17252ee692b459be2956a04298be, type: 3}
+      propertyPath: control1.Array.data[0]
+      value: 
+      objectReference: {fileID: 1603760448}
+    - target: {fileID: 835950029788441150, guid: c9da17252ee692b459be2956a04298be, type: 3}
+      propertyPath: control1.Array.data[1]
+      value: 
+      objectReference: {fileID: 1238167373}
+    - target: {fileID: 835950029788441150, guid: c9da17252ee692b459be2956a04298be, type: 3}
+      propertyPath: control2.Array.data[0]
+      value: 
+      objectReference: {fileID: 1238167373}
     - target: {fileID: 1903525072281888175, guid: c9da17252ee692b459be2956a04298be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

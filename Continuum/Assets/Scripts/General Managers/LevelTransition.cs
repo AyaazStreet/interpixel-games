@@ -9,11 +9,7 @@ public class LevelTransition : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Menu_Main");
-
-            GameManager.Instance.currLevel++;
-
-            switch (GameManager.Instance.currLevel)
+            switch (GameManager.Instance.currLevel + 1)
             {
                 case 0:
                     SceneManager.LoadScene("Level_Tutorial");
@@ -26,6 +22,12 @@ public class LevelTransition : MonoBehaviour
                     break;
                 case 3:
                     SceneManager.LoadScene("Level_3");
+                    break;
+                case 4:
+                    SceneManager.LoadScene("Level_4");
+                    break;
+                default:
+                    SceneManager.LoadScene("Menu_Main");
                     break;
             }
         }

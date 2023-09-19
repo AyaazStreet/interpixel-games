@@ -4,27 +4,12 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
-public class SwitchController : MonoBehaviour
+public class SwitchController : Controller
 {
-    public bool interactable = false;
-    public bool on;
-
-    public const float OUTLINE_THICKNESS = 0.75f;
-
-    [SerializeField] private InputActionReference interact;
-    public UnityEvent SendSignal_Active;
-    public UnityEvent SendSignal_Inactive;
-
-    private SpriteRenderer sr;
-
     public Sprite sOn;
     public Sprite sOff;
-
-    private void Awake()
-    {
-        sr = gameObject.GetComponentInChildren<SpriteRenderer>();
-    }
 
     private void OnEnable()
     {
@@ -34,11 +19,6 @@ public class SwitchController : MonoBehaviour
     private void OnDisable()
     {
         interact.action.performed -= Interact_performed;
-    }
-
-    private void Update()
-    {
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,8 +35,7 @@ public class SwitchController : MonoBehaviour
         {
             if (on)
             {
-                
-                SendSignal_Inactive.Invoke();
+                active = false;
                 on = false;
                 sr.sprite = sOff;
 
@@ -64,8 +43,7 @@ public class SwitchController : MonoBehaviour
             }
             else
             {
-                
-                SendSignal_Active.Invoke();
+                active = true;
                 on = true;
                 sr.sprite = sOn;
 
@@ -89,7 +67,7 @@ public class SwitchController : MonoBehaviour
         {
             if (on)
             {
-                SendSignal_Inactive.Invoke();
+                active = false;
                 on = false;
                 sr.sprite = sOff;
 
@@ -97,7 +75,7 @@ public class SwitchController : MonoBehaviour
             }
             else
             {
-                SendSignal_Active.Invoke();
+                active = true;
                 on = true;
                 sr.sprite = sOn;
 

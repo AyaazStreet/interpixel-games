@@ -11,6 +11,7 @@ public class EnemyPatrol : MonoBehaviour
     private float timeMod;
 
     public bool circular;
+    public bool stationary;
 
     public GameObject[] pointArr;
     public int pointArrPos;
@@ -44,6 +45,7 @@ public class EnemyPatrol : MonoBehaviour
         localTimescale = gameObject.GetComponent<LocalModifier>().value;
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = 1f;
+
     }
 
     private void Update()
@@ -58,27 +60,43 @@ public class EnemyPatrol : MonoBehaviour
 
         //Adjust move direction and aim angle based on target point
         moveDir = targetPoint.position - transform.position;
-        float aimAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90;
-
-        //Rotate FOV
-        Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-        FOV.transform.rotation = Quaternion.Slerp(FOV.transform.rotation, q, 10 * Time.deltaTime * timeMod);
 
         //Check if point reached
         if (Vector2.Distance(transform.position, targetPoint.position) < 0.05)
         {
-            if (circular)
+            if (!stationary)
             {
-                circularPointSwitch();
+                if (circular)
+                {
+                    circularPointSwitch();
+                }
+                else
+                {
+                    linearPointSwitch();
+                }
+                waitTime = waitTimeTotal;
+                rb.velocity = Vector2.zero;
             }
             else
             {
-                linearPointSwitch();
-            }
+                waitTime = 0.01f;
+                if(pointArr.Length > 1) 
+                {
+                    moveDir = pointArr[pointArrPos+1].transform.position - transform.position;
 
-            waitTime = waitTimeTotal;
-            rb.velocity = Vector2.zero;
+                    rb.velocity = Vector2.zero;
+                }
+                else
+                {
+                    Debug.LogError("Insufficient points for stationary enemy. Required: 2");
+                }
+            }
         }
+
+        //Rotate FOV
+        float aimAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg - 90;
+        Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+        FOV.transform.rotation = Quaternion.Slerp(FOV.transform.rotation, q, 10 * Time.deltaTime * timeMod);
 
         Animate();
     }

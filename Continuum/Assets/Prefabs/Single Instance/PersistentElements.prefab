@@ -603,7 +603,7 @@ Transform:
   m_GameObject: {fileID: 603839850586737289}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0000005364418, y: -2.0000002, z: -10}
+  m_LocalPosition: {x: 0.0000005364418, y: -0.00000029802322, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2435,7 +2435,6 @@ MonoBehaviour:
   falling: 0
   shouldFall: 0
   stable: 0
-  contactPoints: 0
 --- !u!1 &4556617909209737786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,6 +2560,8 @@ MonoBehaviour:
   deathScreen: {fileID: 1925998222454410364}
   player: {fileID: 0}
   pc: {fileID: 0}
+  cmPrefab: {fileID: 395592352888599715, guid: 87cf002b3f8aca849b296a548b68d440, type: 3}
+  checkpointManager: {fileID: 0}
   currLevel: 1
 --- !u!114 &7902538428877877917
 MonoBehaviour:
@@ -2630,6 +2631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 2100000, guid: 1506e765b122ca245ace416a7a266ead, type: 2}
   sprite: {fileID: 2100000, guid: e926c723614d8f848921b5fc5a858d9a, type: 2}
+  fullscreen: {fileID: 2100000, guid: dc855b32c32f2f644930c78e4c92d9fa, type: 2}
 --- !u!1 &5074960339867577932
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,7 +3263,7 @@ MonoBehaviour:
   activeAbility: 0
   moveDir: {x: 0, y: 0}
   lastMoveDir: {x: 0, y: 0}
-  externalVelocity: {x: 0, y: 0}
+  externalVelocityObjs: []
   fillIndi: {fileID: 4201390190526399115}
   cc1: {fileID: 6304426814847609111}
   cc2: {fileID: 2575541115238116015}
