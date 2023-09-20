@@ -57,14 +57,14 @@ Material:
     - _Fullscreen_DstColorBlend: 0
     - _Fullscreen_SrcAlphaBlend: 1
     - _Fullscreen_SrcColorBlend: 2
-    - _Intensity: 7
+    - _Intensity: 5
     - _Power: 0.9987259
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Radius: 0.5002542
-    - _VoronoiPower: 1
+    - _Radius: 0.50019944
+    - _VoronoiPower: 1.5
     - _VoronoiScale: 10
     - _VoronoiSpeed: 1
     m_Colors:
-    - _Color: {r: 0, g: 1, b: 0.851, a: 1}
+    - _Color: {r: 1, g: 0.4, b: 0, a: 1}
   m_BuildTextureStacks: []
