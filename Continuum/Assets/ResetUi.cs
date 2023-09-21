@@ -23,8 +23,6 @@ public class ResetUi : MonoBehaviour
         {
             fill -= Time.deltaTime;
         }
-
-        Debug.Log(fill);
         
         indi.fillAmount = fill / fillMax;
 
@@ -39,12 +37,10 @@ public class ResetUi : MonoBehaviour
         
         if (context.performed)
         {
-            Debug.Log("true");
             pressed = true;
         }
         else if(context.canceled)
         {
-            Debug.Log("false");
             pressed = false;
         }
     }

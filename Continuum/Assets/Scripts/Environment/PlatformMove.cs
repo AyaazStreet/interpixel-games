@@ -57,7 +57,7 @@ public class PlatformMove : MonoBehaviour
         moveDir = targetPoint.position - transform.position;
 
         //Check if point reached
-        if (Vector2.Distance(transform.position, targetPoint.position) < 0.05 * timeMod)
+        if (Vector2.Distance(transform.position, targetPoint.position) < 0.01)
         {
             if (circular)
             {
@@ -77,11 +77,20 @@ public class PlatformMove : MonoBehaviour
     {
         if (waitTime > 0)
         {
-            waitTime -= Time.deltaTime * timeMod;
+            waitTime -= Time.fixedDeltaTime * timeMod;
         }
         else
         {
-            rb.velocity = moveSpeed * timeMod * moveDir.normalized;
+            if ((Time.fixedDeltaTime * rb.velocity).magnitude < Vector2.Distance(transform.position, targetPoint.position))
+            {
+                Debug.Log("1");
+                rb.velocity = moveSpeed * timeMod * moveDir.normalized;
+            }
+            else
+            {
+                Debug.Log("2");
+                rb.velocity = (moveDir.normalized * Vector2.Distance(transform.position, targetPoint.position)) / Time.fixedDeltaTime;
+            }
         }
     }
 
