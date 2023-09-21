@@ -76,7 +76,11 @@ public class EnemyDetection : MonoBehaviour
         else
         {
             detected = false;
-            indicator.SetActive(false);
+
+            if (indicatorFill.fillAmount <= 0)
+            {
+                indicator.SetActive(false);
+            }
         }
     }
 
