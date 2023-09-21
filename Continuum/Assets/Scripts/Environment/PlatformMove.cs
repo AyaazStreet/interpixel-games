@@ -83,12 +83,10 @@ public class PlatformMove : MonoBehaviour
         {
             if ((Time.fixedDeltaTime * rb.velocity).magnitude < Vector2.Distance(transform.position, targetPoint.position))
             {
-                Debug.Log("1");
                 rb.velocity = moveSpeed * timeMod * moveDir.normalized;
             }
             else
             {
-                Debug.Log("2");
                 rb.velocity = (moveDir.normalized * Vector2.Distance(transform.position, targetPoint.position)) / Time.fixedDeltaTime;
             }
         }

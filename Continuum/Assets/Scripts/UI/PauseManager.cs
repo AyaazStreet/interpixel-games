@@ -16,7 +16,6 @@ public class PauseManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        pauseUI = GameObject.Find("PauseScreen");
         pauseUI.SetActive(false);
     }
 

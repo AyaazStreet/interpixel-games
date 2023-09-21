@@ -26,6 +26,9 @@ public class LevelTransition : MonoBehaviour
                 case 4:
                     SceneManager.LoadScene("Level_4");
                     break;
+                case 5:
+                    SceneManager.LoadScene("Level_5");
+                    break;
                 default:
                     SceneManager.LoadScene("Menu_Main");
                     break;
