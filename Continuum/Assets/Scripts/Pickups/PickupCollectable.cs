@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PickupCollectable : MonoBehaviour
 {
+    public Vector2 startPos;
+    
     private Vector2 targetPoint;
     private float movementSpeed = 10f;
     private float offset = 1f;
@@ -21,6 +23,8 @@ public class PickupCollectable : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        startPos = transform.position;
     }
 
     private void FixedUpdate()
@@ -59,7 +63,7 @@ public class PickupCollectable : MonoBehaviour
 
                 if (tmp.a <= 0)
                 {
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
                 }
             }
 

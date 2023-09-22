@@ -8,6 +8,10 @@ public class CheckpointManager : MonoBehaviour
 
     public int savedLevel;
     public Vector3 savedPosition;
+    public bool[] unlocks;
+    public List<InventoryManager.InventoryItem> savedInventory;
+    public List<bool> usedStates;
+    public List<bool> interactableStates;
     
     private void Awake()
     {
@@ -15,7 +19,12 @@ public class CheckpointManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            savedInventory = new();
+            usedStates = new();
+            interactableStates = new();
             savedLevel = -1;
+            unlocks = new bool[6];
         }
         else
         {

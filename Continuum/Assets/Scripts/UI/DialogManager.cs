@@ -45,7 +45,10 @@ public class DialogueManager : MonoBehaviour
     {
         if(l.Length > 0)
         {
+            Debug.Log("Test2");
+
             gameObject.SetActive(true);
+            StopAllCoroutines();
             text.text = string.Empty;
 
             if (input.currentControlScheme == "Gamepad")

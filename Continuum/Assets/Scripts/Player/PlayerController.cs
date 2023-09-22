@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private const float A3_DUR = 2f;
     private const float CD_DUR = 3f;
 
+    public bool hasControl = true;
+
     [SerializeField] private float stepCounter = 0f;
     [SerializeField] private float stepInterval = 67f;
 
@@ -299,7 +301,15 @@ public class PlayerController : MonoBehaviour
 
     public void Movement_performed(InputAction.CallbackContext context)
     {
-        moveDir = context.ReadValue<Vector2>();
+        if (hasControl)
+        {
+            moveDir = context.ReadValue<Vector2>();
+        }
+        else
+        {
+            moveDir = Vector2.zero;
+        }
+        
     }
 
     public void Restart_performed(InputAction.CallbackContext context)
@@ -312,7 +322,7 @@ public class PlayerController : MonoBehaviour
 
     public void Ability_1_performed(InputAction.CallbackContext context)
     {
-        if(context.performed && A1_Unlocked)
+        if(context.performed && A1_Unlocked && hasControl)
         {
             if (activeAbility == 0 && !comboActive)
             {
@@ -348,7 +358,7 @@ public class PlayerController : MonoBehaviour
     
     public void Ability_2_performed(InputAction.CallbackContext context)
     {
-        if (context.performed && A2_Unlocked)
+        if (context.performed && A2_Unlocked && hasControl)
         {
             if (!a1active && !comboActive)
             {
@@ -383,7 +393,7 @@ public class PlayerController : MonoBehaviour
 
     public void Ability_3_performed(InputAction.CallbackContext context)
     {
-        if (context.performed && A3_Unlocked)
+        if (context.performed && A3_Unlocked && hasControl)
         {
             if (!a1active && !a2active)
             {

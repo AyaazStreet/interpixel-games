@@ -42,4 +42,6 @@ public class Controller : MonoBehaviour
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = localTimescale ?? globalTimescale;
     }
+
+    public void ChangeState(){}
 }

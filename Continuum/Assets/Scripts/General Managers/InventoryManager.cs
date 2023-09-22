@@ -1,6 +1,8 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +12,7 @@ public class InventoryManager : MonoBehaviour
     public Sprite[] collectableSprites;
     public GameObject[] collectablePrefabs;
 
-    public List<InventoryItem> inventory = new List<InventoryItem>();
+    public List<InventoryItem> inventory = new();
 
     // Collectable Index
     // 0 : keycard
@@ -27,23 +29,25 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    public struct InventoryItem 
+    public class InventoryItem 
     {
         public int type;
         public Sprite sprite;
         public Vector3 pickupPosition;
+        public bool used;
         
-        public InventoryItem (int _type, Sprite _sprite, Vector3 _pickupPosition)
+        public InventoryItem (int _type, Sprite _sprite, Vector3 _pickupPosition, bool _used)
         {
             type = _type;
             sprite = _sprite;
             pickupPosition = _pickupPosition;
+            used = _used;
         }
     } 
 
     public void AddInventoryItem(int t, Vector3 pos)
     {
-        inventory.Add(new(t, collectableSprites[t], pos));
+        inventory.Add(new(t, collectableSprites[t], pos, false));
         UpdateInventoryDisplay();
         Debug.Log("Item Collected");
     }
@@ -55,25 +59,43 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("Item Removed");
     }
 
-    public void ReturnItemsFromInventory()
+    public void UseInventoryItem(int t)
     {
-        foreach(InventoryItem item in inventory)
+        inventory.First(item => item.type == t && item.used == false).used = true;
+
+        UpdateInventoryDisplay();
+        Debug.Log("Item Used");
+    }
+
+    public void ReturnItemsFromInventory(List<InventoryItem> items)
+    {
+        foreach(InventoryItem item in items)
         {
             _ = Instantiate(collectablePrefabs[item.type], item.pickupPosition, Quaternion.identity);
+            RemoveInventoryItem(item.type);
         }
-        inventory.Clear();
         UpdateInventoryDisplay();
-        Debug.Log("Inventory Cleared");
+        Debug.Log("Inventory Items Returned");
     }
 
     public void UpdateInventoryDisplay()
     {
+        List<InventoryItem> unusedInventory = new();
+        foreach (InventoryItem item in inventory)
+        {
+            if (!item.used)
+            {
+                unusedInventory.Add(item);
+                Debug.Log("Showing: " + item);
+            }
+        }
+
         for (int i = 0; i < inventoryDisplay.Length; i++)
         {
-            if (i < inventory.Count)
+            if (i < unusedInventory.Count)
             {
                 inventoryDisplay[i].GetComponent<Image>().enabled = true;
-                inventoryDisplay[i].sprite = inventory[i].sprite;
+                inventoryDisplay[i].sprite = unusedInventory[i].sprite;
             }
             else
             {

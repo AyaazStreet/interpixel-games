@@ -25,6 +25,13 @@ public class KeyScannerController : Controller
         im = GameObject.Find("Player").GetComponent<InventoryManager>();
     }
 
+    public new void ChangeState()
+    {
+        sr.sprite = btnIn;
+        active = true;
+        activated = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Check player collision
@@ -37,13 +44,10 @@ public class KeyScannerController : Controller
         {
             if(!activated)
             {
-                if (im.inventory.Any(item => item.type == 0))
+                if (im.inventory.Any(item => item.type == 0 && item.used == false))
                 {
-                    sr.sprite = btnIn;
-                    active = true;
-
-                    im.RemoveInventoryItem(0);
-                    activated = true;
+                    im.UseInventoryItem(0);
+                    ChangeState();
                 }
             }
             

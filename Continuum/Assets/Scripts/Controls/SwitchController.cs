@@ -21,6 +21,27 @@ public class SwitchController : Controller
         interact.action.performed -= Interact_performed;
     }
 
+    public new void ChangeState() 
+    {
+        Debug.Log("amazing");
+        if (on)
+        {
+            active = false;
+            on = false;
+            sr.sprite = sOff;
+
+            
+        }
+        else
+        {
+            active = true;
+            on = true;
+            sr.sprite = sOn;
+
+            
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Check player collision
@@ -33,22 +54,8 @@ public class SwitchController : Controller
         //Check throwable collision
         if (collision.gameObject.CompareTag("Bolt"))
         {
-            if (on)
-            {
-                active = false;
-                on = false;
-                sr.sprite = sOff;
-
-                SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
-            }
-            else
-            {
-                active = true;
-                on = true;
-                sr.sprite = sOn;
-
-                SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
-            }
+            ChangeState();
+            SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
         }
     }
 
@@ -65,22 +72,8 @@ public class SwitchController : Controller
     {
         if (interactable && context.performed)
         {
-            if (on)
-            {
-                active = false;
-                on = false;
-                sr.sprite = sOff;
-
-                SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
-            }
-            else
-            {
-                active = true;
-                on = true;
-                sr.sprite = sOn;
-
-                SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
-            }
+            ChangeState();
+            SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
         }
     }
 }

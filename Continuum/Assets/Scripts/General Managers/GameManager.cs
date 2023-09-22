@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,10 +9,18 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public GameObject deathScreen;
+
+    public GameObject timer;
+    public GameObject equipment;
+    public GameObject inventory;
     
     public GameObject player;
     public PlayerController pc;
+    public InventoryManager im;
     private Vector3 respawnPosition;
+
+    public GameObject savedObjects;
+    public GameObject interactables;
 
     public GameObject cmPrefab;
     public CheckpointManager checkpointManager;
@@ -33,6 +43,7 @@ public class GameManager : MonoBehaviour
         // Find the player's GameObject and store its Transform component.
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
+        im = player.GetComponent<InventoryManager>();
 
         pc.UpdateFromSave(SaveManager.LoadData());
 
@@ -51,7 +62,62 @@ public class GameManager : MonoBehaviour
         //Load info from checkpoint manager
         if (checkpointManager.savedLevel == currLevel) 
         {
+            //position
             player.transform.position = checkpointManager.savedPosition;
+
+            //abilities
+            pc.A1_Unlocked = checkpointManager.unlocks[0];
+            pc.A2_Unlocked = checkpointManager.unlocks[1];
+            pc.A3_Unlocked = checkpointManager.unlocks[2];
+            pc.T1_Unlocked = checkpointManager.unlocks[3];
+            pc.T2_Unlocked = checkpointManager.unlocks[4];
+            pc.T3_Unlocked = checkpointManager.unlocks[5];
+
+            //gui
+            if (pc.A1_Unlocked || pc.A2_Unlocked || pc.A3_Unlocked)
+            {
+                timer.SetActive(true);
+            }
+            if (pc.T1_Unlocked || pc.T2_Unlocked || pc.T3_Unlocked)
+            {
+                equipment.SetActive(true);
+            }
+
+            //objects
+            int j = 0;
+            foreach (InventoryManager.InventoryItem item in checkpointManager.savedInventory)
+            {
+                item.used = checkpointManager.usedStates[j];
+                j++;
+                im.inventory.Add(item);
+                foreach(Transform t in savedObjects.transform)
+                {
+                    if (t.position == item.pickupPosition)
+                    {
+                        Destroy(t.gameObject);
+                    }
+                }
+            }
+            im.UpdateInventoryDisplay();
+
+            //interactables
+            int i = 0;
+            foreach (Transform t in interactables.transform)
+            {
+                if (checkpointManager.interactableStates[i]) 
+                {
+                    if (t.gameObject.GetComponent<SwitchController>())
+                    {
+                        t.gameObject.GetComponent<SwitchController>().ChangeState();
+                    }
+                    else if (t.gameObject.GetComponent<KeyScannerController>())
+                    {
+                        t.gameObject.GetComponent<KeyScannerController>().ChangeState();
+                    }
+                }
+                i++;
+            }
+
             Debug.Log("Moved player based on checkpoint data: " + checkpointManager.savedPosition);
         }
     }
@@ -107,7 +173,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerController>().activeAbility = 0;
 
         //Reset player items
-        player.GetComponent<InventoryManager>().ReturnItemsFromInventory();
+        //player.GetComponent<InventoryManager>().ReturnItemsFromInventory();
 
         //Remove death screen
         deathScreen.SetActive(false);
