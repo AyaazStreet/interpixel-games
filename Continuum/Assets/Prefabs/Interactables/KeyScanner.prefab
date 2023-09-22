@@ -82,27 +82,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c5b3628be36de408d4cdaa98be63a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 0
+  on: 0
+  active_time: 2
   interactable: 0
+  timer: 0
   globalTimescale: 0
+  timeMod: 0
   interact: {fileID: 2927881971485266601, guid: 177cf0a76cd54d047a2017789023784f, type: 3}
-  SendSignal_Active:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
-        m_MethodName: SignalActive
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  SendSignal_Inactive:
-    m_PersistentCalls:
-      m_Calls: []
+  sr: {fileID: 4151500511083642408}
+  activated: 0
   btnIn: {fileID: 1631439066, guid: 84753066ea7cb6140b807623f5633698, type: 3}
   btnOut: {fileID: 303738941, guid: 84753066ea7cb6140b807623f5633698, type: 3}
 --- !u!114 &3914045115204109928

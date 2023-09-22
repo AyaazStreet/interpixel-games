@@ -21,7 +21,7 @@ public class KeyScannerController : Controller
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = 1f;
 
-        sr = gameObject.GetComponentInChildren<SpriteRenderer>();
+        //sr = gameObject.GetComponentInChildren<SpriteRenderer>();
         im = GameObject.Find("Player").GetComponent<InventoryManager>();
     }
 

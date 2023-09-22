@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public Button start;
     public Canvas nav;
     public Canvas levelSelect;
     public Canvas options;
@@ -12,12 +16,20 @@ public class MenuManager : MonoBehaviour
     public Canvas keybindsK;
     public Canvas keybindsG;
 
+    public float timerMax = 1f;
+    public float timer = 0f;
+    bool started = false;
+
     private CheckpointManager checkpointManager;
     public GameObject cmPrefab;
 
+    public Animator backgroundAnim;
+    public Animator titleAnim;
+
     private void Awake()
     {
-        if (nav) nav.gameObject.SetActive(true);
+        if (start) start.gameObject.SetActive(true);
+        if (nav) nav.gameObject.SetActive(false);
         if (levelSelect) levelSelect.gameObject.SetActive(false);
         if (options) options.gameObject.SetActive(false);
         if (keybinds) keybinds.gameObject.SetActive(false);
@@ -45,6 +57,30 @@ public class MenuManager : MonoBehaviour
         {
             //loading checkpoint data
         }
+    }
+
+    private void Update()
+    {
+        if (started)
+        {
+            if (timer < timerMax)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                started = false;
+                nav.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void StartButton()
+    {
+        started = true;
+        backgroundAnim.SetTrigger("start");
+        titleAnim.SetTrigger("start");
+        start.gameObject.SetActive(false);
     }
 
     public void Continue()

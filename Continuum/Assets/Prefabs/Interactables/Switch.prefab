@@ -174,7 +174,7 @@ MonoBehaviour:
   globalTimescale: 0
   timeMod: 0
   interact: {fileID: 2927881971485266601, guid: 177cf0a76cd54d047a2017789023784f, type: 3}
-  sr: {fileID: 0}
+  sr: {fileID: 7284855831598340345}
   sOn: {fileID: -754940548, guid: e2b5ecf71c2e08842b089a35e16646d7, type: 3}
   sOff: {fileID: -387453031, guid: e2b5ecf71c2e08842b089a35e16646d7, type: 3}
 --- !u!114 &3052563184927538615
