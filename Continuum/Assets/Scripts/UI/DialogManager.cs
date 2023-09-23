@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using static Unity.Collections.AllocatorManager;
 
 public class DialogueManager : MonoBehaviour
 {

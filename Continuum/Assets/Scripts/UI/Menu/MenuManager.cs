@@ -8,27 +8,38 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    public Button start;
-    public Canvas nav;
-    public Canvas levelSelect;
-    public Canvas options;
-    public Canvas keybinds;
-    public Canvas keybindsK;
-    public Canvas keybindsG;
+    [Header("Canvases")]
+    [SerializeField] private Canvas nav;
+    [SerializeField] private Canvas levelSelect;
+    [SerializeField] private Canvas options;
+    [SerializeField] private Canvas keybinds;
+    [SerializeField] private Canvas keybindsK;
+    [SerializeField] private Canvas keybindsG;
 
-    public float timerMax = 1f;
-    public float timer = 0f;
-    bool started = false;
+    [Header("Buttons")]
+    [SerializeField] private Button anyToStart;
+    [SerializeField] private Button start;
+    [SerializeField] private Button tutorial;
+    [SerializeField] private Button optionsBack;
+    [SerializeField] private Button kbBack;
+    [SerializeField] private Button kbdKbBack;
+    [SerializeField] private Button gpdKbBack;
 
+    [Header("Objects")]
+    [SerializeField] private GameObject ButtonCont;
     private CheckpointManager checkpointManager;
-    public GameObject cmPrefab;
+    [SerializeField] private GameObject cmPrefab;
 
     public Animator backgroundAnim;
     public Animator titleAnim;
 
+    private float bgAnimTime = 2f;
+
     private void Awake()
     {
-        if (start) start.gameObject.SetActive(true);
+        Time.timeScale = 1.0f;
+
+        if (anyToStart) anyToStart.gameObject.SetActive(true);
         if (nav) nav.gameObject.SetActive(false);
         if (levelSelect) levelSelect.gameObject.SetActive(false);
         if (options) options.gameObject.SetActive(false);
@@ -61,30 +72,60 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (started)
-        {
-            if (timer < timerMax)
-            {
-                timer += Time.deltaTime;
-            }
-            else
-            {
-                started = false;
-                nav.gameObject.SetActive(true);
-            }
-        }
+        
     }
 
     public void StartButton()
     {
-        started = true;
+        StartCoroutine(OpenMenu());
+    }
+
+    public void CloseButton()
+    {
+        StartCoroutine(CloseMenu());
+        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+    }
+
+    public IEnumerator OpenMenu()
+    {
         backgroundAnim.SetTrigger("start");
         titleAnim.SetTrigger("start");
-        start.gameObject.SetActive(false);
+
+        anyToStart.gameObject.SetActive(false);
+        ButtonCont.SetActive(false);
+
+        yield return new WaitForSeconds(bgAnimTime);
+
+        nav.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(3.5f);
+
+        ButtonCont.SetActive(true);
+        start.Select();
+
+        yield break;
+    }
+
+    public IEnumerator CloseMenu()
+    {
+        backgroundAnim.SetTrigger("start");
+        
+
+        nav.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(bgAnimTime);
+
+        titleAnim.SetTrigger("start");
+        anyToStart.gameObject.SetActive(true);
+        anyToStart.Select();
+
+        yield break;
     }
 
     public void Continue()
     {
+        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+
         //Level Select
         switch (checkpointManager.savedLevel)
         {
@@ -104,6 +145,7 @@ public class MenuManager : MonoBehaviour
                 ChangeScene("Level_Tutorial");
                 break;
         }
+
     }
 
     public void ChangeScene(string sceneName)
@@ -113,76 +155,97 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleLevelSelect()
     {
+        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+
         if (nav.gameObject.activeSelf)
         {
             nav.gameObject.SetActive(false);
             levelSelect.gameObject.SetActive(true);
+            tutorial.Select();
         }
         else if (levelSelect.gameObject.activeSelf)
         {
             levelSelect.gameObject.SetActive(false);
             nav.gameObject.SetActive(true);
+            start.Select();
         }
     }
 
     public void ToggleOptions()
     {
+        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+
         if (nav.gameObject.activeSelf)
         {
             nav.gameObject.SetActive(false);
             options.gameObject.SetActive(true);
+            optionsBack.Select();
         }
         else if (options.gameObject.activeSelf)
         {
             options.gameObject.SetActive(false);
             nav.gameObject.SetActive(true);
+            start.Select();
         }
     }
 
     public void ToggleKeybindings()
     {
+        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+
         if (options.gameObject.activeSelf)
         {
             options.gameObject.SetActive(false);
             keybinds.gameObject.SetActive(true);
+            kbBack.Select();
         }
         else if (keybinds.gameObject.activeSelf)
         {
             keybinds.gameObject.SetActive(false);
             options.gameObject.SetActive(true);
+            optionsBack.Select();
         }
     }
 
     public void ToggleKeyboardKeybindings()
     {
+        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+
         if (keybinds.gameObject.activeSelf)
         {
             keybinds.gameObject.SetActive(false);
             keybindsK.gameObject.SetActive(true);
+            kbdKbBack.Select();
         }
         else if (keybindsK.gameObject.activeSelf)
         {
             keybindsK.gameObject.SetActive(false);
             keybinds.gameObject.SetActive(true);
+            kbBack.Select();
         }
     }
 
     public void ToggleGamepadKeybindings()
     {
+        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+
         if (keybinds.gameObject.activeSelf)
         {
             keybinds.gameObject.SetActive(false);
             keybindsG.gameObject.SetActive(true);
+            gpdKbBack.Select();
         }
         else if (keybindsG.gameObject.activeSelf)
         {
             keybindsG.gameObject.SetActive(false);
             keybinds.gameObject.SetActive(true);
+            kbBack.Select();
         }
     }
 
-    public void CloseGame()
+    public void QuitGame()
     {
+        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
         Application.Quit();
     }
 
