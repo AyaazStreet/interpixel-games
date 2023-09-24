@@ -17,7 +17,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Canvas keybindsG;
 
     [Header("Buttons")]
-    [SerializeField] private Button anyToStart;
     [SerializeField] private Button start;
     [SerializeField] private Button tutorial;
     [SerializeField] private Button optionsBack;
@@ -26,6 +25,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button gpdKbBack;
 
     [Header("Objects")]
+    [SerializeField] private GameObject anyToStart;
     [SerializeField] private GameObject ButtonCont;
     private CheckpointManager checkpointManager;
     [SerializeField] private GameObject cmPrefab;
@@ -34,6 +34,8 @@ public class MenuManager : MonoBehaviour
     public Animator titleAnim;
 
     private float bgAnimTime = 2f;
+
+    private bool started = false;
 
     private void Awake()
     {
@@ -72,7 +74,13 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if(anyToStart.activeSelf)
+        {
+            if (Input.anyKeyDown)
+            {
+                StartButton();
+            }
+        }
     }
 
     public void StartButton()
@@ -117,7 +125,6 @@ public class MenuManager : MonoBehaviour
 
         titleAnim.SetTrigger("start");
         anyToStart.gameObject.SetActive(true);
-        anyToStart.Select();
 
         yield break;
     }
