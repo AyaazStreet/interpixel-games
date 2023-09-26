@@ -45,6 +45,11 @@ public class PauseManager : MonoBehaviour
         SaveManager.SaveData(GameManager.Instance.pc, GameManager.Instance.currLevel);
     }
 
+    public void Options()
+    {
+        
+    }
+
     public void QuitToMenu()
     {
         SceneManager.LoadScene("Menu_Main");

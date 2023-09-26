@@ -9,8 +9,10 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
 
-    public AudioMixerGroup SFX_Master;
-    public AudioMixerGroup SFX_Local;
+    public AudioMixerGroup grp_master;
+    public AudioMixerGroup grp_spatial;
+    public AudioMixerGroup grp_nonspatial;
+    public AudioMixerGroup grp_background;
 
     private void Awake()
     {
@@ -65,7 +67,7 @@ public class SoundManager : MonoBehaviour
         audioSource.rolloffMode = AudioRolloffMode.Linear;
         audioSource.dopplerLevel = 0f;
 
-        audioSource.outputAudioMixerGroup = Instance.SFX_Master;
+        audioSource.outputAudioMixerGroup = Instance.grp_spatial;
         audioSource.Play();
 
         Destroy(soundGameObject, audioSource.clip.length + 0.1f);
@@ -78,7 +80,7 @@ public class SoundManager : MonoBehaviour
             oneShotPlayer = new GameObject("SoundPlayer");
             oneShotAudioSource = oneShotPlayer.AddComponent<AudioSource>();
         }
-        oneShotAudioSource.outputAudioMixerGroup = Instance.SFX_Local;
+        oneShotAudioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
         oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
     }
 
@@ -90,7 +92,7 @@ public class SoundManager : MonoBehaviour
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.clip = GetAudioClip(sound);
 
-        audioSource.outputAudioMixerGroup = Instance.SFX_Local;
+        audioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
         audioSource.PlayDelayed(delay);
 
         Destroy(soundGameObject, delay + audioSource.clip.length + 0.1f);
@@ -107,7 +109,7 @@ public class SoundManager : MonoBehaviour
         loopAudioSource.loop = true;
         loopAudioSource.volume = 0.5f;
 
-        loopAudioSource.outputAudioMixerGroup = Instance.SFX_Local;
+        loopAudioSource.outputAudioMixerGroup = Instance.grp_background;
         loopAudioSource.Play();
     }
 

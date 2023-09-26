@@ -61,8 +61,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8080562e5c0228429ea4ef382771208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputs: {fileID: -944628639613478452, guid: 177cf0a76cd54d047a2017789023784f, type: 3}
   text: {fileID: 2461346604276072877}
   startDelay: 0
+  stayOn: 0
+  on: 0
 --- !u!114 &1429926059209552926
 MonoBehaviour:
   m_ObjectHideFlags: 0

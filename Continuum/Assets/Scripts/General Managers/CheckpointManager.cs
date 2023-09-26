@@ -12,6 +12,7 @@ public class CheckpointManager : MonoBehaviour
     public List<InventoryManager.InventoryItem> savedInventory;
     public List<bool> usedStates;
     public List<bool> interactableStates;
+    public bool togglePowers;
     
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class CheckpointManager : MonoBehaviour
             interactableStates = new();
             savedLevel = -1;
             unlocks = new bool[6];
+            togglePowers = false;
         }
         else
         {

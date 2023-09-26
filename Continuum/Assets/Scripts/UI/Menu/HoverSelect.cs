@@ -7,14 +7,20 @@ using UnityEngine.UI;
 public class HoverSelect : MonoBehaviour, IPointerEnterHandler
 {
     public Button b;
+    public Toggle t;
+    public Slider s;
 
     private void Awake()
     {
         b = GetComponent<Button>();
+        t = GetComponent<Toggle>();
+        s = GetComponent<Slider>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        b.Select();
+        if (b) b.Select();
+        if (t) t.Select();
+        if (s) s.Select();
     }
 }

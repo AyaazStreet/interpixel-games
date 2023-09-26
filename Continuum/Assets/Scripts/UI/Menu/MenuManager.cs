@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    [Header("Input")]
+    [SerializeField] private InputActionAsset inputs;
+
     [Header("Canvases")]
+    [SerializeField] private Canvas startPane;
     [SerializeField] private Canvas nav;
     [SerializeField] private Canvas levelSelect;
     [SerializeField] private Canvas options;
@@ -33,15 +37,13 @@ public class MenuManager : MonoBehaviour
     public Animator backgroundAnim;
     public Animator titleAnim;
 
-    private float bgAnimTime = 2f;
-
-    private bool started = false;
+    private readonly float bgAnimTime = 2f;
 
     private void Awake()
     {
         Time.timeScale = 1.0f;
 
-        if (anyToStart) anyToStart.gameObject.SetActive(true);
+        if (startPane) startPane.gameObject.SetActive(true);
         if (nav) nav.gameObject.SetActive(false);
         if (levelSelect) levelSelect.gameObject.SetActive(false);
         if (options) options.gameObject.SetActive(false);
@@ -83,6 +85,30 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        inputs.FindAction("Cancel").performed += Back_performed;
+    }
+
+    private void OnDisable()
+    {
+        inputs.FindAction("Cancel").performed += Back_performed;
+    }
+
+
+    public void Back_performed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (nav.gameObject.activeSelf) CloseButton();
+            if (levelSelect.gameObject.activeSelf) ToggleLevelSelect();
+            if (options.gameObject.activeSelf) ToggleOptions();
+            if (keybinds.gameObject.activeSelf) ToggleKeybindings();
+            if (keybindsK.gameObject.activeSelf) ToggleKeyboardKeybindings();
+            if (keybindsG.gameObject.activeSelf) ToggleGamepadKeybindings();
+        }
+    }
+
     public void StartButton()
     {
         StartCoroutine(OpenMenu());
@@ -106,7 +132,10 @@ public class MenuManager : MonoBehaviour
 
         nav.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(3.5f);
+        if (!nav.GetComponentInChildren<TypeTextHandler>().on)
+        {
+            yield return new WaitForSeconds(3.5f);
+        }
 
         ButtonCont.SetActive(true);
         start.Select();
@@ -252,7 +281,6 @@ public class MenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
         Application.Quit();
     }
 

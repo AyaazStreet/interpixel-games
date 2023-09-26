@@ -8,10 +8,11 @@ public class SetVolume : MonoBehaviour
 {
     public AudioMixer mixer;
     public TextMeshProUGUI txt;
+    public string group;
 
     public void SetLevel(float sliderVal)
     {
-        mixer.SetFloat("SFX_Vol", Mathf.Log10(sliderVal) * 20);
+        mixer.SetFloat(group, Mathf.Log10(sliderVal) * 20);
         
         if (txt != null )
         {
