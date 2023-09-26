@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject cmPrefab;
     public CheckpointManager checkpointManager;
 
+    public Texture2D aimCursor;
+
     public int currLevel;
 
     private void Awake()
@@ -38,7 +40,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        //Timescale
         Time.timeScale = 1f;
+
+        //Cursor
+        Cursor.SetCursor(aimCursor, new Vector2(aimCursor.width / 2, aimCursor.height / 2), CursorMode.Auto);
 
         // Find the player's GameObject and store its Transform component.
         player = GameObject.FindGameObjectWithTag("Player");

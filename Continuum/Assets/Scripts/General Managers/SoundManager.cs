@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
+        SoundManager.Ininitalize();
         PlaySoundLoop(SoundManager.Sound.loop_factory);
     }
 
@@ -37,6 +38,18 @@ public class SoundManager : MonoBehaviour
         snd_splat,
         snd_fall,
         snd_drip,
+        snd_click,
+        snd_hover
+    }
+
+    private static Dictionary<Sound, float> soundTimerDictionary;
+    public static void Ininitalize()
+    {
+        soundTimerDictionary = new Dictionary<Sound, float>();
+        foreach (Sound s in Enum.GetValues(typeof(Sound)))
+        {
+            soundTimerDictionary[s] = 0f;
+        }
     }
 
     [Serializable]
@@ -54,48 +67,80 @@ public class SoundManager : MonoBehaviour
     private static GameObject loopPlayer;
     private static AudioSource loopAudioSource;
 
+    private static bool CanPlaySound(Sound sound)
+    {
+        if (soundTimerDictionary.ContainsKey(sound))
+        {
+            float lastTimePlayed = soundTimerDictionary[sound];
+            float timerMax = 0.03f;
+
+            if (lastTimePlayed + timerMax < Time.time)
+            {
+                soundTimerDictionary[sound] = Time.time;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public static void PlaySound(Sound sound, Vector3 positon)
     {
-        GameObject soundGameObject = new GameObject("SpatialSoundPlayer");
-        soundGameObject.transform.position = positon;
+        if (CanPlaySound(sound))
+        {
+            GameObject soundGameObject = new GameObject("SpatialSoundPlayer");
+            soundGameObject.transform.position = positon;
 
-        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        audioSource.clip = GetAudioClip(sound);
-        audioSource.maxDistance = 15f;
-        audioSource.minDistance = 8f;
-        audioSource.spatialBlend = 1f;
-        audioSource.rolloffMode = AudioRolloffMode.Linear;
-        audioSource.dopplerLevel = 0f;
+            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            audioSource.clip = GetAudioClip(sound);
+            audioSource.maxDistance = 15f;
+            audioSource.minDistance = 8f;
+            audioSource.spatialBlend = 1f;
+            audioSource.rolloffMode = AudioRolloffMode.Linear;
+            audioSource.dopplerLevel = 0f;
 
-        audioSource.outputAudioMixerGroup = Instance.grp_spatial;
-        audioSource.Play();
+            audioSource.outputAudioMixerGroup = Instance.grp_spatial;
+            audioSource.Play();
 
-        Destroy(soundGameObject, audioSource.clip.length + 0.1f);
+            Destroy(soundGameObject, audioSource.clip.length + 0.1f);
+        }
     }
 
     public static void PlaySound(Sound sound)
     {
-        if (oneShotPlayer == null)
+        if (CanPlaySound(sound))
         {
-            oneShotPlayer = new GameObject("SoundPlayer");
-            oneShotAudioSource = oneShotPlayer.AddComponent<AudioSource>();
+            if (oneShotPlayer == null)
+            {
+                oneShotPlayer = new GameObject("SoundPlayer");
+                oneShotAudioSource = oneShotPlayer.AddComponent<AudioSource>();
+            }
+            oneShotAudioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
+            oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
         }
-        oneShotAudioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
-        oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
     }
 
     public static void PlaySound(Sound sound, float delay)
     {
-        GameObject soundGameObject = new GameObject("DelayedSoundPlayer");
-        //soundGameObject.transform.position = positon;
+        if (CanPlaySound(sound))
+        {
+            GameObject soundGameObject = new GameObject("DelayedSoundPlayer");
+            //soundGameObject.transform.position = positon;
 
-        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        audioSource.clip = GetAudioClip(sound);
+            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            audioSource.clip = GetAudioClip(sound);
 
-        audioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
-        audioSource.PlayDelayed(delay);
+            audioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
+            audioSource.PlayDelayed(delay);
 
-        Destroy(soundGameObject, delay + audioSource.clip.length + 0.1f);
+            Destroy(soundGameObject, delay + audioSource.clip.length + 0.1f);
+        }
     }
 
     public static void PlaySoundLoop(Sound sound)

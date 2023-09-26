@@ -28,6 +28,14 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button kbdKbBack;
     [SerializeField] private Button gpdKbBack;
 
+    [Header("Settings")]
+    [SerializeField] private Toggle powerSetting;
+    [SerializeField] private Toggle fullscreenSetting;
+
+    [Header("Levels")]
+    [SerializeField] private GameObject[] levelPages;
+    private int activeLevelPage = 0;
+
     [Header("Objects")]
     [SerializeField] private GameObject anyToStart;
     [SerializeField] private GameObject ButtonCont;
@@ -37,11 +45,15 @@ public class MenuManager : MonoBehaviour
     public Animator backgroundAnim;
     public Animator titleAnim;
 
+    public Texture2D cursor;
+
     private readonly float bgAnimTime = 2f;
 
     private void Awake()
     {
         Time.timeScale = 1.0f;
+
+        Cursor.SetCursor(cursor, new Vector2(0, 0), CursorMode.Auto);
 
         if (startPane) startPane.gameObject.SetActive(true);
         if (nav) nav.gameObject.SetActive(false);
@@ -64,8 +76,9 @@ public class MenuManager : MonoBehaviour
             cm.name = "CheckpointManager";
             checkpointManager = cm.GetComponent<CheckpointManager>();
         }
-
-        //checkpointManager.savedLevel = -1;
+        
+        powerSetting.isOn = CheckpointManager.Instance.togglePowers;
+        fullscreenSetting.isOn = Screen.fullScreen;
 
         //Data load
         if (data != null)
@@ -98,6 +111,7 @@ public class MenuManager : MonoBehaviour
 
     public void Back_performed(InputAction.CallbackContext context)
     {
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
         if (context.performed)
         {
             if (nav.gameObject.activeSelf) CloseButton();
@@ -116,12 +130,16 @@ public class MenuManager : MonoBehaviour
 
     public void CloseButton()
     {
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
+
         StartCoroutine(CloseMenu());
-        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
     }
 
     public IEnumerator OpenMenu()
     {
+        
+        
         backgroundAnim.SetTrigger("start");
         titleAnim.SetTrigger("start");
 
@@ -145,6 +163,8 @@ public class MenuManager : MonoBehaviour
 
     public IEnumerator CloseMenu()
     {
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
+
         backgroundAnim.SetTrigger("start");
         
 
@@ -160,7 +180,7 @@ public class MenuManager : MonoBehaviour
 
     public void Continue()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
 
         //Level Select
         switch (checkpointManager.savedLevel)
@@ -191,7 +211,7 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleLevelSelect()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
 
         if (nav.gameObject.activeSelf)
         {
@@ -209,7 +229,7 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleOptions()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
 
         if (nav.gameObject.activeSelf)
         {
@@ -227,7 +247,7 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleKeybindings()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
 
         if (options.gameObject.activeSelf)
         {
@@ -245,7 +265,7 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleKeyboardKeybindings()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
 
         if (keybinds.gameObject.activeSelf)
         {
@@ -263,7 +283,7 @@ public class MenuManager : MonoBehaviour
 
     public void ToggleGamepadKeybindings()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_footstep);
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
 
         if (keybinds.gameObject.activeSelf)
         {
@@ -276,6 +296,56 @@ public class MenuManager : MonoBehaviour
             keybindsG.gameObject.SetActive(false);
             keybinds.gameObject.SetActive(true);
             kbBack.Select();
+        }
+    }
+
+    public void NextLevelPage()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
+
+        if(activeLevelPage < levelPages.Length - 1)
+        {
+            activeLevelPage++;
+        }
+        else
+        {
+            activeLevelPage = 0;
+        }
+        for (int i = 0; i < levelPages.Length; i++)
+        {
+            if (i == activeLevelPage)
+            {
+                levelPages[i].SetActive(true);
+            }
+            else 
+            { 
+                levelPages[i].SetActive(false);
+            }
+        }
+    }
+
+    public void PrevLevelPage()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.snd_click);
+
+        if (activeLevelPage > 0)
+        {
+            activeLevelPage--;
+        }
+        else
+        {
+            activeLevelPage = levelPages.Length - 1;
+        }
+        for (int i = 0; i < levelPages.Length; i++)
+        {
+            if (i == activeLevelPage)
+            {
+                levelPages[i].SetActive(true);
+            }
+            else
+            {
+                levelPages[i].SetActive(false);
+            }
         }
     }
 
