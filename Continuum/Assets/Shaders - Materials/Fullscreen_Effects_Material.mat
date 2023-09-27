@@ -48,7 +48,7 @@ Material:
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
     - _Cells: 0
-    - _FullscreenIntesity: 0
+    - _FullscreenIntesity: 1
     - _Fullscreen_AlphaBlendOperation: 0
     - _Fullscreen_BlendMode: 4
     - _Fullscreen_ColorBlendOperation: 0
@@ -61,7 +61,7 @@ Material:
     - _Power: 0.9987259
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Radius: 0.50024086
+    - _Radius: 0.6166064
     - _VoronoiPower: 1.5
     - _VoronoiScale: 10
     - _VoronoiSpeed: 1

@@ -149,7 +149,7 @@ public class PlatformMove : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
         {
             contact = true;
-            pc.externalVelocityObjs.Add(this);
+            pc.externalVelocityObjs.Add(rb);
             //pc.UpdateVelocity();
         }
     }
@@ -167,7 +167,7 @@ public class PlatformMove : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
         {
             contact = false;
-            pc.externalVelocityObjs.Remove(this);
+            pc.externalVelocityObjs.Remove(rb);
         }
     }
 }

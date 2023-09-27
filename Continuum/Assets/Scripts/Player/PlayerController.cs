@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 lastMoveDir;
 
     private Vector2 externalVelocity; 
-    public List<PlatformMove> externalVelocityObjs;
+    public List<Rigidbody2D> externalVelocityObjs;
 
     public Image fillIndi;
 
@@ -291,13 +291,13 @@ public class PlayerController : MonoBehaviour
         //Update ext v
         if (externalVelocityObjs.Count > 0)
         {
-            externalVelocity = externalVelocityObjs[0].rb.velocity;
+            externalVelocity = externalVelocityObjs[0].velocity;
 
             foreach (var v in externalVelocityObjs)
             {
-                if (v.rb.velocity.magnitude > externalVelocity.magnitude)
+                if (v.velocity.magnitude > externalVelocity.magnitude)
                 {
-                    externalVelocity = v.rb.velocity;
+                    externalVelocity = v.velocity;
                 }
             }
         }
@@ -446,7 +446,7 @@ public class PlayerController : MonoBehaviour
 
     public void Pause(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && hasControl)
         {
             PauseManager.Instance.TogglePause();
 
@@ -517,9 +517,12 @@ public class PlayerController : MonoBehaviour
             anim.speed = ANIM_SPEED_MULTI;
         }
 
-        anim.SetFloat("AnimMoveMagnitude", (rb.velocity - externalVelocity).magnitude);
-        anim.SetFloat("AnimMoveX", lastMoveDir.x);
-        anim.SetFloat("AnimMoveY", lastMoveDir.y);
+        if (hasControl)
+        {
+            anim.SetFloat("AnimMoveMagnitude", (rb.velocity - externalVelocity).magnitude);
+            anim.SetFloat("AnimMoveX", lastMoveDir.x);
+            anim.SetFloat("AnimMoveY", lastMoveDir.y);
+        }
     }
 
     public void ResetScene(InputAction.CallbackContext context)
