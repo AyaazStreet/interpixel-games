@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeScaleManager : MonoBehaviour
 {
-    public static float globalTimescale;
+    [SerializeField] public static float globalTimescale;
 
     public const float A1_EFFECT = 0.25f;
     public const float A2_EFFECT = 4f;

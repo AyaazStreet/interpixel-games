@@ -11298,7 +11298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7879596216478769870, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
       propertyPath: lines.Array.data[1]
-      value: Two keycards huh...
+      value: Two scanners...
       objectReference: {fileID: 0}
     - target: {fileID: 8320528105089862250, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
       propertyPath: m_LocalPosition.y

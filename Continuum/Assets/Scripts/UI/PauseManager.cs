@@ -21,9 +21,6 @@ public class PauseManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        optionsUI.transform.Find("tgl_PowerSetting").GetComponent<Toggle>().isOn = CheckpointManager.Instance.togglePowers;
-        optionsUI.transform.Find("tgl_Fullscreen").GetComponent<Toggle>().isOn = Screen.fullScreen;
-
         pauseUI.SetActive(false);
         optionsUI.SetActive(false);
     }
@@ -69,6 +66,9 @@ public class PauseManager : MonoBehaviour
     public void Options()
     {
         SoundManager.PlaySound(SoundManager.Sound.snd_click);
+
+        optionsUI.transform.Find("tgl_PowerSetting").GetComponent<Toggle>().isOn = CheckpointManager.Instance.togglePowers;
+        optionsUI.transform.Find("tgl_Fullscreen").GetComponent<Toggle>().isOn = Screen.fullScreen;
 
         optionsUI.SetActive(true);
         pauseUI.SetActive(false);

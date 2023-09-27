@@ -8,10 +8,17 @@ public class PowerUnlock : MonoBehaviour
     bool on = true;
     bool started = false;
 
-    public bool interactable = false;
+    private bool interactable = false;
+
+    public const float OUTLINE_THICKNESS = 0.75f;
 
     public float timerMax = 6f;
     public float timer = 0f;
+
+    [Range(1, 3)]
+    public int power;
+
+    private SpriteRenderer sr;
 
     GameObject player;
     Animator animator;
@@ -31,6 +38,7 @@ public class PowerUnlock : MonoBehaviour
     {
         player = GameManager.Instance.player;
         animator = GetComponent<Animator>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,6 +46,7 @@ public class PowerUnlock : MonoBehaviour
         if (collision.CompareTag("Player") && on)
         {
             interactable = true;
+            sr.material.SetFloat("_Outline_Thickness", OUTLINE_THICKNESS);
         }
     }
 
@@ -46,6 +55,7 @@ public class PowerUnlock : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             interactable = false;
+            sr.material.SetFloat("_Outline_Thickness", 0f);
         }
     }
 
@@ -63,9 +73,30 @@ public class PowerUnlock : MonoBehaviour
                 
                 player.GetComponent<SpriteRenderer>().enabled = true;
                 player.GetComponent<PlayerController>().enabled = true;
+                player.GetComponent<PlayerController>().hasControl = true;
                 player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+                player.GetComponent<Rigidbody2D>().rotation = 0f;
                 player.transform.position = new Vector3(transform.position.x, transform.position.y - 1.5f, player.transform.position.z);
+
+                switch (power)
+                {
+                    case 1:
+                    {
+                        player.GetComponent<PlayerController>().A1_Unlocked = true;
+                    }
+                    break;
+                    case 2:
+                    {
+                        player.GetComponent<PlayerController>().A2_Unlocked = true;
+                    }
+                    break;
+                    case 3:
+                    {
+                        player.GetComponent<PlayerController>().A3_Unlocked = true;
+                    }
+                    break;
+                }
             }
         }
         
@@ -76,8 +107,10 @@ public class PowerUnlock : MonoBehaviour
         if (interactable && context.performed)
         {
             player.GetComponent<SpriteRenderer>().enabled = false;
+            player.GetComponent<PlayerController>().hasControl = false;
             player.GetComponent<PlayerController>().enabled = false;
             player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
             on = false;
             started = true;
             animator.SetTrigger("StartAnim");

@@ -125,104 +125,107 @@ public class PlayerController : MonoBehaviour
         }
 
         //Perform the correct action based on active ability
-        switch (activeAbility)
+        if (hasControl)
         {
-            case 0://no active ability
+            switch (activeAbility)
             {
-                //reset timescale to normal
-                if ((TimeScaleManager.globalTimescale + 4f * Time.deltaTime) < 1f)
+                case 0://no active ability
                 {
-                    TimeScaleManager.globalTimescale += 4f * Time.deltaTime;
-                }
-                else if ((TimeScaleManager.globalTimescale - 4f * Time.deltaTime) > 1f)
-                {
-                    TimeScaleManager.globalTimescale -= 4f * Time.deltaTime;
-                }
-                else if (TimeScaleManager.globalTimescale != 1f)
-                {
-                    TimeScaleManager.globalTimescale = 1f;
-                }
-                
-                //reduce cooldowns
-                if (abilityCooldownTimer > 0f)
-                {
-                    abilityCooldownTimer -= Time.deltaTime;
-                }
-            }
-            break;
-            case 1://Time Slow
-            {
-                if (abilityActiveTimer > 0f)
-                {
-                    if ((TimeScaleManager.globalTimescale - 4f * Time.deltaTime) > 0.25f)  //adjust timescale
-                    {
-                        TimeScaleManager.globalTimescale -= 4f * Time.deltaTime;
-                    }
-                    else
-                    {
-                        TimeScaleManager.globalTimescale = TimeScaleManager.A1_EFFECT;
-                    }
-
-                    abilityActiveTimer -= Time.deltaTime; //countdown timer
-                    if (abilityActiveTimer <= 0f)
-                    {
-                        activeAbility = 0;
-                        abilityCooldownTimer = CD_DUR;
-                        
-                        Debug.Log("Time Slow Deactivated");
-                    }
-                }
-            } 
-            break;
-            case 2://Time Accellerate
-            {
-                if (abilityActiveTimer > 0f)
-                {
-                    if ((TimeScaleManager.globalTimescale + 4f * Time.deltaTime) < 2f)  //adjust timescale
+                    //reset timescale to normal
+                    if ((TimeScaleManager.globalTimescale + 4f * Time.deltaTime) < 1f)
                     {
                         TimeScaleManager.globalTimescale += 4f * Time.deltaTime;
                     }
-                    else
-                    {
-                        TimeScaleManager.globalTimescale = TimeScaleManager.A2_EFFECT;
-                    }
-
-                    abilityActiveTimer -= Time.deltaTime; //countdown timer
-                    if (abilityActiveTimer <= 0f)
-                    {
-                        activeAbility = 0;
-                        abilityCooldownTimer = CD_DUR;
-                        
-                        Debug.Log("Time Accellerate Deactivated");
-                    }
-                }
-            }
-            break;
-            case 3://Time Stop
-            {
-                if (abilityActiveTimer > 0f)
-                {
-                    if((TimeScaleManager.globalTimescale - 4f * Time.deltaTime) > 0f)  //adjust timescale
+                    else if ((TimeScaleManager.globalTimescale - 4f * Time.deltaTime) > 1f)
                     {
                         TimeScaleManager.globalTimescale -= 4f * Time.deltaTime;
                     }
-                    else
+                    else if (TimeScaleManager.globalTimescale != 1f)
                     {
-                        TimeScaleManager.globalTimescale = TimeScaleManager.A3_EFFECT;
+                        TimeScaleManager.globalTimescale = 1f;
                     }
 
-                    abilityActiveTimer -= Time.deltaTime; //countdown timer
-                    if (abilityActiveTimer <= 0f)
+                    //reduce cooldowns
+                    if (abilityCooldownTimer > 0f)
                     {
-                        comboActive = false;
-                        activeAbility = 0;
-                        abilityCooldownTimer = CD_DUR;
-
-                        Debug.Log("Time Stop Deactivated");
+                        abilityCooldownTimer -= Time.deltaTime;
                     }
                 }
+                break;
+                case 1://Time Slow
+                {
+                    if (abilityActiveTimer > 0f)
+                    {
+                        if ((TimeScaleManager.globalTimescale - 4f * Time.deltaTime) > TimeScaleManager.A1_EFFECT)  //adjust timescale
+                        {
+                            TimeScaleManager.globalTimescale -= 4f * Time.deltaTime;
+                        }
+                        else
+                        {
+                            TimeScaleManager.globalTimescale = TimeScaleManager.A1_EFFECT;
+                        }
+
+                        abilityActiveTimer -= Time.deltaTime; //countdown timer
+                        if (abilityActiveTimer <= 0f)
+                        {
+                            activeAbility = 0;
+                            abilityCooldownTimer = CD_DUR;
+
+                            Debug.Log("Time Slow Deactivated");
+                        }
+                    }
+                }
+                break;
+                case 2://Time Accellerate
+                {
+                    if (abilityActiveTimer > 0f)
+                    {
+                        if ((TimeScaleManager.globalTimescale + 4f * Time.deltaTime) < TimeScaleManager.A2_EFFECT)  //adjust timescale
+                        {
+                            TimeScaleManager.globalTimescale += 4f * Time.deltaTime;
+                        }
+                        else
+                        {
+                            TimeScaleManager.globalTimescale = TimeScaleManager.A2_EFFECT;
+                        }
+
+                        abilityActiveTimer -= Time.deltaTime; //countdown timer
+                        if (abilityActiveTimer <= 0f)
+                        {
+                            activeAbility = 0;
+                            abilityCooldownTimer = CD_DUR;
+
+                            Debug.Log("Time Accellerate Deactivated");
+                        }
+                    }
+                }
+                break;
+                case 3://Time Stop
+                {
+                    if (abilityActiveTimer > 0f)
+                    {
+                        if ((TimeScaleManager.globalTimescale - 4f * Time.deltaTime) > TimeScaleManager.A3_EFFECT)  //adjust timescale
+                        {
+                            TimeScaleManager.globalTimescale -= 4f * Time.deltaTime;
+                        }
+                        else
+                        {
+                            TimeScaleManager.globalTimescale = TimeScaleManager.A3_EFFECT;
+                        }
+
+                        abilityActiveTimer -= Time.deltaTime; //countdown timer
+                        if (abilityActiveTimer <= 0f)
+                        {
+                            comboActive = false;
+                            activeAbility = 0;
+                            abilityCooldownTimer = CD_DUR;
+
+                            Debug.Log("Time Stop Deactivated");
+                        }
+                    }
+                }
+                break;
             }
-            break;
         }
 
         if (throwCooldownTimer > 0)
@@ -246,11 +249,19 @@ public class PlayerController : MonoBehaviour
             alive = false;
         }
 
-        Animate(); //run animations
+        if (Time.timeScale > 0f)
+        {
+            Animate(); //run animations
+        }
     }
 
     private void FixedUpdate()
     {
+        if (!hasControl)
+        {
+            moveDir = Vector2.zero;
+        }
+
         //Move
         if (!falling && alive)
         {
@@ -438,6 +449,15 @@ public class PlayerController : MonoBehaviour
         if(context.performed)
         {
             PauseManager.Instance.TogglePause();
+
+            if (Time.timeScale > 0)
+            {
+                hasControl = true;
+            }
+            else
+            {
+                hasControl = false;
+            }
         }
     }
 
