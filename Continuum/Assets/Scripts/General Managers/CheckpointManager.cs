@@ -10,6 +10,7 @@ public class CheckpointManager : MonoBehaviour
     public Vector3 savedPosition;
     public bool[] unlocks;
     public List<InventoryManager.InventoryItem> savedInventory;
+    public List<EquipManager.Collectable> savedCollectables;
     public List<bool> usedStates;
     public List<bool> interactableStates;
     public bool togglePowers;
@@ -22,6 +23,7 @@ public class CheckpointManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             savedInventory = new();
+            savedCollectables = new();
             usedStates = new();
             interactableStates = new();
             savedLevel = -1;

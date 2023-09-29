@@ -19,6 +19,9 @@ public class EnemyDetection : MonoBehaviour
     public Image indicatorFill;
     public GameObject player;
 
+    private GameObject playerIndicator;
+    public GameObject playerIndicatorPrefab;
+
     private void Start()
     {
         indicator.SetActive(false);
@@ -71,6 +74,17 @@ public class EnemyDetection : MonoBehaviour
             detected = true;
             indicator.SetActive(true);
 
+            if (playerIndicator)
+            {
+                playerIndicator.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("test");
+                playerIndicator = Instantiate(playerIndicatorPrefab, GameManager.Instance.pc.indicators.transform);
+                playerIndicator.GetComponent<DetectionIndicator>().enemy = this;
+            }
+
             inFOV = false;
         }
         else
@@ -80,6 +94,11 @@ public class EnemyDetection : MonoBehaviour
             if (indicatorFill.fillAmount <= 0)
             {
                 indicator.SetActive(false);
+            }
+
+            if (playerIndicator)
+            {
+                playerIndicator.SetActive(false);
             }
         }
     }

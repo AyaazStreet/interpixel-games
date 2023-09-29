@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PowerGainSequence : MonoBehaviour
 {
@@ -68,7 +69,8 @@ public class PowerGainSequence : MonoBehaviour
     private IEnumerator Sequence()
     {
         pc.hasControl = false;
-        
+        pc.anim.SetFloat("AnimMoveMagnitude", 0f);
+
         switch (power)
         {
             case 1:

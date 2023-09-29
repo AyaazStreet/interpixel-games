@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public PlayerController pc;
     public InventoryManager im;
+    public EquipManager em;
     private Vector3 respawnPosition;
 
     public GameObject savedObjects;
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
         im = player.GetComponent<InventoryManager>();
+        em = player.GetComponent<EquipManager>();
 
         pc.UpdateFromSave(SaveManager.LoadData());
 
@@ -124,7 +127,43 @@ public class GameManager : MonoBehaviour
                 i++;
             }
 
-            Debug.Log("Moved player based on checkpoint data: " + checkpointManager.savedPosition);
+            //collectables
+            foreach (EquipManager.Collectable c in checkpointManager.savedCollectables)
+            {
+                em.collected.Add(c);
+
+                switch (c.unlockNum)
+                {
+                    case 1:
+                        pc.T1_Unlocked = true;
+                        em.selected = 1;
+                        em.E1_count += c.pickupNumber;
+                        break;
+                    case 2:
+                        pc.T2_Unlocked = true;
+                        em.selected = 2;
+                        em.E2_count += c.pickupNumber;
+                        break;
+                    case 3:
+                        pc.T3_Unlocked = true;
+                        em.selected = 3;
+                        em.E3_count += c.pickupNumber;
+                        break;
+                    default:
+                        break;
+                }
+
+                foreach (Transform t in savedObjects.transform)
+                {
+                    if (t.transform.position == c.pickupPosition)
+                    {
+                        Destroy(t.gameObject);
+                    }
+                }
+            }
+
+
+            Debug.Log("Loaded checkpoint data");
         }
     }
 

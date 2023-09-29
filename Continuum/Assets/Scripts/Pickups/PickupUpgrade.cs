@@ -11,6 +11,8 @@ public class PickupUpgrade : MonoBehaviour
     private bool collected = false;
     private bool close;
 
+    public int pickupNumber;
+
     [Range(1, 3)]
     public int unlockNum;
 
@@ -59,7 +61,7 @@ public class PickupUpgrade : MonoBehaviour
 
                 if (tmp.a <= 0)
                 {
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
                 }
             }
 
@@ -71,27 +73,35 @@ public class PickupUpgrade : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !collected)
         {
             collected = true;
+            GameManager.Instance.em.collected.Add(new EquipManager.Collectable(unlockNum, pickupNumber, transform.position));
+            Collect();
+        }
+    }
 
-            switch (unlockNum)
-            {
-                case 1:
-                    collision.GetComponent<PlayerController>().T1_Unlocked = true;
-                    collision.GetComponent<EquipManager>().selected = 1;
-                    break;
-                case 2:
-                    collision.GetComponent<PlayerController>().T2_Unlocked = true;
-                    collision.GetComponent<EquipManager>().selected = 2;
-                    break;
-                case 3:
-                    collision.GetComponent<PlayerController>().T3_Unlocked = true;
-                    collision.GetComponent<EquipManager>().selected = 3;
-                    break; 
-                default:
-                    break;
-            }
+    public void Collect()
+    {
+        switch (unlockNum)
+        {
+            case 1:
+                GameManager.Instance.pc.T1_Unlocked = true;
+                GameManager.Instance.em.selected = 1;
+                GameManager.Instance.em.E1_count += pickupNumber;
+                break;
+            case 2:
+                GameManager.Instance.pc.T2_Unlocked = true;
+                GameManager.Instance.em.selected = 2;
+                GameManager.Instance.em.E2_count += pickupNumber;
+                break;
+            case 3:
+                GameManager.Instance.pc.T3_Unlocked = true;
+                GameManager.Instance.em.selected = 3;
+                GameManager.Instance.em.E3_count += pickupNumber;
+                break;
+            default:
+                break;
         }
     }
 }

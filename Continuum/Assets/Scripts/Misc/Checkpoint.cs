@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public bool activated = false;
+    public bool resetCollectables = false;
+    private bool activated = false;
+
 
     private CheckpointManager cm;
     private PlayerController pc;
     private InventoryManager im;
+    private EquipManager em;
     private GameObject interactables;
 
     private void Start()
@@ -14,6 +17,7 @@ public class Checkpoint : MonoBehaviour
         cm = GameManager.Instance.checkpointManager;
         pc = GameManager.Instance.pc;
         im = GameManager.Instance.im;
+        em = GameManager.Instance.em;
         interactables = GameManager.Instance.interactables;
     }
 
@@ -44,6 +48,16 @@ public class Checkpoint : MonoBehaviour
         foreach (Transform t in interactables.transform)
         {
             cm.interactableStates.Add(t.gameObject.GetComponent<Controller>().active);
+        }
+
+        
+        cm.savedCollectables.Clear();
+        if(!resetCollectables)
+        {
+            foreach (EquipManager.Collectable c in em.collected)
+            {
+                cm.savedCollectables.Add(c);
+            }
         }
     }
 

@@ -91,8 +91,13 @@ public class ThrowController : MonoBehaviour
             //Instantiate throwable object
             switch (selected)
             {
-                case 1: _ = Instantiate(boltPrefab, throwPoint.position, throwPoint.rotation);
-                    SoundManager.PlaySound(SoundManager.Sound.snd_throw);
+                case 1:
+                    if (em.E1_count > 0)
+                    {
+                        _ = Instantiate(boltPrefab, throwPoint.position, throwPoint.rotation);
+                        SoundManager.PlaySound(SoundManager.Sound.snd_throw);
+                        em.E1_count--;
+                    }
                     break;
                 case 2:
                 {
@@ -103,30 +108,47 @@ public class ThrowController : MonoBehaviour
                             break;
                         case 1:
                         {
-                            GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
-                            obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_slow; //set the correct infuse type
-                            SoundManager.PlaySound(SoundManager.Sound.snd_throw);
+                            if (em.E2_count > 0)
+                            {
+                                GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
+                                obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_slow; //set the correct infuse type
+                                SoundManager.PlaySound(SoundManager.Sound.snd_throw);
+                                em.E2_count--;
+                            }
                         }
                             break; 
                         case 2:
                         {
-                            GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
-                            obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_acc; //set the correct infuse type
-                            SoundManager.PlaySound(SoundManager.Sound.snd_throw);
+                            if (em.E2_count > 0)
+                            {
+                                GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
+                                obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_acc; //set the correct infuse type
+                                SoundManager.PlaySound(SoundManager.Sound.snd_throw);
+                                em.E2_count--;
+                            }
                         }
                             break;
                         case 3:
                         {
-                            GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
-                            obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_stop; //set the correct infuse type
-                            SoundManager.PlaySound(SoundManager.Sound.snd_throw);
+                            if (em.E2_count > 0)
+                            {
+                                GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
+                                obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_stop; //set the correct infuse type
+                                SoundManager.PlaySound(SoundManager.Sound.snd_throw);
+                                em.E2_count--;
+                            }
                         }
                             break;
                     }
                 }
                     break;
-                case 3: _ = Instantiate(rodPrefab, throwPoint.position, throwPoint.rotation);
-                    SoundManager.PlaySound(SoundManager.Sound.snd_throw);
+                case 3:
+                    if (em.E3_count > 0)
+                    {
+                        _ = Instantiate(rodPrefab, throwPoint.position, throwPoint.rotation);
+                        SoundManager.PlaySound(SoundManager.Sound.snd_throw);
+                        em.E3_count--;
+                    }
                     break;
                 default: Debug.Log("No Throwable Selected");
                     break;

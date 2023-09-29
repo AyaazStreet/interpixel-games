@@ -491,6 +491,7 @@ MonoBehaviour:
   indicator: {fileID: 1942494658685404104}
   indicatorFill: {fileID: 4343124883126802075}
   player: {fileID: 0}
+  playerIndicatorPrefab: {fileID: 5801206757228114249, guid: 6da118404fefa494ebe9007277d0f681, type: 3}
 --- !u!114 &6057850808540941861
 MonoBehaviour:
   m_ObjectHideFlags: 0

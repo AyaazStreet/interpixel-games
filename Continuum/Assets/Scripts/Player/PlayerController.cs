@@ -45,8 +45,10 @@ public class PlayerController : MonoBehaviour
     public float throwCooldownDuration = 1f;
     public float throwCooldownTimer = 0f;
 
+    public GameObject indicators;
+
     private Rigidbody2D rb;
-    private Animator anim;
+    public Animator anim;
     public float abilityActiveTimer;
     public float abilityCooldownTimer;
     public int activeAbility;
@@ -169,7 +171,6 @@ public class PlayerController : MonoBehaviour
                         if (abilityActiveTimer <= 0f)
                         {
                             activeAbility = 0;
-                            abilityCooldownTimer = CD_DUR;
 
                             Debug.Log("Time Slow Deactivated");
                         }
@@ -193,7 +194,6 @@ public class PlayerController : MonoBehaviour
                         if (abilityActiveTimer <= 0f)
                         {
                             activeAbility = 0;
-                            abilityCooldownTimer = CD_DUR;
 
                             Debug.Log("Time Accellerate Deactivated");
                         }
@@ -218,7 +218,6 @@ public class PlayerController : MonoBehaviour
                         {
                             comboActive = false;
                             activeAbility = 0;
-                            abilityCooldownTimer = CD_DUR;
 
                             Debug.Log("Time Stop Deactivated");
                         }
@@ -356,11 +355,12 @@ public class PlayerController : MonoBehaviour
             //check if minimum duration has passed... 
             if (abilityActiveTimer < A1_DUR - 0.5f)
             {
+                abilityCooldownTimer = (1 - (abilityActiveTimer / A1_DUR)) * CD_DUR;
                 abilityActiveTimer = 0.001f; //...if it has, reduce timer to near zero
             }
             else
             {
-                abilityActiveTimer = 0.5f - (A1_DUR - abilityActiveTimer); //...if not, wait out the minimum duration
+                StartCoroutine(MinDuration()); //...if not, wait out the minimum duration
             }
         }
 
@@ -391,11 +391,12 @@ public class PlayerController : MonoBehaviour
         {
             if (abilityActiveTimer < A2_DUR - 0.5f)
             {
+                abilityCooldownTimer = (1 - (abilityActiveTimer / A2_DUR)) * CD_DUR;
                 abilityActiveTimer = 0.001f;
             }
             else
             {
-                abilityActiveTimer = 0.5f - (A2_DUR - abilityActiveTimer);
+                StartCoroutine(MinDuration());
             }
         }
 
@@ -433,15 +434,38 @@ public class PlayerController : MonoBehaviour
         {
             if (abilityActiveTimer < A3_DUR - 0.5f)
             {
+                abilityCooldownTimer = (1 - (abilityActiveTimer / A3_DUR)) * CD_DUR;
                 abilityActiveTimer = 0.001f;
             }
             else
             {
-                abilityActiveTimer = 0.5f - (A3_DUR - abilityActiveTimer);
+                StartCoroutine(MinDuration());
             }
         }
 
+    }
+
+    private IEnumerator MinDuration()
+    {
+        yield return new WaitForSeconds(0.5f);
         
+        switch (activeAbility)
+        {
+            case 1: 
+                abilityCooldownTimer = (1 - (abilityActiveTimer / A1_DUR)) * CD_DUR;
+                break;
+            case 2:
+                abilityCooldownTimer = (1 - (abilityActiveTimer / A2_DUR)) * CD_DUR;
+                break; 
+            case 3:
+                abilityCooldownTimer = (1 - (abilityActiveTimer / A3_DUR)) * CD_DUR;
+                break;
+        }
+
+        
+        abilityActiveTimer = 0.001f;
+
+        yield break;
     }
 
     public void Pause(InputAction.CallbackContext context)
@@ -449,15 +473,6 @@ public class PlayerController : MonoBehaviour
         if(context.performed && hasControl)
         {
             PauseManager.Instance.TogglePause();
-
-            if (Time.timeScale > 0)
-            {
-                hasControl = true;
-            }
-            else
-            {
-                hasControl = false;
-            }
         }
     }
 

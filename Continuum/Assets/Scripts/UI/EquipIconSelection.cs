@@ -12,6 +12,7 @@ public class EquipIconSelection : MonoBehaviour
     public Sprite bg0;
     public Sprite bg1;
     public GameObject icon;
+    public TextMeshProUGUI count;
 
     private EquipManager em;
     private Image sr;
@@ -48,6 +49,19 @@ public class EquipIconSelection : MonoBehaviour
             {
                 sr.sprite = bg1;
             }
+        }
+
+        switch (slot)
+        {
+            case 1:
+                    count.text = "x" + em.E1_count;
+                break;
+            case 2:
+                    count.text = "x" + em.E2_count;
+                break;
+            case 3:
+                    count.text = "x" + em.E3_count;
+                break;
         }
 
         if (icon.activeSelf) 
