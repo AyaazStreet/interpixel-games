@@ -17,11 +17,11 @@ public class ResetUi : MonoBehaviour
     {
         if (pressed && fill < fillMax)
         {
-            fill += Time.deltaTime;
+            fill += Time.deltaTime * 2;
         }
         else if (fill > 0)
         {
-            fill -= Time.deltaTime;
+            fill -= Time.deltaTime * 2;
         }
         
         indi.fillAmount = fill / fillMax;

@@ -253,3 +253,6 @@ MonoBehaviour:
   gun: {fileID: 988204643625733530}
   firePoint: {fileID: 8353138022672883959}
   bulletPrefab: {fileID: 3226066175323084563, guid: cbf7d4410d9473e44a400e881eccb67c, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1152

@@ -15,6 +15,7 @@ TagManager:
   - Feet
   - CheckpointManager
   - Singleton
+  - Barrier
   layers:
   - Default
   - TransparentFX

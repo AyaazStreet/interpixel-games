@@ -17,8 +17,11 @@ public class TurretHandler : MonoBehaviour
     public Transform gun;
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public LayerMask layerMask;
 
     private float timer;
+    private Vector2 aimDir;
+    private float aimAngle;
     
     void Start()
     {
@@ -34,6 +37,19 @@ public class TurretHandler : MonoBehaviour
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = localTimescale ?? globalTimescale;
 
+        //Track
+        if (tracking)
+        {
+            aimDir = GameManager.Instance.pc.transform.position - transform.position;
+
+            aimAngle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg - 90;
+
+            //Calculate quaternion and apply to rotation
+            Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+            gun.transform.rotation = Quaternion.Slerp(gun.transform.rotation, q, 10 * Time.deltaTime * timeMod);
+        }
+
+        //Timer
         if (startDelay < 0f)
         {
             if (timer > 0f)
@@ -42,25 +58,35 @@ public class TurretHandler : MonoBehaviour
             }
             else
             {
-                _ = Instantiate(bulletPrefab, firePoint.transform.position, gun.transform.rotation);
-                SoundManager.PlaySound(SoundManager.Sound.snd_shot, firePoint.transform.position);
-                timer = delay;
+                Shoot();
             }
         }
         else
         {
             startDelay -= Time.deltaTime * timeMod;
         }
+    }
 
-        if (tracking)
+    void Shoot()
+    {
+        if (!tracking)
         {
-            Vector2 aimDir = GameManager.Instance.pc.transform.position - transform.position;
+            _ = Instantiate(bulletPrefab, firePoint.transform.position, gun.transform.rotation);
+            SoundManager.PlaySound(SoundManager.Sound.snd_shot, firePoint.transform.position);
+            timer = delay;
+        }
+        else
+        {
+            // Create a raycast hit2D variable to store information about the hit
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, aimDir, Mathf.Infinity, layerMask);
 
-            float aimAngle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg - 90;
-
-            //Calculate quaternion and apply to rotation
-            Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-            gun.transform.rotation = Quaternion.Slerp(gun.transform.rotation, q, 10 * Time.deltaTime * timeMod);
+            // Check if the hit object is on the specified layer
+            if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                _ = Instantiate(bulletPrefab, firePoint.transform.position, gun.transform.rotation);
+                SoundManager.PlaySound(SoundManager.Sound.snd_shot, firePoint.transform.position);
+                timer = delay;
+            }
         }
     }
 }

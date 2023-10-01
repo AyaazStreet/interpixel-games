@@ -54,5 +54,42 @@ public class BulletHandler : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        else if (collision.gameObject.CompareTag("Barrier"))
+        {
+            Destroy(collision.gameObject);
+            
+            SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Walls"))
+        {
+            SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
+        {
+            SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            if (timeMod != 0f)
+            {
+                GameManager.Instance.pc.Die();
+                SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
+                Destroy(gameObject);
+            }
+        }
+        else if (collision.gameObject.CompareTag("Barrier"))
+        {
+            Destroy(collision.gameObject);
+
+            SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
+            Destroy(gameObject);
+        }
     }
 }
