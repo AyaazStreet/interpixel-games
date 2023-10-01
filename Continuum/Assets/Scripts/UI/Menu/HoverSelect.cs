@@ -26,6 +26,6 @@ public class HoverSelect : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 
     public void OnSelect(BaseEventData eventData)
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_hover);
+        SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_hover);
     }
 }

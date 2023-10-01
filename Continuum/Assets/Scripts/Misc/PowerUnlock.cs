@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PowerUnlock : MonoBehaviour
 {
-    bool on = true;
-    bool started = false;
+    public bool on = true;
+    public bool started = false;
 
     private bool interactable = false;
 

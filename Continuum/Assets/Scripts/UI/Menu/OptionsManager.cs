@@ -11,7 +11,7 @@ public class OptionsManager : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.snd_click);
         }
         
-        Screen.fullScreen = isFullscreen;
+        //Screen.fullScreen = isFullscreen;
     }
 
     public void SetTogglePowers (bool togglePowers)

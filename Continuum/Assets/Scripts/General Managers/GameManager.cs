@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject savedObjects;
     public GameObject interactables;
+    public GameObject saveState;
 
     public GameObject cmPrefab;
     public CheckpointManager checkpointManager;
@@ -162,8 +162,19 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            //savestate objects
+            foreach (Transform obj in saveState.transform)
+            {
+                Destroy(obj.gameObject);
+            }
 
-            Debug.Log("Loaded checkpoint data");
+            foreach (GameObject obj in checkpointManager.saveStateObjects)
+            {
+                GameObject epyc = Instantiate(obj, saveState.transform);
+                epyc.name = obj.name;
+                Destroy(obj);
+            }
+            checkpointManager.saveStateObjects.Clear();
         }
     }
 

@@ -5,7 +5,6 @@ public class Checkpoint : MonoBehaviour
     public bool resetCollectables = false;
     private bool activated = false;
 
-
     private CheckpointManager cm;
     private PlayerController pc;
     private InventoryManager im;
@@ -50,7 +49,6 @@ public class Checkpoint : MonoBehaviour
             cm.interactableStates.Add(t.gameObject.GetComponent<Controller>().active);
         }
 
-        
         cm.savedCollectables.Clear();
         if(!resetCollectables)
         {
@@ -58,6 +56,19 @@ public class Checkpoint : MonoBehaviour
             {
                 cm.savedCollectables.Add(c);
             }
+        }
+
+
+        foreach (GameObject obj in cm.saveStateObjects)
+        {
+            Destroy(obj);
+        }
+        cm.saveStateObjects.Clear();
+        foreach (Transform obj in GameManager.Instance.saveState.transform)
+        {
+            GameObject epyc = Instantiate(obj.gameObject, cm.transform);
+            epyc.name = obj.name;
+            cm.saveStateObjects.Add(epyc);
         }
     }
 

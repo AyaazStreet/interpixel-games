@@ -29,11 +29,11 @@ public class PauseManager : MonoBehaviour
     {
         if(pauseUI != null)
         {
-            SoundManager.PlaySound(SoundManager.Sound.snd_click);
+            SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_click);
 
             if (pauseUI.activeSelf)
             {
-                UnityEngine.Cursor.SetCursor(aimCursor, new Vector2(aimCursor.width / 2, aimCursor.height / 2), CursorMode.Auto);
+                Cursor.SetCursor(aimCursor, new Vector2(aimCursor.width / 2, aimCursor.height / 2), CursorMode.Auto);
 
                 pauseUI.SetActive(false);
                 Time.timeScale = 1f;
@@ -44,7 +44,7 @@ public class PauseManager : MonoBehaviour
             }
             else
             {
-                UnityEngine.Cursor.SetCursor(cursor, new Vector2(0, 0), CursorMode.Auto);
+                Cursor.SetCursor(cursor, new Vector2(0, 0), CursorMode.Auto);
 
                 pauseUI.SetActive(true);
                 Time.timeScale = 0f;
@@ -58,14 +58,14 @@ public class PauseManager : MonoBehaviour
 
     public void Save()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_click);
+        SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_click);
 
         SaveManager.SaveData(GameManager.Instance.pc, GameManager.Instance.currLevel);
     }
 
     public void Options()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_click);
+        SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_click);
 
         optionsUI.transform.Find("tgl_PowerSetting").GetComponent<Toggle>().isOn = CheckpointManager.Instance.togglePowers;
         optionsUI.transform.Find("tgl_Fullscreen").GetComponent<Toggle>().isOn = Screen.fullScreen;
@@ -76,7 +76,7 @@ public class PauseManager : MonoBehaviour
 
     public void CloseOptions()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_click);
+        SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_click);
 
         optionsUI.SetActive(false);
         pauseUI.SetActive(true);
@@ -84,14 +84,14 @@ public class PauseManager : MonoBehaviour
 
     public void QuitToMenu()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_click);
+        SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_click);
 
         SceneManager.LoadScene("Menu_Main");
     }
 
     public void QuitToDesktop()
     {
-        SoundManager.PlaySound(SoundManager.Sound.snd_click);
+        SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_click);
 
         Application.Quit();
     }

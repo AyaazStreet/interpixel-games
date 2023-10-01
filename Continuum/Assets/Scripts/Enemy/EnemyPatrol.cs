@@ -5,7 +5,7 @@ using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public const float MOVE_SPEED = 1.5f;
+    public const float MOVE_SPEED = 3f;
     public float globalTimescale;
     public float? localTimescale;
     private float timeMod;

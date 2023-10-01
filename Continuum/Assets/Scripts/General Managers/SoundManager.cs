@@ -14,13 +14,20 @@ public class SoundManager : MonoBehaviour
     public AudioMixerGroup grp_nonspatial;
     public AudioMixerGroup grp_background;
 
+    public GameObject peristentSoundPlayer;
+    public AudioSource peristentAudioSource;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
         SoundManager.Ininitalize();
+
         PlaySoundLoop(SoundManager.Sound.loop_factory);
+
+        Instance.peristentSoundPlayer = new GameObject("PeristentSoundPlayer");
+        peristentAudioSource = Instance.peristentSoundPlayer.AddComponent<AudioSource>();
     }
 
     public enum Sound
@@ -39,7 +46,10 @@ public class SoundManager : MonoBehaviour
         snd_fall,
         snd_drip,
         snd_click,
-        snd_hover
+        snd_hover,
+        snd_shot,
+        snd_hit,
+        snd_secret
     }
 
     private static Dictionary<Sound, float> soundTimerDictionary;
@@ -141,6 +151,15 @@ public class SoundManager : MonoBehaviour
 
             Destroy(soundGameObject, delay + audioSource.clip.length + 0.1f);
         }
+    }
+
+    public static void PlaySoundPersistent(Sound sound)
+    {
+        
+            Instance.peristentAudioSource.clip = GetAudioClip(sound);
+
+            Instance.peristentAudioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
+            Instance.peristentAudioSource.Play();
     }
 
     public static void PlaySoundLoop(Sound sound)

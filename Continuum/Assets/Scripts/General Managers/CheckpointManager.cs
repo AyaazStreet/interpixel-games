@@ -14,7 +14,9 @@ public class CheckpointManager : MonoBehaviour
     public List<bool> usedStates;
     public List<bool> interactableStates;
     public bool togglePowers;
-    
+
+    public List<GameObject> saveStateObjects;
+
     private void Awake()
     {
         if (Instance == null)
@@ -29,6 +31,7 @@ public class CheckpointManager : MonoBehaviour
             savedLevel = -1;
             unlocks = new bool[6];
             togglePowers = false;
+            saveStateObjects = new();
         }
         else
         {
