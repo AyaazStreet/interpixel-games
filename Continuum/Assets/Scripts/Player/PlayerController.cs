@@ -41,7 +41,10 @@ public class PlayerController : MonoBehaviour
 
     public bool alive = true;
 
+    //GOD
     public bool invincible = false;
+    public bool teleport = false;
+    //GOD
 
     public ThrowController throwController;
     public float throwCooldownDuration = 1f;
@@ -699,4 +702,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Teleport(InputAction.CallbackContext context)
+    {
+        if (context.performed && teleport)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+    }
 }

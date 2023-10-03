@@ -86,6 +86,7 @@ public class PauseManager : MonoBehaviour
     {
         SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_click);
 
+        CheckpointManager.Instance.skipIntro = true;
         SceneManager.LoadScene("Menu_Main");
     }
 

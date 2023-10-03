@@ -14,7 +14,7 @@ public class BulletHandler : MonoBehaviour
     void Start()
     {
         //Initialise timescales
-        localTimescale = null;
+        localTimescale = gameObject.GetComponent<LocalModifier>().value;
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = 1f;
 
@@ -24,6 +24,7 @@ public class BulletHandler : MonoBehaviour
     private void Update()
     {
         //Adjust timeMod based on timescales, preferring local over global
+        localTimescale = gameObject.GetComponent<LocalModifier>().value;
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = localTimescale ?? globalTimescale;
     }
@@ -40,12 +41,12 @@ public class BulletHandler : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
             Destroy(gameObject);
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
         {
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
             Destroy(gameObject);
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             if (timeMod != 0f)
             {
@@ -54,10 +55,11 @@ public class BulletHandler : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (collision.gameObject.CompareTag("Barrier"))
+        if (collision.gameObject.CompareTag("Barrier"))
         {
+            //collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
-            
+
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
             Destroy(gameObject);
         }
@@ -70,12 +72,12 @@ public class BulletHandler : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
             Destroy(gameObject);
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
         {
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
             Destroy(gameObject);
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             if (timeMod != 0f)
             {
@@ -84,8 +86,9 @@ public class BulletHandler : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (collision.gameObject.CompareTag("Barrier"))
+        if (collision.gameObject.CompareTag("Barrier"))
         {
+            //collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
 
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);

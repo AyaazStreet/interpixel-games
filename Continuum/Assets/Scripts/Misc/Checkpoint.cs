@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
@@ -20,10 +21,12 @@ public class Checkpoint : MonoBehaviour
         interactables = GameManager.Instance.interactables;
     }
 
-    public void ActivateCheckpoint()
+    public IEnumerator ActivateCheckpoint()
     {
         activated = true;
 
+        yield return new WaitForSecondsRealtime(0.1f);
+        
         cm.savedLevel = GameManager.Instance.currLevel;
 
         cm.savedPosition = new Vector3(transform.position.x, transform.position.y, 0);
@@ -59,17 +62,22 @@ public class Checkpoint : MonoBehaviour
         }
 
 
-        foreach (GameObject obj in cm.saveStateObjects)
+        /*foreach (Transform obj in cm.transform)
         {
-            Destroy(obj);
+            Destroy(obj.gameObject);
         }
-        cm.saveStateObjects.Clear();
+        cm.saveStateObjects.Clear();*/
         foreach (Transform obj in GameManager.Instance.saveState.transform)
         {
             GameObject epyc = Instantiate(obj.gameObject, cm.transform);
             epyc.name = obj.name;
             cm.saveStateObjects.Add(epyc);
+            Destroy(obj.gameObject);
+
+            Debug.Log("Added");
         }
+
+        yield break;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -78,7 +86,7 @@ public class Checkpoint : MonoBehaviour
         {
             if (!activated)
             {
-                ActivateCheckpoint();
+                StartCoroutine(ActivateCheckpoint());
             }
         }
     }

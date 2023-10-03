@@ -11,6 +11,7 @@ public class GodManager : MonoBehaviour
 
     public GameObject godUI;
 
+    public Toggle teleport;
     public Toggle invincibility;
     public Toggle slow;
     public Toggle accel;
@@ -50,6 +51,11 @@ public class GodManager : MonoBehaviour
         }
     }
 
+    public void Teleport(bool val)
+    {
+        GameManager.Instance.pc.teleport = val;
+    }
+
     public void Invincibility(bool val)
     {
         GameManager.Instance.pc.invincible = val;
@@ -73,15 +79,18 @@ public class GodManager : MonoBehaviour
     public void Bolt()
     {
         GameManager.Instance.em.E1_count++;
+        GameManager.Instance.pc.T1_Unlocked = true;
     }
 
     public void Can()
     {
         GameManager.Instance.em.E2_count++;
+        GameManager.Instance.pc.T2_Unlocked = true;
     }
 
     public void Rod()
     {
         GameManager.Instance.em.E3_count++;
+        GameManager.Instance.pc.T3_Unlocked = true;
     }
 }

@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 7444382198697268384}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -166,40 +166,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdb7acc84603254882158a129a1aee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 0
+  on: 0
+  active_time: 2
   interactable: 0
   timer: 0
   globalTimescale: 0
+  timeMod: 0
   interact: {fileID: 2927881971485266601, guid: 177cf0a76cd54d047a2017789023784f, type: 3}
-  SendSignal_Active:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
-        m_MethodName: SignalActive
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  SendSignal_Inactive:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DoorController, Assembly-CSharp
-        m_MethodName: SignalInactive
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  sr: {fileID: 0}
   btnIn: {fileID: 555570874, guid: b67b1cf66c157604595ff07ae0497865, type: 3}
   btnOut: {fileID: 1440986019, guid: b67b1cf66c157604595ff07ae0497865, type: 3}
 --- !u!114 &560777842818870379

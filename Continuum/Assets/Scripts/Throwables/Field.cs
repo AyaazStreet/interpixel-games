@@ -43,11 +43,13 @@ public class Field : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        LocalModifier localMod = collision.gameObject.GetComponentInParent<LocalModifier>();
+
         //if a time adjustable object enters, adjust it's local timescale
-        if (collision != null && collision.gameObject.GetComponent<LocalModifier>() != null)
+        if (collision != null && localMod != null)
         {
             collision.gameObject.GetComponent<LocalModifier>().value = timeFactor;
-            //Debug.Log("object affected by timescale");
+            Debug.Log("object affected by timescale");
         }
 
         //if another field intersects the current field, destroy the current field
@@ -86,7 +88,7 @@ public class Field : MonoBehaviour
         if (collision != null && collision.gameObject.GetComponent<LocalModifier>() != null)
         {
             collision.gameObject.GetComponent<LocalModifier>().value = null;
-            //Debug.Log("object no longer affected by timescale");
+            Debug.Log("object no longer affected by timescale");
         }
     }
 }

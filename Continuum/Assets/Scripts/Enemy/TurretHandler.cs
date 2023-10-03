@@ -78,7 +78,7 @@ public class TurretHandler : MonoBehaviour
         else
         {
             // Create a raycast hit2D variable to store information about the hit
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, aimDir, Mathf.Infinity, layerMask);
+            RaycastHit2D hit = Physics2D.Raycast(firePoint.position, aimDir, Mathf.Infinity, layerMask);
 
             // Check if the hit object is on the specified layer
             if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))

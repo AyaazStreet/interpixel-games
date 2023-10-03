@@ -14,6 +14,7 @@ public class CheckpointManager : MonoBehaviour
     public List<bool> usedStates;
     public List<bool> interactableStates;
     public bool togglePowers;
+    public bool skipIntro;
 
     public List<GameObject> saveStateObjects;
 
@@ -32,6 +33,7 @@ public class CheckpointManager : MonoBehaviour
             unlocks = new bool[6];
             togglePowers = false;
             saveStateObjects = new();
+            skipIntro = false;
         }
         else
         {

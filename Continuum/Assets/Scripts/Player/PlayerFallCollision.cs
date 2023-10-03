@@ -27,7 +27,7 @@ public class PlayerFallCollision : MonoBehaviour
 
     private void Update()
     {
-       if(shouldFall && stable <= 0 && !falling)
+       if(shouldFall && stable <= 0 && !falling && !GameManager.Instance.pc.invincible)
        {
            player.GetComponent<PlayerController>().falling = true;
            falling = true;
@@ -110,7 +110,7 @@ public class PlayerFallCollision : MonoBehaviour
 
         SoundManager.PlaySound(SoundManager.Sound.snd_splat);
 
-        GameManager.Instance.ShowDeathScreen();
+        GameManager.Instance.pc.Die();
 
         falling = false;
         shouldFall = false;
