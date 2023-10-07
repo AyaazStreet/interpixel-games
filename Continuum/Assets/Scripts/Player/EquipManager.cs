@@ -39,15 +39,21 @@ public class EquipManager : MonoBehaviour
 
     public void Manual_Aim_Performed(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !PauseManager.Instance.pauseUI.activeSelf && !PauseManager.Instance.optionsUI.activeSelf)
         {
             //Activate throw mode
             throwPointer.SetActive(true);
+
+            //
+            pc.infusing = true;
         }
         else if (context.canceled)
         {
             //Deactivate throw mode
             throwPointer.SetActive(false);
+
+            //
+            pc.infusing = false;
         }
     }
 
@@ -56,11 +62,7 @@ public class EquipManager : MonoBehaviour
         if(context.performed && pc.T1_Unlocked)
         {
             //Activate throw mode for bolts
-            selected = 1;   
-
-            //Change infusing mode
-            GetComponent<PlayerController>().infusing = false;
-            throwPointer.GetComponent<ThrowController>().infused = 0;
+            selected = 1;
         }
     }
 
@@ -70,15 +72,6 @@ public class EquipManager : MonoBehaviour
         {
             //Activate throw mode for cannisters
             selected = 2;
-
-            //Change infusing mode
-            GetComponent<PlayerController>().infusing = true;
-            throwPointer.GetComponent<ThrowController>().infused = 0;
-        }
-        else if(context.canceled)
-        {
-            //Change infusing mode
-            GetComponent<PlayerController>().infusing = false;
         }
     }
 
@@ -88,10 +81,6 @@ public class EquipManager : MonoBehaviour
         {
             //Activate throw mode for rods
             selected = 3;
-
-            //Change infusing mode
-            GetComponent<PlayerController>().infusing = false;
-            throwPointer.GetComponent<ThrowController>().infused = 0;
         }
     }
 
@@ -101,10 +90,6 @@ public class EquipManager : MonoBehaviour
         {
             //Deactivate throw mode
             throwPointer.SetActive(false);
-
-            //Change to infusing mode
-            GetComponent<PlayerController>().infusing = false;
-            throwPointer.GetComponent<ThrowController>().infused = 0;
         }
     }
 }

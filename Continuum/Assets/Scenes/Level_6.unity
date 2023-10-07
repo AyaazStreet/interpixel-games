@@ -755,6 +755,7 @@ GameObject:
   - component: {fileID: 770760324}
   - component: {fileID: 770760323}
   - component: {fileID: 770760322}
+  - component: {fileID: 770760326}
   m_Layer: 5
   m_Name: WorldSpaceUI
   m_TagString: Untagged
@@ -844,6 +845,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &770760326
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770760321}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 8391206799787799454, guid: 31a4f9095f0b70f40a70e0858126ffe6, type: 3}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &829561958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1775,11 +1797,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 560757822551820526, guid: 12d35f1ba7a061c47849af661c88f2ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.0000004172325
       objectReference: {fileID: 0}
     - target: {fileID: 560757822551820526, guid: 12d35f1ba7a061c47849af661c88f2ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 3.9999998
       objectReference: {fileID: 0}
     - target: {fileID: 1155774978292689415, guid: 12d35f1ba7a061c47849af661c88f2ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1823,7 +1845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3991412235341372982, guid: 12d35f1ba7a061c47849af661c88f2ac, type: 3}
       propertyPath: viewRadius
-      value: 5.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6829360152289233372, guid: 12d35f1ba7a061c47849af661c88f2ac, type: 3}
       propertyPath: m_Name

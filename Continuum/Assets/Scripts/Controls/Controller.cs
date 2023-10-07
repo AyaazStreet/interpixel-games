@@ -10,6 +10,7 @@ public class Controller : MonoBehaviour
 {
     public bool active = false;
     public bool on = false;
+    public bool sendSignalSprite = false;
 
     public float active_time = 2f;
     public bool interactable = false;

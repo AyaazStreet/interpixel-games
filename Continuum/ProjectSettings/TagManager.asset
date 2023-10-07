@@ -16,6 +16,7 @@ TagManager:
   - CheckpointManager
   - Singleton
   - Barrier
+  - PlayerDetectionCollider
   layers:
   - Default
   - TransparentFX

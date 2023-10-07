@@ -73,8 +73,6 @@ public class Checkpoint : MonoBehaviour
             epyc.name = obj.name;
             cm.saveStateObjects.Add(epyc);
             Destroy(obj.gameObject);
-
-            Debug.Log("Added");
         }
 
         yield break;

@@ -40,4 +40,57 @@ public class CheckpointManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void ResetCheckpointData()
+    {
+        savedInventory = new();
+        savedCollectables = new();
+        usedStates = new();
+        interactableStates = new();
+        savedLevel = -1;
+        unlocks = new bool[6];
+        togglePowers = false;
+        saveStateObjects = new();
+        skipIntro = false;
+    }
+
+    public void SavePlayerData()
+    {
+        savedLevel = GameManager.Instance.currLevel;
+
+        unlocks[0] = GameManager.Instance.pc.A1_Unlocked;
+        unlocks[1] = GameManager.Instance.pc.A2_Unlocked;
+        unlocks[2] = GameManager.Instance.pc.A3_Unlocked;
+        unlocks[3] = GameManager.Instance.pc.T1_Unlocked;
+        unlocks[4] = GameManager.Instance.pc.T2_Unlocked;
+        unlocks[5] = GameManager.Instance.pc.T3_Unlocked;
+
+        savedInventory.Clear();
+        usedStates.Clear();
+        foreach (InventoryManager.InventoryItem item in GameManager.Instance.im.inventory)
+        {
+            savedInventory.Add(item);
+            usedStates.Add(item.used);
+        }
+
+        interactableStates.Clear();
+        foreach (Transform t in GameManager.Instance.interactables.transform)
+        {
+            interactableStates.Add(t.gameObject.GetComponent<Controller>().active);
+        }
+
+        savedCollectables.Clear();
+        foreach (EquipManager.Collectable c in GameManager.Instance.em.collected)
+        {
+            savedCollectables.Add(c);
+        }
+
+        foreach (Transform obj in GameManager.Instance.saveState.transform)
+        {
+            GameObject epyc = Instantiate(obj.gameObject, transform);
+            epyc.name = obj.name;
+            saveStateObjects.Add(epyc);
+            Destroy(obj.gameObject);
+        }
+    }
 }

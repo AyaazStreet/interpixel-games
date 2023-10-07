@@ -84,16 +84,19 @@ public class PowerUnlock : MonoBehaviour
                     case 1:
                     {
                         player.GetComponent<PlayerController>().A1_Unlocked = true;
+                        CheckpointManager.Instance.SavePlayerData();
                     }
                     break;
                     case 2:
                     {
                         player.GetComponent<PlayerController>().A2_Unlocked = true;
+                        CheckpointManager.Instance.SavePlayerData();
                     }
                     break;
                     case 3:
                     {
                         player.GetComponent<PlayerController>().A3_Unlocked = true;
+                        CheckpointManager.Instance.SavePlayerData();
                     }
                     break;
                 }

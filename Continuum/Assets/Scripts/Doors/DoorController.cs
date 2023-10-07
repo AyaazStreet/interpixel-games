@@ -10,11 +10,13 @@ public class DoorController : MonoBehaviour
 
     public float globalTimescale;
     public float? localTimescale;
+    private float timeMod;
 
     private Animator anim;
     private SpriteRenderer sr;
     [SerializeField] private Sprite[] spriteArray;
-    private float timeMod;
+
+    [SerializeField] private GameObject signalPrefab;
 
     [SerializeField] private Controller[] control1;
     [SerializeField] private Controller[] control2;
@@ -116,6 +118,17 @@ public class DoorController : MonoBehaviour
             if (c != null)
             {
                 if (c.active) signal1 = true;
+
+                if (c.sendSignalSprite)
+                {
+                    StartCoroutine(SignalOff(c));
+
+                    Color color;
+                    if (c.active) color = new Color32(0x56, 0xff, 0x28, 0xff);
+                    else color = new Color32(0xff, 0x2d, 0x2d, 0xff);
+
+                    StartCoroutine(SendSignalSprite(c.transform.position, transform.position, color));
+                }
             }
         }
 
@@ -124,6 +137,17 @@ public class DoorController : MonoBehaviour
             if (c != null)
             {
                 if (c.active) signal2 = true;
+
+                if (c.sendSignalSprite)
+                {
+                    StartCoroutine(SignalOff(c));
+
+                    Color color;
+                    if (c.active) color = new Color32(0x56, 0xff, 0x28, 0xff);
+                    else color = new Color32(0xff, 0x2d, 0x2d, 0xff);
+
+                    StartCoroutine(SendSignalSprite(c.transform.position, transform.position, color));
+                }
             }
         }
 
@@ -132,8 +156,44 @@ public class DoorController : MonoBehaviour
             if (c != null)
             {
                 if (c.active) signal3 = true;
+
+                if (c.sendSignalSprite)
+                {
+                    StartCoroutine(SignalOff(c));
+
+                    Color color;
+                    if (c.active) color = new Color32(0x56, 0xff, 0x28, 0xff);
+                    else color = new Color32(0xff, 0x2d, 0x2d, 0xff);
+
+                    StartCoroutine(SendSignalSprite(c.transform.position, transform.position, color));
+                }
             }
         }
+    }
+
+    private IEnumerator SignalOff(Controller c)
+    {
+        yield return new WaitForEndOfFrame();
+        c.sendSignalSprite = false;
+        yield break;
+    }
+
+    private IEnumerator SendSignalSprite(Vector2 start, Vector2 target, Color color)
+    {
+        float speed = 10f; //CHANGE LATER
+
+        GameObject signal = Instantiate(signalPrefab, new Vector3(start.x, start.y, -2), Quaternion.identity);
+        signal.GetComponent<Rigidbody2D>().velocity = (target - start).normalized * speed;
+        signal.GetComponent<SpriteRenderer>().color = color;
+
+        while (Vector2.Distance(signal.transform.position, target) > 0.1)
+        {
+            yield return null;
+        }
+
+        Destroy(signal);
+
+        yield break;
     }
 
     private bool CheckSignal()

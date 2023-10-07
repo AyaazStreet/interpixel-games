@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -51,6 +52,9 @@ public class PlayerController : MonoBehaviour
     public float throwCooldownTimer = 0f;
 
     public GameObject indicators;
+
+    public GameObject playerCanvas;
+    public GameObject popupTextPrefab;
 
     private Rigidbody2D rb;
     public Animator anim;
@@ -708,5 +712,17 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
+
+        //TEST
+        if (context.performed)
+        {
+            DisplayPopup("Teleported");
+        }
+    }
+
+    public void DisplayPopup(string popupText)
+    {
+        GameObject popup = Instantiate(popupTextPrefab, playerCanvas.transform);
+        popup.GetComponent<TextMeshProUGUI>().text = popupText;
     }
 }

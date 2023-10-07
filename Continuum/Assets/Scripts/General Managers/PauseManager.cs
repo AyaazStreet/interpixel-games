@@ -82,6 +82,12 @@ public class PauseManager : MonoBehaviour
         pauseUI.SetActive(true);
     }
 
+    public void RestartLevel()
+    {
+        CheckpointManager.Instance.ResetCheckpointData();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void QuitToMenu()
     {
         SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_click);

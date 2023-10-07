@@ -79,7 +79,7 @@ public class EnemyPatrol : MonoBehaviour
             }
             else
             {
-                waitTime = 0.01f;
+                waitTime = 1f;
                 if(pointArr.Length > 1) 
                 {
                     moveDir = pointArr[pointArrPos+1].transform.position - transform.position;
