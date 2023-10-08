@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea83617bb804244697f41d7ce62e515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OPEN_TIME: 0.5
   timer: 0
   globalTimescale: 0
   spriteArray:
@@ -140,9 +141,11 @@ MonoBehaviour:
   - {fileID: -525265418, guid: 7d41b56a26ae9c04e8e6597ea18a9c4f, type: 3}
   - {fileID: 2003668453, guid: 7d41b56a26ae9c04e8e6597ea18a9c4f, type: 3}
   - {fileID: -777987247, guid: 7d41b56a26ae9c04e8e6597ea18a9c4f, type: 3}
+  signalPrefab: {fileID: 6765523643294660295, guid: 6b6e3392f6c9f5a46ad6d845ab52613c, type: 3}
+  control1: []
+  control2: []
+  control3: []
   signal1: 0
-  signal2: 0
-  signal3: 0
   numSignals: 0
 --- !u!114 &8918823143387351359
 MonoBehaviour:

@@ -37,7 +37,7 @@ public class PowerGainSequence : MonoBehaviour
                     if (pc.A1_Unlocked)
                     {
                         StartCoroutine(Sequence());
-                        SoundManager.PlaySound(SoundManager.Sound.snd_accelTime);
+                        SoundManager.PlaySound(SoundManager.Sound.snd_slowTime);
                         started = true;
                     }
                 }
@@ -57,7 +57,7 @@ public class PowerGainSequence : MonoBehaviour
                     if (pc.A3_Unlocked)
                     {
                         StartCoroutine(Sequence());
-                        SoundManager.PlaySound(SoundManager.Sound.snd_accelTime);
+                        SoundManager.PlaySound(SoundManager.Sound.snd_stopTime);
                         started = true;
                     }
                 }

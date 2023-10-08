@@ -36,6 +36,7 @@ public class ButtonController : Controller
                 sr.sprite = btnOut;
 
                 active = false;
+                sendSignalSprite = true;
             }
         }
     }
@@ -56,6 +57,7 @@ public class ButtonController : Controller
             timer = active_time;
 
             active = true;
+            sendSignalSprite = true;
 
             SoundManager.PlaySound(SoundManager.Sound.snd_interact_btn, transform.position);
         }
@@ -78,6 +80,7 @@ public class ButtonController : Controller
             timer = active_time;
 
             active = true;
+            sendSignalSprite = true;
 
             SoundManager.PlaySound(SoundManager.Sound.snd_interact_btn, transform.position);
         }

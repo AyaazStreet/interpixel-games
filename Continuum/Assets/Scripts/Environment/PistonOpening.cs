@@ -53,6 +53,8 @@ public class PistonOpening : MonoBehaviour
                     isOpen = false;
                     dt.isOpen = false;
                     openTime = openTimeTotal;
+
+                    SoundManager.PlaySound(SoundManager.Sound.snd_shot, transform.position);
                 }
             }
             else
@@ -66,6 +68,8 @@ public class PistonOpening : MonoBehaviour
                     isOpen = true;
                     dt.isOpen = true;
                     openTime = openTimeTotal;
+
+                    SoundManager.PlaySound(SoundManager.Sound.snd_shot, transform.position);
                 }
             }
         }

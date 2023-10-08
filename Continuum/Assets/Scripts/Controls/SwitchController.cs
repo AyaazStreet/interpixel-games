@@ -23,22 +23,19 @@ public class SwitchController : Controller
 
     public new void ChangeState() 
     {
-        Debug.Log("amazing");
+        sendSignalSprite = true;
+
         if (on)
         {
             active = false;
             on = false;
             sr.sprite = sOff;
-
-            
         }
         else
         {
             active = true;
             on = true;
             sr.sprite = sOn;
-
-            
         }
     }
 

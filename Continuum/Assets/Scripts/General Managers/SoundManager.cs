@@ -14,13 +14,20 @@ public class SoundManager : MonoBehaviour
     public AudioMixerGroup grp_nonspatial;
     public AudioMixerGroup grp_background;
 
+    public GameObject peristentSoundPlayer;
+    public AudioSource peristentAudioSource;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
         SoundManager.Ininitalize();
+
         PlaySoundLoop(SoundManager.Sound.loop_factory);
+
+        Instance.peristentSoundPlayer = new GameObject("PeristentSoundPlayer");
+        peristentAudioSource = Instance.peristentSoundPlayer.AddComponent<AudioSource>();
     }
 
     public enum Sound
@@ -39,7 +46,11 @@ public class SoundManager : MonoBehaviour
         snd_fall,
         snd_drip,
         snd_click,
-        snd_hover
+        snd_hover,
+        snd_shot,
+        snd_hit,
+        snd_secret,
+        msc_music1
     }
 
     private static Dictionary<Sound, float> soundTimerDictionary;
@@ -66,6 +77,9 @@ public class SoundManager : MonoBehaviour
 
     private static GameObject loopPlayer;
     private static AudioSource loopAudioSource;
+
+    private static GameObject musicPlayer;
+    private static AudioSource musicAudioSource;
 
     private static bool CanPlaySound(Sound sound)
     {
@@ -143,6 +157,15 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public static void PlaySoundPersistent(Sound sound)
+    {
+        
+        Instance.peristentAudioSource.clip = GetAudioClip(sound);
+
+        Instance.peristentAudioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
+        Instance.peristentAudioSource.Play();
+    }
+
     public static void PlaySoundLoop(Sound sound)
     {
         if (loopPlayer == null)
@@ -156,6 +179,22 @@ public class SoundManager : MonoBehaviour
 
         loopAudioSource.outputAudioMixerGroup = Instance.grp_background;
         loopAudioSource.Play();
+    }
+
+    public static void PlaySoundMusic(Sound sound)
+    {
+        if (musicPlayer == null)
+        {
+            musicPlayer = new GameObject("MusicPlayer");
+            musicAudioSource = musicPlayer.AddComponent<AudioSource>();
+            musicAudioSource.transform.parent = CheckpointManager.Instance.transform;
+        }
+        musicAudioSource.clip = GetAudioClip(sound);
+        musicAudioSource.loop = true;
+        musicAudioSource.volume = 0.5f;
+
+        musicAudioSource.outputAudioMixerGroup = Instance.grp_background;
+        musicAudioSource.Play();
     }
 
     private static AudioClip GetAudioClip(Sound sound)

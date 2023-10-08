@@ -15,6 +15,7 @@ public class EquipIconSelection : MonoBehaviour
     public TextMeshProUGUI count;
 
     private EquipManager em;
+    private PlayerController pc;
     private Image sr;
 
     [SerializeField] private int active;
@@ -23,6 +24,7 @@ public class EquipIconSelection : MonoBehaviour
     void Start()
     {
         em = GameManager.Instance.player.GetComponent<EquipManager>();
+        pc = GameManager.Instance.player.GetComponent<PlayerController>();
         sr = GetComponent<Image>();
         active = em.selected;
         if(slot == 1)
@@ -54,13 +56,40 @@ public class EquipIconSelection : MonoBehaviour
         switch (slot)
         {
             case 1:
+                if (pc.T1_Unlocked)
+                {
                     count.text = "x" + em.E1_count;
+                    icon.SetActive(true);
+                }
+                else
+                {
+                    count.text = "";
+                    icon.SetActive(false);
+                }
                 break;
             case 2:
+                if (pc.T2_Unlocked)
+                {
                     count.text = "x" + em.E2_count;
+                    icon.SetActive(true);
+                }
+                else
+                {
+                    count.text = "";
+                    icon.SetActive(false);
+                }
                 break;
             case 3:
+                if (pc.T3_Unlocked)
+                {
                     count.text = "x" + em.E3_count;
+                    icon.SetActive(true);
+                }
+                else
+                {
+                    count.text = "";
+                    icon.SetActive(false);
+                }
                 break;
         }
 

@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PowerUnlock : MonoBehaviour
 {
-    bool on = true;
-    bool started = false;
+    public bool on = true;
+    public bool started = false;
 
     private bool interactable = false;
 
@@ -84,16 +84,19 @@ public class PowerUnlock : MonoBehaviour
                     case 1:
                     {
                         player.GetComponent<PlayerController>().A1_Unlocked = true;
+                        CheckpointManager.Instance.SavePlayerData();
                     }
                     break;
                     case 2:
                     {
                         player.GetComponent<PlayerController>().A2_Unlocked = true;
+                        CheckpointManager.Instance.SavePlayerData();
                     }
                     break;
                     case 3:
                     {
                         player.GetComponent<PlayerController>().A3_Unlocked = true;
+                        CheckpointManager.Instance.SavePlayerData();
                     }
                     break;
                 }

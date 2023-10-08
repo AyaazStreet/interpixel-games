@@ -59,8 +59,7 @@ public class EnemyDetection : MonoBehaviour
         if(detectionLevel >= 100)
         {
             detectionLevel = 0;
-            player.GetComponent<PlayerController>().alive = false;
-            GameManager.Instance.ShowDeathScreen();
+            GameManager.Instance.pc.Die();
         }
         
         indicatorFill.fillAmount = detectionLevel / 100;
@@ -105,7 +104,7 @@ public class EnemyDetection : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("PlayerDetectionCollider"))
         {
             inFOV = true;
         }

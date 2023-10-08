@@ -47,29 +47,32 @@ public class ThrowController : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         MouseAimDir = mousePos - rb.position;
 
-        //Calculate aim angle based on input type
-        if (playerInput.currentControlScheme == "Keyboard")
+        if (!PauseManager.Instance.pauseUI.activeSelf && !PauseManager.Instance.optionsUI.activeSelf)
         {
-            aimAngle = Mathf.Atan2(MouseAimDir.y, MouseAimDir.x) * Mathf.Rad2Deg - 90f;
+            //Calculate aim angle based on input type
+            if (playerInput.currentControlScheme == "Keyboard")
+            {
+                aimAngle = Mathf.Atan2(MouseAimDir.y, MouseAimDir.x) * Mathf.Rad2Deg - 90f;
 
-            //Animation
-            pc.lastMoveDir = MouseAimDir;
-            anim.SetFloat("AnimMoveX", MouseAimDir.x);
-            anim.SetFloat("AnimMoveY", MouseAimDir.y);
+                //Animation
+                pc.lastMoveDir = MouseAimDir;
+                anim.SetFloat("AnimMoveX", MouseAimDir.x);
+                anim.SetFloat("AnimMoveY", MouseAimDir.y);
+            }
+            else if (playerInput.currentControlScheme == "Gamepad")
+            {
+                aimAngle = Mathf.Atan2(GamepadAimDir.y, GamepadAimDir.x) * Mathf.Rad2Deg - 90f;
+
+                //Animation
+                pc.lastMoveDir = MouseAimDir;
+                anim.SetFloat("AnimMoveX", GamepadAimDir.x);
+                anim.SetFloat("AnimMoveY", GamepadAimDir.y);
+            }
+
+            //Calculate quaternion and apply to rotation
+            Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, 10 * Time.deltaTime);
         }
-        else if (playerInput.currentControlScheme == "Gamepad")
-        {
-            aimAngle = Mathf.Atan2(GamepadAimDir.y, GamepadAimDir.x) * Mathf.Rad2Deg - 90f;
-
-            //Animation
-            pc.lastMoveDir = MouseAimDir;
-            anim.SetFloat("AnimMoveX", GamepadAimDir.x);
-            anim.SetFloat("AnimMoveY", GamepadAimDir.y);
-        }
-
-        //Calculate quaternion and apply to rotation
-        Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, 10 * Time.deltaTime);
     }
 
     public void ControllerAim_performed(InputAction.CallbackContext context)

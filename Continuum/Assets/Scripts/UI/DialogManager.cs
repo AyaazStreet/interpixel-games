@@ -26,7 +26,7 @@ public class DialogueManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Jump"))
         {
             if (text.text == lines[index])
             {
@@ -34,7 +34,7 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                StopAllCoroutines();
+                StopAllCoroutines(); 
                 text.text = lines[index];
             }
         }
@@ -48,14 +48,14 @@ public class DialogueManager : MonoBehaviour
             StopAllCoroutines();
             text.text = string.Empty;
 
-            if (input.currentControlScheme == "Gamepad")
+            /*if (input.currentControlScheme == "Gamepad")
             {
                 continueText.text = "press A to continue...";
             }
             else if (input.currentControlScheme == "Keyboard")
-            {
-                continueText.text = "click to continue...";
-            }
+            {*/
+                continueText.text = "click anywhere to continue...";
+            //}
 
             lines = l;
             index = 0;

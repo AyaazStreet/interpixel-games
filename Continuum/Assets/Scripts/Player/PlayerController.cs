@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,11 +42,19 @@ public class PlayerController : MonoBehaviour
 
     public bool alive = true;
 
+    //GOD
+    public bool invincible = false;
+    public bool teleport = false;
+    //GOD
+
     public ThrowController throwController;
     public float throwCooldownDuration = 1f;
     public float throwCooldownTimer = 0f;
 
     public GameObject indicators;
+
+    public GameObject playerCanvas;
+    public GameObject popupTextPrefab;
 
     private Rigidbody2D rb;
     public Animator anim;
@@ -90,6 +99,15 @@ public class PlayerController : MonoBehaviour
             T1_Unlocked = data.T1_Unlocked;
             T2_Unlocked = data.T2_Unlocked;
             T3_Unlocked = data.T3_Unlocked;*/
+        }
+    }
+
+    public void Die()
+    {
+        if (!invincible)
+        {
+            alive = false;
+            GameManager.Instance.ShowDeathScreen();
         }
     }
 
@@ -172,6 +190,11 @@ public class PlayerController : MonoBehaviour
                         {
                             activeAbility = 0;
 
+                            if (abilityCooldownTimer <= 0f)
+                            {
+                                abilityCooldownTimer = CD_DUR;
+                            }
+
                             Debug.Log("Time Slow Deactivated");
                         }
                     }
@@ -194,6 +217,11 @@ public class PlayerController : MonoBehaviour
                         if (abilityActiveTimer <= 0f)
                         {
                             activeAbility = 0;
+
+                            if (abilityCooldownTimer <= 0f)
+                            {
+                                abilityCooldownTimer = CD_DUR;
+                            }
 
                             Debug.Log("Time Accellerate Deactivated");
                         }
@@ -219,6 +247,11 @@ public class PlayerController : MonoBehaviour
                             comboActive = false;
                             activeAbility = 0;
 
+                            if (abilityCooldownTimer <= 0f)
+                            {
+                                abilityCooldownTimer = CD_DUR;
+                            }
+
                             Debug.Log("Time Stop Deactivated");
                         }
                     }
@@ -240,7 +273,7 @@ public class PlayerController : MonoBehaviour
             cc1.enabled = false;
             cc2.enabled = false;
 
-            if (alive)
+            if (alive && !invincible)
             {
                 StartCoroutine(CrushPlayer());
             }
@@ -334,23 +367,41 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed && A1_Unlocked && hasControl)
         {
-            if (activeAbility == 0 && !comboActive)
+            //Toggle Option
+            if (CheckpointManager.Instance.togglePowers && activeAbility == 1)
             {
-                StartCoroutine(WaitForInput2(context));
+                //check if minimum duration has passed... 
+                if (abilityActiveTimer < A1_DUR - 0.5f)
+                {
+                    abilityCooldownTimer = (1 - (abilityActiveTimer / A1_DUR)) * CD_DUR;
+                    abilityActiveTimer = 0.001f; //...if it has, reduce timer to near zero
+                }
+                else
+                {
+                    StartCoroutine(MinDuration(0.5f - (A1_DUR - abilityActiveTimer))); //...if not, wait out the minimum duration
+                }
             }
+            else
+            {
+                if (activeAbility == 0 && !comboActive)
+                {
+                    StartCoroutine(WaitForInput2(context));
+                }
 
-            if (abilityCooldownTimer > 0f)
-            {
-                Debug.Log("Time Abilities On Cooldown");
-            }
+                if (abilityCooldownTimer > 0f)
+                {
+                    Debug.Log("Time Abilities On Cooldown");
+                }
 
-            if (infusing)
-            {
-                throwController.infused = 1;
-                Debug.Log("Infuse 1");
+                if (infusing)
+                {
+                    throwController.infused = 1;
+                    Debug.Log("Infuse 1");
+                }
             }
+            
         }
-        else if (context.canceled && activeAbility == 1) //check if button released + ability still active
+        else if (context.canceled && activeAbility == 1 && !CheckpointManager.Instance.togglePowers) //check if button released + ability still active
         {
             //check if minimum duration has passed... 
             if (abilityActiveTimer < A1_DUR - 0.5f)
@@ -360,9 +411,10 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                StartCoroutine(MinDuration()); //...if not, wait out the minimum duration
+                StartCoroutine(MinDuration(0.5f - (A1_DUR - abilityActiveTimer))); //...if not, wait out the minimum duration
             }
         }
+
 
         
     }
@@ -371,23 +423,41 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed && A2_Unlocked && hasControl)
         {
-            if (!a1active && !comboActive)
+            //Toggle Option
+            if (CheckpointManager.Instance.togglePowers && activeAbility == 2)
             {
-                StartCoroutine(WaitForInput1(context));
+                //check if minimum duration has passed... 
+                if (abilityActiveTimer < A2_DUR - 0.5f)
+                {
+                    abilityCooldownTimer = (1 - (abilityActiveTimer / A2_DUR)) * CD_DUR;
+                    abilityActiveTimer = 0.001f; //...if it has, reduce timer to near zero
+                }
+                else
+                {
+                    StartCoroutine(MinDuration(0.5f - (A2_DUR - abilityActiveTimer))); //...if not, wait out the minimum duration
+                }
             }
-
-            if (abilityCooldownTimer > 0f)
+            else
             {
-                Debug.Log("Time Abilities On Cooldown");
-            }
 
-            if (infusing)
-            {
-                throwController.infused = 2;
-                Debug.Log("Infuse 2");
+                if (!a1active && !comboActive)
+                {
+                    StartCoroutine(WaitForInput1(context));
+                }
+
+                if (abilityCooldownTimer > 0f)
+                {
+                    Debug.Log("Time Abilities On Cooldown");
+                }
+
+                if (infusing)
+                {
+                    throwController.infused = 2;
+                    Debug.Log("Infuse 2");
+                }
             }
         }
-        else if (context.canceled && activeAbility == 2)
+        else if (context.canceled && activeAbility == 2 && !CheckpointManager.Instance.togglePowers)
         {
             if (abilityActiveTimer < A2_DUR - 0.5f)
             {
@@ -396,7 +466,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                StartCoroutine(MinDuration());
+                StartCoroutine(MinDuration(0.5f - (A2_DUR - abilityActiveTimer)));
             }
         }
 
@@ -407,30 +477,47 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed && A3_Unlocked && hasControl)
         {
-            if (!a1active && !a2active)
+            //Toggle Option
+            if (CheckpointManager.Instance.togglePowers && activeAbility == 3)
             {
-                if (activeAbility == 0 && abilityCooldownTimer <= 0 && !infusing)
+                //check if minimum duration has passed... 
+                if (abilityActiveTimer < A3_DUR - 0.5f)
                 {
-                    comboActive = true;
-                    activeAbility = 3;
-                    abilityActiveTimer = A3_DUR;
-                    Debug.Log("Time Stop Active");
-                    SoundManager.PlaySound(SoundManager.Sound.snd_stopTime);
+                    abilityCooldownTimer = (1 - (abilityActiveTimer / A3_DUR)) * CD_DUR;
+                    abilityActiveTimer = 0.001f; //...if it has, reduce timer to near zero
+                }
+                else
+                {
+                    StartCoroutine(MinDuration(0.5f - (A3_DUR - abilityActiveTimer))); //...if not, wait out the minimum duration
                 }
             }
-
-            if (abilityCooldownTimer > 0f)
+            else
             {
-                Debug.Log("Time Abilities On Cooldown");
-            }
+                if (!a1active && !a2active)
+                {
+                    if (activeAbility == 0 && abilityCooldownTimer <= 0 && !infusing)
+                    {
+                        comboActive = true;
+                        activeAbility = 3;
+                        abilityActiveTimer = A3_DUR;
+                        Debug.Log("Time Stop Active");
+                        SoundManager.PlaySound(SoundManager.Sound.snd_stopTime);
+                    }
+                }
 
-            if (infusing)
-            {
-                throwController.infused = 3;
-                Debug.Log("Infuse 3");
+                if (abilityCooldownTimer > 0f)
+                {
+                    Debug.Log("Time Abilities On Cooldown");
+                }
+
+                if (infusing)
+                {
+                    throwController.infused = 3;
+                    Debug.Log("Infuse 3");
+                }
             }
         }
-        else if (context.canceled && activeAbility == 3)
+        else if (context.canceled && activeAbility == 3 && !CheckpointManager.Instance.togglePowers)
         {
             if (abilityActiveTimer < A3_DUR - 0.5f)
             {
@@ -439,15 +526,15 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                StartCoroutine(MinDuration());
+                StartCoroutine(MinDuration(0.5f - (A3_DUR - abilityActiveTimer)));
             }
         }
 
     }
 
-    private IEnumerator MinDuration()
+    private IEnumerator MinDuration(float remaining)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(remaining);
         
         switch (activeAbility)
         {
@@ -482,12 +569,25 @@ public class PlayerController : MonoBehaviour
 
         if (!comboActive)
         {
-            if (c.performed && activeAbility == 0 && abilityCooldownTimer <= 0 && !infusing) //check button pressed + no active ability + no cooldown
+            if (CheckpointManager.Instance.togglePowers)
             {
-                activeAbility = 1; //change active ability 
-                abilityActiveTimer = A1_DUR; //set ability duration
-                Debug.Log("Time Slow Active");
-                SoundManager.PlaySound(SoundManager.Sound.snd_slowTime);
+                if (activeAbility == 0 && abilityCooldownTimer <= 0 && !infusing) //check button pressed + no active ability + no cooldown
+                {
+                    activeAbility = 1; //change active ability 
+                    abilityActiveTimer = A1_DUR; //set ability duration
+                    Debug.Log("Time Slow Active");
+                    SoundManager.PlaySound(SoundManager.Sound.snd_slowTime);
+                }
+            }
+            else
+            {
+                if (c.performed && activeAbility == 0 && abilityCooldownTimer <= 0 && !infusing) //check button pressed + no active ability + no cooldown
+                {
+                    activeAbility = 1; //change active ability 
+                    abilityActiveTimer = A1_DUR; //set ability duration
+                    Debug.Log("Time Slow Active");
+                    SoundManager.PlaySound(SoundManager.Sound.snd_slowTime);
+                }
             }
         }
     }
@@ -498,12 +598,25 @@ public class PlayerController : MonoBehaviour
 
         if (!comboActive)
         {
-            if (c.performed && activeAbility == 0 && abilityCooldownTimer <= 0 && !infusing)
+            if (CheckpointManager.Instance.togglePowers)
             {
-                activeAbility = 2;
-                abilityActiveTimer = A2_DUR;
-                Debug.Log("Time Accelerate Active");
-                SoundManager.PlaySound(SoundManager.Sound.snd_accelTime);
+                if (activeAbility == 0 && abilityCooldownTimer <= 0 && !infusing)
+                {
+                    activeAbility = 2;
+                    abilityActiveTimer = A2_DUR;
+                    Debug.Log("Time Accelerate Active");
+                    SoundManager.PlaySound(SoundManager.Sound.snd_accelTime);
+                }
+            }
+            else
+            {
+                if (c.performed && activeAbility == 0 && abilityCooldownTimer <= 0 && !infusing)
+                {
+                    activeAbility = 2;
+                    abilityActiveTimer = A2_DUR;
+                    Debug.Log("Time Accelerate Active");
+                    SoundManager.PlaySound(SoundManager.Sound.snd_accelTime);
+                }
             }
         }
     }
@@ -516,7 +629,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         transform.localScale = Vector3.zero;
-        GameManager.Instance.ShowDeathScreen();
+        Die();
 
         yield break;
     }
@@ -579,5 +692,37 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    /////////////////////////////////////GOD\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    public void GodMode(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("God Mode Active");
+            GodManager.Instance.ToggleGod();
+        }
+    }
+
+    public void Teleport(InputAction.CallbackContext context)
+    {
+        if (context.performed && teleport)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        //TEST
+        if (context.performed)
+        {
+            DisplayPopup("Teleported");
+        }
+    }
+
+    public void DisplayPopup(string popupText)
+    {
+        GameObject popup = Instantiate(popupTextPrefab, playerCanvas.transform);
+        popup.GetComponent<TextMeshProUGUI>().text = popupText;
     }
 }

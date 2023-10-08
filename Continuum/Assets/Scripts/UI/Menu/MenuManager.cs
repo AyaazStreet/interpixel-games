@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -84,6 +85,17 @@ public class MenuManager : MonoBehaviour
         if (data != null)
         {
             //loading checkpoint data
+        }
+
+        Transform music = CheckpointManager.Instance.transform.Find("MusicPlayer");
+        if (music)
+        {
+            Destroy(music.gameObject);
+        }
+
+        if(CheckpointManager.Instance.skipIntro)
+        {
+            nav.GetComponentInChildren<TypeTextHandler>().on = true;
         }
     }
 

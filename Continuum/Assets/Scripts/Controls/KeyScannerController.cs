@@ -30,6 +30,7 @@ public class KeyScannerController : Controller
         sr.sprite = btnIn;
         active = true;
         activated = true;
+        sendSignalSprite = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
