@@ -102,10 +102,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Die()
+    public void Die(string causeOfDeath)
     {
         if (!invincible)
         {
+            switch(causeOfDeath)
+            {
+                default:
+                    break;
+                case "guard":
+                    break;
+                case "guard":
+                    break;
+                case "guard":
+                    break;
+            }
+            
             alive = false;
             GameManager.Instance.ShowDeathScreen();
         }
@@ -629,6 +641,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         transform.localScale = Vector3.zero;
+        GameManager.Instance.deathText.text = "You were crushed";
         Die();
 
         yield break;

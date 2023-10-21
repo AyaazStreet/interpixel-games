@@ -18,7 +18,7 @@ public class BulletHandler : MonoBehaviour
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = 1f;
 
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponentInParent<Rigidbody2D>();
     }
 
     private void Update()
@@ -34,37 +34,44 @@ public class BulletHandler : MonoBehaviour
         rb.velocity = speed * timeMod * transform.up;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        Debug.Log("hey");
+        
         if (collision.gameObject.layer == LayerMask.NameToLayer("Walls"))
         {
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
         {
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             if (timeMod != 0f)
             {
+                GameManager.Instance.deathText.text = "You've been shot";
                 GameManager.Instance.pc.Die();
                 SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
-                Destroy(gameObject);
+                Destroy(transform.parent.gameObject);
             }
         }
+
         if (collision.gameObject.CompareTag("Barrier"))
         {
             //collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
 
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
-
+    
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Walls"))
@@ -94,5 +101,5 @@ public class BulletHandler : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
             Destroy(gameObject);
         }
-    }
+    }*/
 }

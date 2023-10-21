@@ -31,7 +31,7 @@ public class CheckpointManager : MonoBehaviour
             interactableStates = new();
             savedLevel = -1;
             unlocks = new bool[6];
-            togglePowers = false;
+            togglePowers = true;
             saveStateObjects = new();
             skipIntro = false;
         }

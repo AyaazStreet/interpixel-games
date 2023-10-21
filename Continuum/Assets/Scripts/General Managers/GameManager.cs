@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public GameObject deathScreen;
+    public TextMeshProUGUI deathText;
 
     public GameObject timer;
     public GameObject equipment;
@@ -42,11 +44,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-
         //Timescale
         Time.timeScale = 1f;
-
-        
 
         //Cursor
         Cursor.SetCursor(aimCursor, new Vector2(aimCursor.width / 2, aimCursor.height / 2), CursorMode.Auto);

@@ -59,6 +59,7 @@ public class EnemyDetection : MonoBehaviour
         if(detectionLevel >= 100)
         {
             detectionLevel = 0;
+            GameManager.Instance.deathText.text = "You've been caught";
             GameManager.Instance.pc.Die();
         }
         

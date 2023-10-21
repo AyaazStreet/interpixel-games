@@ -19,17 +19,35 @@ public class PickupUpgrade : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
 
+    private RectTransform iconTransform;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        EquipIconSelection[] icons = GameManager.Instance.equipment.GetComponentsInChildren<EquipIconSelection>();
+        foreach (EquipIconSelection icon in icons)
+        {
+            if (icon.slot == unlockNum)
+            {
+                iconTransform = icon.GetComponent<RectTransform>();
+            }
+        }
     }
 
     private void FixedUpdate()
     {
         if (collected)
         {
-            targetPoint = (Vector2)GameObject.Find("Player").transform.position + new Vector2(0, offset);
+            if (iconTransform)
+            {
+                targetPoint = iconTransform.TransformPoint(iconTransform.rect.center);
+            }
+            else
+            {
+                targetPoint = (Vector2)GameObject.Find("Player").transform.position + new Vector2(0, offset);
+            }
 
             // Check if the target point is set
             if (targetPoint == null)
@@ -71,14 +89,17 @@ public class PickupUpgrade : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !collected)
+        
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !collected && enabled)
         {
+            SoundManager.PlaySound(SoundManager.Sound.snd_pickup);  
             collected = true;
             GameManager.Instance.em.collected.Add(new EquipManager.Collectable(unlockNum, pickupNumber, transform.position));
             Collect();
         }
+        
     }
 
     public void Collect()

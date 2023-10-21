@@ -3296,6 +3296,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5705236623199536951, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
+      propertyPath: A3_Unlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705236623199536951, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
       propertyPath: T1_Unlocked
       value: 0
       objectReference: {fileID: 0}

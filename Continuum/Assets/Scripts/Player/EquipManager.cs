@@ -45,7 +45,10 @@ public class EquipManager : MonoBehaviour
             throwPointer.SetActive(true);
 
             //
-            pc.infusing = true;
+            if (selected == 2)
+            {
+                pc.infusing = true;
+            }
         }
         else if (context.canceled)
         {

@@ -61,7 +61,7 @@ public class PlayerFallCollision : MonoBehaviour
                 if (player.GetComponent<PlayerController>().alive)
                 {
                     player.GetComponent<PlayerController>().alive = false;
-                    StartCoroutine(delayedDeath(1f));
+                    StartCoroutine(DelayedDeath(1f));
                 }
             }
         }
@@ -94,8 +94,7 @@ public class PlayerFallCollision : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms"))
         {
-            stable--;
-            fallPoint = (Vector2)transform.position + player.GetComponent<Rigidbody2D>().velocity.normalized * 0.5f;
+            StartCoroutine(BecomeUnstable());
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Pits"))
@@ -104,12 +103,23 @@ public class PlayerFallCollision : MonoBehaviour
         }
     }
 
-    private IEnumerator delayedDeath(float delay)
+    private IEnumerator BecomeUnstable()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        stable--;
+        fallPoint = (Vector2)transform.position + player.GetComponent<Rigidbody2D>().velocity.normalized * 0.5f;
+
+        yield break;
+    }
+
+    private IEnumerator DelayedDeath(float delay)
     {
         yield return new WaitForSeconds(delay);
 
         SoundManager.PlaySound(SoundManager.Sound.snd_splat);
 
+        GameManager.Instance.deathText.text = "You've fallen to your death";
         GameManager.Instance.pc.Die();
 
         falling = false;

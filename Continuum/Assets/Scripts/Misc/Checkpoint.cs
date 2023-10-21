@@ -25,7 +25,14 @@ public class Checkpoint : MonoBehaviour
     {
         activated = true;
 
+        if (Vector2.Distance(pc.transform.position, new Vector3(transform.position.x, transform.position.y, 0)) > 0.1f)
+        {
+            pc.DisplayPopup("Checkpoint");
+        }
+
         yield return new WaitForSecondsRealtime(0.1f);
+
+        
         
         cm.savedLevel = GameManager.Instance.currLevel;
 

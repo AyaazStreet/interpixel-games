@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class DoorController : MonoBehaviour
 {
@@ -123,11 +125,12 @@ public class DoorController : MonoBehaviour
                 {
                     StartCoroutine(SignalOff(c));
 
-                    Color color;
+                    /*Color color;
                     if (c.active) color = new Color32(0x56, 0xff, 0x28, 0xff);
-                    else color = new Color32(0xff, 0x2d, 0x2d, 0xff);
+                    else color = new Color32(0xff, 0x2d, 0x2d, 0xff);*/
 
-                    StartCoroutine(SendSignalSprite(c.transform.position, transform.position, color));
+
+                    if (c.active) StartCoroutine(SendSignalSprite(c.transform.position, transform.position));
                 }
             }
         }
@@ -142,11 +145,11 @@ public class DoorController : MonoBehaviour
                 {
                     StartCoroutine(SignalOff(c));
 
-                    Color color;
+                    /*Color color;
                     if (c.active) color = new Color32(0x56, 0xff, 0x28, 0xff);
-                    else color = new Color32(0xff, 0x2d, 0x2d, 0xff);
+                    else color = new Color32(0xff, 0x2d, 0x2d, 0xff);*/
 
-                    StartCoroutine(SendSignalSprite(c.transform.position, transform.position, color));
+                    if (c.active) StartCoroutine(SendSignalSprite(c.transform.position, transform.position));
                 }
             }
         }
@@ -161,11 +164,11 @@ public class DoorController : MonoBehaviour
                 {
                     StartCoroutine(SignalOff(c));
 
-                    Color color;
-                    if (c.active) color = new Color32(0x56, 0xff, 0x28, 0xff);
-                    else color = new Color32(0xff, 0x2d, 0x2d, 0xff);
+                    /*Color color;
+                    if (c.active)  = new Color32(0x56, 0xff, 0x28, 0xff);
+                    else color = new Color32(0xff, 0x2d, 0x2d, 0xff);*/
 
-                    StartCoroutine(SendSignalSprite(c.transform.position, transform.position, color));
+                    if (c.active) StartCoroutine(SendSignalSprite(c.transform.position, transform.position));
                 }
             }
         }
@@ -178,18 +181,18 @@ public class DoorController : MonoBehaviour
         yield break;
     }
 
-    private IEnumerator SendSignalSprite(Vector2 start, Vector2 target, Color color)
+    private IEnumerator SendSignalSprite(Vector2 start, Vector2 target)
     {
-        float speed = 10f; //CHANGE LATER
+        Vector2 aimDir = target - start;
+        float aimAngle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg - 90f;
 
-        GameObject signal = Instantiate(signalPrefab, new Vector3(start.x, start.y, -2), Quaternion.identity);
-        signal.GetComponent<Rigidbody2D>().velocity = (target - start).normalized * speed;
-        signal.GetComponent<SpriteRenderer>().color = color;
+        //Calculate quaternion and apply to rotation
+        Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
 
-        while (Vector2.Distance(signal.transform.position, target) > 0.1)
-        {
-            yield return null;
-        }
+        GameObject signal = Instantiate(signalPrefab, new Vector3(start.x, start.y, -2), q);
+        signal.GetComponent<SpriteRenderer>().size = new Vector2(0.5f, ((target - start).magnitude) / signal.transform.localScale.x);
+
+        yield return new WaitForSeconds(0.5f);
 
         Destroy(signal);
 

@@ -12,13 +12,16 @@ public class SoundManager : MonoBehaviour
     public AudioMixerGroup grp_master;
     public AudioMixerGroup grp_spatial;
     public AudioMixerGroup grp_nonspatial;
-    public AudioMixerGroup grp_background;
+    public AudioMixerGroup grp_music;
+    public AudioMixerGroup grp_ambience;
 
     public GameObject peristentSoundPlayer;
     public AudioSource peristentAudioSource;
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
@@ -50,7 +53,9 @@ public class SoundManager : MonoBehaviour
         snd_shot,
         snd_hit,
         snd_secret,
-        msc_music1
+        msc_music1,
+        snd_type,
+        snd_pickup
     }
 
     private static Dictionary<Sound, float> soundTimerDictionary;
@@ -104,11 +109,35 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private static bool CanPlaySoundShort(Sound sound)
+    {
+        if (soundTimerDictionary.ContainsKey(sound))
+        {
+            float lastTimePlayed = soundTimerDictionary[sound];
+            float timerMax = 0.001f;
+
+            if (lastTimePlayed + timerMax < Time.time)
+            {
+                soundTimerDictionary[sound] = Time.time;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public static void PlaySound(Sound sound, Vector3 positon)
     {
         if (CanPlaySound(sound))
         {
             GameObject soundGameObject = new GameObject("SpatialSoundPlayer");
+            soundGameObject.transform.parent = Instance.transform;
             soundGameObject.transform.position = positon;
 
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
@@ -159,11 +188,22 @@ public class SoundManager : MonoBehaviour
 
     public static void PlaySoundPersistent(Sound sound)
     {
-        
         Instance.peristentAudioSource.clip = GetAudioClip(sound);
 
         Instance.peristentAudioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
         Instance.peristentAudioSource.Play();
+    }
+
+    public static void PlaySoundPersistentRepeat(Sound sound)
+    {
+        if (CanPlaySoundShort(sound))
+        {
+            Instance.peristentAudioSource.clip = GetAudioClip(sound);
+
+            Instance.peristentAudioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
+            Instance.peristentAudioSource.Play();
+        }
+        
     }
 
     public static void PlaySoundLoop(Sound sound)
@@ -177,7 +217,7 @@ public class SoundManager : MonoBehaviour
         loopAudioSource.loop = true;
         loopAudioSource.volume = 0.5f;
 
-        loopAudioSource.outputAudioMixerGroup = Instance.grp_background;
+        loopAudioSource.outputAudioMixerGroup = Instance.grp_ambience;
         loopAudioSource.Play();
     }
 
@@ -193,7 +233,7 @@ public class SoundManager : MonoBehaviour
         musicAudioSource.loop = true;
         musicAudioSource.volume = 0.5f;
 
-        musicAudioSource.outputAudioMixerGroup = Instance.grp_background;
+        musicAudioSource.outputAudioMixerGroup = Instance.grp_music;
         musicAudioSource.Play();
     }
 

@@ -17567,6 +17567,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -332
       objectReference: {fileID: 0}
+    - target: {fileID: 5705236623199536951, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
+      propertyPath: A3_Unlocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5907054217949418958, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -14,9 +14,12 @@ public class Bolt : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
+    private PolygonCollider2D col;
     private bool isMoving = true;
     private bool isSlowing = false;
     private float currSpeed = 20f;
+
+    public PickupUpgrade pickupScript;
 
     private void Awake()
     {
@@ -30,6 +33,10 @@ public class Bolt : MonoBehaviour
         //Initialise components
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        col = GetComponent<PolygonCollider2D>();
+        //pickupScript = GetComponent<PickupUpgrade>();
+
+        pickupScript.enabled = false;
     }
 
     private void Update()
@@ -52,7 +59,7 @@ public class Bolt : MonoBehaviour
             //despawn object
             if (despawnTimer <= 0f)
             {
-                Destroy(gameObject); 
+                //Destroy(gameObject); 
             }
         }
 
@@ -80,18 +87,26 @@ public class Bolt : MonoBehaviour
             //Check for stopped
             if(currSpeed <= 0f)
             {
+                Debug.Log("enable");
+                
                 currSpeed = 0f;
                 isMoving = false;
+                pickupScript.enabled = true;
+                col.enabled = false;
             }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Bolt"))
+        if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Bolt") && enabled)
         {
+            Debug.Log("enable2");
+
             isMoving = false;
             anim.speed = 0;
+            pickupScript.enabled = true;
+            col.enabled = false;
         }
     }
 }

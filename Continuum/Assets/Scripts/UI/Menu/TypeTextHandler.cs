@@ -13,6 +13,7 @@ public class TypeTextHandler : MonoBehaviour
     private float textSpeed = 0.03f;
     public float startDelay;
     public bool stayOn = false;
+    public bool soundOff = false;
 
     public bool on = false;
 
@@ -61,6 +62,11 @@ public class TypeTextHandler : MonoBehaviour
         yield return new WaitForSeconds(startDelay);
         foreach (char c in textString.ToCharArray())
         {
+            if (c != ' ' && soundOff == false)
+            {
+                SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_type);
+            }
+            
             text.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
