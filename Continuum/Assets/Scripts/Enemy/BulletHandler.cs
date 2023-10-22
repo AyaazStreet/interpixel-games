@@ -11,6 +11,8 @@ public class BulletHandler : MonoBehaviour
     public float speed;
     Rigidbody2D rb;
 
+    public GameObject expEffect;
+
     void Start()
     {
         //Initialise timescales
@@ -38,14 +40,12 @@ public class BulletHandler : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Walls"))
         {
-            SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
-            Destroy(transform.parent.gameObject);
+            Explode();
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Projectiles"))
         {
-            SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
-            Destroy(transform.parent.gameObject);
+            Explode();
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -54,8 +54,8 @@ public class BulletHandler : MonoBehaviour
             {
                 GameManager.Instance.deathText.text = "You've been shot";
                 GameManager.Instance.pc.Die("bullet");
-                SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
-                Destroy(transform.parent.gameObject);
+
+                Explode();
             }
         }
 
@@ -64,10 +64,18 @@ public class BulletHandler : MonoBehaviour
             //collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
 
-            SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
-            Destroy(transform.parent.gameObject);
+            Explode();
         }
     }
+
+    void Explode()
+    {
+        _ = Instantiate(expEffect, transform.position, transform.rotation);
+        
+        SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
+        Destroy(transform.parent.gameObject);
+    }
+
     
     /*
     private void OnCollisionEnter2D(Collision2D collision)

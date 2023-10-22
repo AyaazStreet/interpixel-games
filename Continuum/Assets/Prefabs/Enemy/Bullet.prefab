@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  expEffect: {fileID: 7641167790191935727, guid: 78410c9735742ad4a8631340f21313ea, type: 3}
 --- !u!114 &4886512487416006007
 MonoBehaviour:
   m_ObjectHideFlags: 0

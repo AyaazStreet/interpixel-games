@@ -22,6 +22,8 @@ public class TurretHandler : MonoBehaviour
     private float timer;
     private Vector2 aimDir;
     private float aimAngle;
+
+    private Animator anim;
     
     void Start()
     {
@@ -29,6 +31,9 @@ public class TurretHandler : MonoBehaviour
         localTimescale = null;
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = 1f;
+
+        //Init
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -65,6 +70,10 @@ public class TurretHandler : MonoBehaviour
         {
             startDelay -= Time.deltaTime * timeMod;
         }
+
+        //Anim
+        anim.SetBool("Tracking", tracking);
+        anim.speed = timeMod;
     }
 
     void Shoot()
@@ -76,6 +85,8 @@ public class TurretHandler : MonoBehaviour
 
             SoundManager.PlaySound(SoundManager.Sound.snd_shot, firePoint.transform.position);
             timer = delay;
+
+            anim.SetTrigger("Shoot");
         }
         else
         {
@@ -90,7 +101,11 @@ public class TurretHandler : MonoBehaviour
 
                 SoundManager.PlaySound(SoundManager.Sound.snd_shot, firePoint.transform.position);
                 timer = delay;
+
+                anim.SetTrigger("Shoot");
             }
         }
+
+        
     }
 }
