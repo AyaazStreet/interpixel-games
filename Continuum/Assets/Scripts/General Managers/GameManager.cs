@@ -168,25 +168,22 @@ public class GameManager : MonoBehaviour
             foreach (Transform obj in saveState.transform)
             {
                 Destroy(obj.gameObject);
-                Debug.Log("Destroyed");
             }
-
-            /*foreach (GameObject obj in checkpointManager.saveStateObjects)
-            {
-                GameObject epyc = Instantiate(obj, saveState.transform);
-                epyc.name = obj.name;
-                Destroy(obj);
-            }
-            checkpointManager.saveStateObjects.Clear();*/
         }
         else
         {
+            foreach (Transform obj in checkpointManager.transform)
+            {
+                Destroy(obj.gameObject);
+            }
+            checkpointManager.saveStateObjects.Clear();
+
             //Music
             SoundManager.PlaySoundMusic(SoundManager.Sound.msc_music1);
         }
 
         
-        
+
     }
 
     private void Start()

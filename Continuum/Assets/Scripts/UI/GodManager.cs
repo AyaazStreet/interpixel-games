@@ -61,6 +61,11 @@ public class GodManager : MonoBehaviour
         GameManager.Instance.pc.invincible = val;
     }
 
+    public void Infinite(bool val)
+    {
+        GameManager.Instance.pc.infiniteDuration = val;
+    }
+
     public void Slow(bool val)
     {
         GameManager.Instance.pc.A1_Unlocked = val;

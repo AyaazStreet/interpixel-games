@@ -36,8 +36,6 @@ public class BulletHandler : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("hey");
-        
         if (collision.gameObject.layer == LayerMask.NameToLayer("Walls"))
         {
             SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
@@ -55,7 +53,7 @@ public class BulletHandler : MonoBehaviour
             if (timeMod != 0f)
             {
                 GameManager.Instance.deathText.text = "You've been shot";
-                GameManager.Instance.pc.Die();
+                GameManager.Instance.pc.Die("bullet");
                 SoundManager.PlaySound(SoundManager.Sound.snd_hit, transform.position);
                 Destroy(transform.parent.gameObject);
             }

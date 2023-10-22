@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     //GOD
     public bool invincible = false;
     public bool teleport = false;
+    public bool infiniteDuration = false;
     //GOD
 
     public ThrowController throwController;
@@ -102,26 +103,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Die(string causeOfDeath)
-    {
-        if (!invincible)
-        {
-            switch(causeOfDeath)
-            {
-                default:
-                    break;
-                case "guard":
-                    break;
-                case "guard":
-                    break;
-                case "guard":
-                    break;
-            }
-            
-            alive = false;
-            GameManager.Instance.ShowDeathScreen();
-        }
-    }
+    
 
     // Update is called once per frame
     private void Update()
@@ -198,6 +180,12 @@ public class PlayerController : MonoBehaviour
                         }
 
                         abilityActiveTimer -= Time.deltaTime; //countdown timer
+
+                        if (infiniteDuration && abilityActiveTimer > 0.5f)
+                        {
+                            abilityActiveTimer = A1_DUR;
+                        }
+
                         if (abilityActiveTimer <= 0f)
                         {
                             activeAbility = 0;
@@ -226,6 +214,12 @@ public class PlayerController : MonoBehaviour
                         }
 
                         abilityActiveTimer -= Time.deltaTime; //countdown timer
+
+                        if (infiniteDuration && abilityActiveTimer > 0.5f)
+                        {
+                            abilityActiveTimer = A2_DUR;
+                        }
+
                         if (abilityActiveTimer <= 0f)
                         {
                             activeAbility = 0;
@@ -254,6 +248,12 @@ public class PlayerController : MonoBehaviour
                         }
 
                         abilityActiveTimer -= Time.deltaTime; //countdown timer
+
+                        if (infiniteDuration && abilityActiveTimer > 0.5f)
+                        {
+                            abilityActiveTimer = A3_DUR;
+                        }
+
                         if (abilityActiveTimer <= 0f)
                         {
                             comboActive = false;
@@ -642,7 +642,7 @@ public class PlayerController : MonoBehaviour
         }
         transform.localScale = Vector3.zero;
         GameManager.Instance.deathText.text = "You were crushed";
-        Die();
+        Die("crush");
 
         yield break;
     }
@@ -707,6 +707,62 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /////////////////////////////////////DEATH\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    public void Die(string causeOfDeath)
+    {
+        if (!invincible)
+        {
+            switch (causeOfDeath)
+            {
+                default:
+                {
+                    alive = false;
+                    GameManager.Instance.ShowDeathScreen();
+                }
+                break;
+                case "guard":
+                {
+                    StartCoroutine(Death_Caught());
+                }
+                break;
+                case "crush":
+                {
+                    alive = false;
+                    GameManager.Instance.ShowDeathScreen();
+                }
+                break;
+                case "bullet":
+                {
+                    alive = false;
+                    GameManager.Instance.ShowDeathScreen();
+                }
+                break;
+                case "fall":
+                {
+                    alive = false;
+                    GameManager.Instance.ShowDeathScreen();
+                }
+                break;
+            }
+        }
+    }
+
+    private IEnumerator Death_Caught()
+    {
+        hasControl = false;
+        alive = false;
+        rb.velocity = Vector2.zero;
+
+        anim.SetTrigger("Caught");
+
+        yield return new WaitForSeconds(0.8f);
+
+        
+        GameManager.Instance.ShowDeathScreen();
+
+        yield break;
+    }
 
     /////////////////////////////////////GOD\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 

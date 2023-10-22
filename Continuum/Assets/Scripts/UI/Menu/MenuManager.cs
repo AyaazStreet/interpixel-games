@@ -87,13 +87,15 @@ public class MenuManager : MonoBehaviour
             //loading checkpoint data
         }
 
-        Transform music = CheckpointManager.Instance.transform.Find("MusicPlayer");
-        if (music)
+        //Persistent objects
+        foreach (Transform obj in checkpointManager.transform)
         {
-            Destroy(music.gameObject);
+            Destroy(obj.gameObject);
         }
+        checkpointManager.saveStateObjects.Clear();
 
-        if(CheckpointManager.Instance.skipIntro)
+        //Skip intro
+        if (CheckpointManager.Instance.skipIntro)
         {
             nav.GetComponentInChildren<TypeTextHandler>().on = true;
         }

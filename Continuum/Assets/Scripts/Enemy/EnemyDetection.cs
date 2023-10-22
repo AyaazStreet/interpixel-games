@@ -56,11 +56,11 @@ public class EnemyDetection : MonoBehaviour
         }
         
         //if detection bar full
-        if(detectionLevel >= 100)
+        if(detectionLevel > 100)
         {
-            detectionLevel = 0;
+            detectionLevel = 100f;
             GameManager.Instance.deathText.text = "You've been caught";
-            GameManager.Instance.pc.Die();
+            GameManager.Instance.pc.Die("guard");
         }
         
         indicatorFill.fillAmount = detectionLevel / 100;

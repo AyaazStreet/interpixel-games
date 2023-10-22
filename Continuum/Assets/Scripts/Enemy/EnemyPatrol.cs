@@ -107,9 +107,13 @@ public class EnemyPatrol : MonoBehaviour
         {
             waitTime -= Time.deltaTime * timeMod;
         }
-        else
+        else if (GameManager.Instance.pc.alive)
         {
             rb.velocity = MOVE_SPEED * timeMod * moveDir.normalized;
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
         }
     }
 

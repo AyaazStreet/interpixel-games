@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5702987483844009280}
   - component: {fileID: 3100370934674206222}
   - component: {fileID: 3374887077871007277}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: SignalEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
