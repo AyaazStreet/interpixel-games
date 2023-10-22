@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
@@ -223,6 +223,8 @@ public class SoundManager : MonoBehaviour
 
     public static void PlaySoundMusic(Sound sound)
     {
+        Debug.Log("Playing Music");
+
         if (musicPlayer == null)
         {
             musicPlayer = new GameObject("MusicPlayer");

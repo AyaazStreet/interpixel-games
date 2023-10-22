@@ -71,7 +71,9 @@ public class TurretHandler : MonoBehaviour
     {
         if (!tracking)
         {
-            _ = Instantiate(bulletPrefab, firePoint.transform.position, gun.transform.rotation);
+            GameObject b = Instantiate(bulletPrefab, firePoint.transform.position, gun.transform.rotation);
+            b.GetComponentInChildren<BulletHandler>().speed = speed;
+
             SoundManager.PlaySound(SoundManager.Sound.snd_shot, firePoint.transform.position);
             timer = delay;
         }
@@ -83,7 +85,9 @@ public class TurretHandler : MonoBehaviour
             // Check if the hit object is on the specified layer
             if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                _ = Instantiate(bulletPrefab, firePoint.transform.position, gun.transform.rotation);
+                GameObject b = Instantiate(bulletPrefab, firePoint.transform.position, gun.transform.rotation);
+                b.GetComponentInChildren<BulletHandler>().speed = speed;
+
                 SoundManager.PlaySound(SoundManager.Sound.snd_shot, firePoint.transform.position);
                 timer = delay;
             }

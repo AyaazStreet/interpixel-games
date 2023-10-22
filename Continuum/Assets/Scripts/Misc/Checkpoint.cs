@@ -68,12 +68,6 @@ public class Checkpoint : MonoBehaviour
             }
         }
 
-
-        /*foreach (Transform obj in cm.transform)
-        {
-            Destroy(obj.gameObject);
-        }
-        cm.saveStateObjects.Clear();*/
         foreach (Transform obj in GameManager.Instance.saveState.transform)
         {
             GameObject epyc = Instantiate(obj.gameObject, cm.transform);

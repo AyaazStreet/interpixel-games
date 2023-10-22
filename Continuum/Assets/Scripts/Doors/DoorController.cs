@@ -189,7 +189,7 @@ public class DoorController : MonoBehaviour
         //Calculate quaternion and apply to rotation
         Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
 
-        GameObject signal = Instantiate(signalPrefab, new Vector3(start.x, start.y, -2), q);
+        GameObject signal = Instantiate(signalPrefab, new Vector3(start.x, start.y, -1f), q);
         signal.GetComponent<SpriteRenderer>().size = new Vector2(0.5f, ((target - start).magnitude) / signal.transform.localScale.x);
 
         yield return new WaitForSeconds(0.5f);

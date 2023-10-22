@@ -120,7 +120,7 @@ public class PlayerFallCollision : MonoBehaviour
         SoundManager.PlaySound(SoundManager.Sound.snd_splat);
 
         GameManager.Instance.deathText.text = "You've fallen to your death";
-        GameManager.Instance.pc.Die();
+        GameManager.Instance.pc.Die("fall");
 
         falling = false;
         shouldFall = false;

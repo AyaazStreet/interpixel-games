@@ -1,0 +1,2236 @@
+fileFormatVersion: 2
+guid: 6330cf10d86935042b4212116a0b9c70
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: UpgradeTubeAnimation_Frame_25
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 24
+      height: 48
+    spriteID: d7c616568f6d27e48aaed802c3555d5c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: UpgradeTubeAnimation_Frame_26
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 60
+      width: 24
+      height: 48
+    spriteID: 809e51b5509825542aafca166e6bd65c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 60}
+  - name: UpgradeTubeAnimation_Frame_27
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 116
+      width: 24
+      height: 48
+    spriteID: 736c317d7d685754abbc92fc3904681c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 116}
+  - name: UpgradeTubeAnimation_Frame_28
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 172
+      width: 24
+      height: 48
+    spriteID: b36861206e01d144c8e1d20a3a3bfd3d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 172}
+  - name: UpgradeTubeAnimation_Frame_29
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 228
+      width: 24
+      height: 48
+    spriteID: 6ce807e6c7ae2c34883fbf19f1e672b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 228}
+  - name: UpgradeTubeAnimation_Frame_30
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 284
+      width: 24
+      height: 48
+    spriteID: 616f0e954b15a694b946e396a9c52b56
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 284}
+  - name: UpgradeTubeAnimation_Frame_31
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 340
+      width: 24
+      height: 48
+    spriteID: f2c906fed9297934a82d2a2ff269f4d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 340}
+  - name: UpgradeTubeAnimation_Frame_32
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 396
+      width: 24
+      height: 48
+    spriteID: b7103016c9b9da84a9fc3add05898fdf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 396}
+  - name: UpgradeTubeAnimation_Frame_33
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 452
+      width: 24
+      height: 48
+    spriteID: 685e753f683825547beb0f782f2d4a5f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 452}
+  - name: UpgradeTubeAnimation_Frame_34
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 4
+      width: 24
+      height: 48
+    spriteID: a73145d03a32049498380fa40d5aec4f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 4}
+  - name: UpgradeTubeAnimation_Frame_35
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 60
+      width: 24
+      height: 48
+    spriteID: f734f49b206af95418e04983eb48cf37
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 60}
+  - name: UpgradeTubeAnimation_Frame_36
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 116
+      width: 24
+      height: 48
+    spriteID: 605d5e548aca49144b609085960178ab
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 116}
+  - name: UpgradeTubeAnimation_Frame_37
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 172
+      width: 24
+      height: 48
+    spriteID: b7f6d6b684c2153429c839add431e11d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 172}
+  - name: UpgradeTubeAnimation_Frame_38
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 228
+      width: 24
+      height: 48
+    spriteID: e5d245f913e7dd042a853b7fc44c2583
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 228}
+  - name: UpgradeTubeAnimation_Frame_39
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 284
+      width: 24
+      height: 48
+    spriteID: ad112fcd099ad8b468824d9a054835d8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 284}
+  - name: UpgradeTubeAnimation_Frame_40
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 340
+      width: 24
+      height: 48
+    spriteID: d856b41067c64e84ba627ec19888ed2e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 340}
+  - name: UpgradeTubeAnimation_Frame_41
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 396
+      width: 24
+      height: 48
+    spriteID: 7a3880f374f3a19458ac5f1ccc11eb86
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 396}
+  - name: UpgradeTubeAnimation_Frame_42
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 452
+      width: 24
+      height: 48
+    spriteID: 42d2a69a99bf7574fb823acb69c39c04
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 36, y: 452}
+  - name: UpgradeTubeAnimation_Frame_43
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 4
+      width: 24
+      height: 48
+    spriteID: e5c44b5e8658a3e429c7e3ebf3cc4289
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 4}
+  - name: UpgradeTubeAnimation_Frame_44
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 60
+      width: 24
+      height: 48
+    spriteID: bd5c1d6965e15484286ca8a6f7a07899
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 60}
+  - name: UpgradeTubeAnimation_Frame_45
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 116
+      width: 24
+      height: 48
+    spriteID: 11921f7b729c6724da4f9bf2b390997a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 116}
+  - name: UpgradeTubeAnimation_Frame_46
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 172
+      width: 24
+      height: 48
+    spriteID: e7a568f3201ebcb43b3c4861532f815a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 172}
+  - name: UpgradeTubeAnimation_Frame_47
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 228
+      width: 24
+      height: 48
+    spriteID: 632a3d2a7444b7240b2cf4fcc2d1f01a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 228}
+  - name: UpgradeTubeAnimation_Frame_48
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 284
+      width: 24
+      height: 48
+    spriteID: d2f48478ccfaad84a8d4bb8b061401d6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 284}
+  - name: UpgradeTubeAnimation_Frame_49
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 340
+      width: 24
+      height: 48
+    spriteID: 5ea70ba553250404da96730627b46b28
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 340}
+  - name: UpgradeTubeAnimation_Frame_50
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 396
+      width: 24
+      height: 48
+    spriteID: 45be8fb0a86f32d489b98730d1f230b2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 396}
+  - name: UpgradeTubeAnimation_Frame_51
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 452
+      width: 24
+      height: 48
+    spriteID: efeffddd5fb9d7846a7255702a0f908e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 452}
+  - name: UpgradeTubeAnimation_Frame_52
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 4
+      width: 24
+      height: 48
+    spriteID: d047c62bf623da242a242c4ef4a5136f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 4}
+  - name: UpgradeTubeAnimation_Frame_53
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 60
+      width: 24
+      height: 48
+    spriteID: 9b3d88847d2f39047b67749b3ccfd8cc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 60}
+  - name: UpgradeTubeAnimation_Frame_54
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 116
+      width: 24
+      height: 48
+    spriteID: 7ad85df76a3b773439e13cc6acee87cf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 116}
+  - name: UpgradeTubeAnimation_Frame_55
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 172
+      width: 24
+      height: 48
+    spriteID: 59fb355f5a120f94e9d45bb330552ccd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 172}
+  - name: UpgradeTubeAnimation_Frame_56
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 228
+      width: 24
+      height: 48
+    spriteID: 437bb244e0ccd504fa30cdb6b592a8c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 228}
+  - name: UpgradeTubeAnimation_Frame_57
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 284
+      width: 24
+      height: 48
+    spriteID: 338bf2ce29ab08841914165213bc252b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 284}
+  - name: UpgradeTubeAnimation_Frame_58
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 340
+      width: 24
+      height: 48
+    spriteID: c0aa728d121e09a438fd1c8a2b5bb2ab
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 340}
+  - name: UpgradeTubeAnimation_Frame_59
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 396
+      width: 24
+      height: 48
+    spriteID: f6e569d9d079ca54d92402fb865567e0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 396}
+  - name: UpgradeTubeAnimation_Frame_60
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 452
+      width: 24
+      height: 48
+    spriteID: 43977a74c5db915439c11ed63189c06f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 452}
+  - name: UpgradeTubeAnimation_Frame_61
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 4
+      width: 24
+      height: 48
+    spriteID: c35e542fc664d744f9362dddd5b11602
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 4}
+  - name: UpgradeTubeAnimation_Frame_62
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 60
+      width: 24
+      height: 48
+    spriteID: 6423719a2cc366f42a6c19a29cb37dc5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 60}
+  - name: UpgradeTubeAnimation_Frame_63
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 116
+      width: 24
+      height: 48
+    spriteID: f214e60bd0e95a84fb30537b035b68d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 116}
+  - name: UpgradeTubeAnimation_Frame_64
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 172
+      width: 24
+      height: 48
+    spriteID: aa0e2917fd01dea40a9cdb8c87d4cc54
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 172}
+  - name: UpgradeTubeAnimation_Frame_65
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 228
+      width: 24
+      height: 48
+    spriteID: ade2f4d0b3391334a987a2b20fe97e30
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 228}
+  - name: UpgradeTubeAnimation_Frame_66
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 284
+      width: 24
+      height: 48
+    spriteID: 8ac98a5ec3f1e7f48980bb09305c66c4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 284}
+  - name: UpgradeTubeAnimation_Frame_67
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 340
+      width: 24
+      height: 48
+    spriteID: 65d82ddf7f180df41bb5e90a5cd0f86d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 340}
+  - name: UpgradeTubeAnimation_Frame_68
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 396
+      width: 24
+      height: 48
+    spriteID: a676427a5f7b53b41a796ef168299769
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 396}
+  - name: UpgradeTubeAnimation_Frame_69
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 452
+      width: 24
+      height: 48
+    spriteID: 2062bf009b6ae4d41b8ab3b3363fa927
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 452}
+  - name: UpgradeTubeAnimation_Frame_70
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 164
+      y: 4
+      width: 24
+      height: 48
+    spriteID: 6d92a36f5fbcdb747ba18ccd57b02e5d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 164, y: 4}
+  - name: UpgradeTubeAnimation_Frame_71
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 164
+      y: 60
+      width: 24
+      height: 48
+    spriteID: 4f3641af5cf02d94ba5814ebfe6874d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 164, y: 60}
+  - name: UpgradeTubeAnimation_Frame_72
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 164
+      y: 116
+      width: 24
+      height: 48
+    spriteID: 97ce8d521cc3fc54ca861f8a7f5adaaf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 164, y: 116}
+  - name: UpgradeTubeAnimation_Frame_73
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 164
+      y: 172
+      width: 24
+      height: 48
+    spriteID: 0a86571708362fb4eaed42aa3f0862cb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 164, y: 172}
+  - name: UpgradeTubeAnimation_Frame_74
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 164
+      y: 228
+      width: 24
+      height: 48
+    spriteID: c25a2c395e5365e4c9d3b67e21826dee
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 164, y: 228}
+  - name: UpgradeTubeAnimation_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 164
+      y: 284
+      width: 24
+      height: 48
+    spriteID: dbb9d9ffb3da66c41aee52a5dd7c1c7b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 164, y: 284}
+  - name: UpgradeTubeAnimation_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 164
+      y: 340
+      width: 24
+      height: 48
+    spriteID: 276ec0177a4bcfd4890274f6a806ea17
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 164, y: 340}
+  - name: UpgradeTubeAnimation_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 164
+      y: 396
+      width: 24
+      height: 48
+    spriteID: 5433cf1d7211b8b478c594a3d49bad3f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 164, y: 396}
+  - name: UpgradeTubeAnimation_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 164
+      y: 452
+      width: 24
+      height: 48
+    spriteID: f7ac113cc6e586e4caae7df6384d8b3c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 164, y: 452}
+  - name: UpgradeTubeAnimation_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 196
+      y: 4
+      width: 24
+      height: 48
+    spriteID: ff798d75ea7565f438235b3b2cace6ed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: 4}
+  - name: UpgradeTubeAnimation_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 196
+      y: 60
+      width: 24
+      height: 48
+    spriteID: 93055d1b4ebd21342922473cde48a2b1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: 60}
+  - name: UpgradeTubeAnimation_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 196
+      y: 116
+      width: 24
+      height: 48
+    spriteID: 54689703cdeeddb42b54993490ea22ae
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: 116}
+  - name: UpgradeTubeAnimation_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 196
+      y: 172
+      width: 24
+      height: 48
+    spriteID: 25fcfc3945454c146a7014967b6f8111
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: 172}
+  - name: UpgradeTubeAnimation_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 196
+      y: 228
+      width: 24
+      height: 48
+    spriteID: ecd2236e68441224c95c0bd4361b328c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: 228}
+  - name: UpgradeTubeAnimation_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 196
+      y: 284
+      width: 24
+      height: 48
+    spriteID: ff5cc8b66c565be41aafc27cb947070a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: 284}
+  - name: UpgradeTubeAnimation_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 196
+      y: 340
+      width: 24
+      height: 48
+    spriteID: eeccdffaabbef444180d7e472985827a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: 340}
+  - name: UpgradeTubeAnimation_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 196
+      y: 396
+      width: 24
+      height: 48
+    spriteID: badcef75749e62042b56d95d9a51a882
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: 396}
+  - name: UpgradeTubeAnimation_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 196
+      y: 452
+      width: 24
+      height: 48
+    spriteID: bae3e9d0bd39ef1478594e6a1d9a2573
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: 452}
+  - name: UpgradeTubeAnimation_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 228
+      y: 4
+      width: 24
+      height: 48
+    spriteID: a75278d4c00b60948a55a7a4ebaf14c0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 228, y: 4}
+  - name: UpgradeTubeAnimation_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 228
+      y: 60
+      width: 24
+      height: 48
+    spriteID: 2e0b2becac6903e419f18f300c75fa79
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 228, y: 60}
+  - name: UpgradeTubeAnimation_Frame_15
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 228
+      y: 116
+      width: 24
+      height: 48
+    spriteID: 81ceb99de131f3644821d7d094106f18
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 228, y: 116}
+  - name: UpgradeTubeAnimation_Frame_16
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 228
+      y: 172
+      width: 24
+      height: 48
+    spriteID: 9884cec3cb30e4c4eac7d0399c6c7014
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 228, y: 172}
+  - name: UpgradeTubeAnimation_Frame_17
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 228
+      y: 228
+      width: 24
+      height: 48
+    spriteID: c480d71fd5597504cb5286dc204f367a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 228, y: 228}
+  - name: UpgradeTubeAnimation_Frame_18
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 228
+      y: 284
+      width: 24
+      height: 48
+    spriteID: ddb6594fc8148304f86f42f09598f082
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 228, y: 284}
+  - name: UpgradeTubeAnimation_Frame_19
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 228
+      y: 340
+      width: 24
+      height: 48
+    spriteID: 2bcc05079ddfe0341bc07e77f2eae931
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 228, y: 340}
+  - name: UpgradeTubeAnimation_Frame_20
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 228
+      y: 396
+      width: 24
+      height: 48
+    spriteID: 8fd7c4fb60db84a45be659939021d249
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 228, y: 396}
+  - name: UpgradeTubeAnimation_Frame_21
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 228
+      y: 452
+      width: 24
+      height: 48
+    spriteID: dc4c609b525a17642a03dcef18a3dd6c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 228, y: 452}
+  - name: UpgradeTubeAnimation_Frame_22
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 260
+      y: 4
+      width: 24
+      height: 48
+    spriteID: 8f3f1dcb37f2c2849a01328fb9eee906
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 260, y: 4}
+  - name: UpgradeTubeAnimation_Frame_23
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 260
+      y: 60
+      width: 24
+      height: 48
+    spriteID: a59155952f69c784c803da397cc00919
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 260, y: 60}
+  - name: UpgradeTubeAnimation_Frame_24
+    originalName: 
+    pivot: {x: 0.5, y: -0.020833332}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 260
+      y: 116
+      width: 24
+      height: 48
+    spriteID: 13533bdbadd5e7542bf70c20a3337225
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 260, y: 116}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1140064474
+    name: UpgradeTubeAnimation
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: UpgradeTubeAnimation_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: d7c616568f6d27e48aaed802c3555d5c
+    - name: UpgradeTubeAnimation_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 809e51b5509825542aafca166e6bd65c
+    - name: UpgradeTubeAnimation_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 736c317d7d685754abbc92fc3904681c
+    - name: UpgradeTubeAnimation_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: b36861206e01d144c8e1d20a3a3bfd3d
+    - name: UpgradeTubeAnimation_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 6ce807e6c7ae2c34883fbf19f1e672b4
+    - name: UpgradeTubeAnimation_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 616f0e954b15a694b946e396a9c52b56
+    - name: UpgradeTubeAnimation_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: f2c906fed9297934a82d2a2ff269f4d9
+    - name: UpgradeTubeAnimation_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: b7103016c9b9da84a9fc3add05898fdf
+    - name: UpgradeTubeAnimation_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 685e753f683825547beb0f782f2d4a5f
+    - name: UpgradeTubeAnimation_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: a73145d03a32049498380fa40d5aec4f
+    - name: UpgradeTubeAnimation_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: f734f49b206af95418e04983eb48cf37
+    - name: UpgradeTubeAnimation_Frame_36
+      frameIndex: 36
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 605d5e548aca49144b609085960178ab
+    - name: UpgradeTubeAnimation_Frame_37
+      frameIndex: 37
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: b7f6d6b684c2153429c839add431e11d
+    - name: UpgradeTubeAnimation_Frame_38
+      frameIndex: 38
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: e5d245f913e7dd042a853b7fc44c2583
+    - name: UpgradeTubeAnimation_Frame_39
+      frameIndex: 39
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: ad112fcd099ad8b468824d9a054835d8
+    - name: UpgradeTubeAnimation_Frame_40
+      frameIndex: 40
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: d856b41067c64e84ba627ec19888ed2e
+    - name: UpgradeTubeAnimation_Frame_41
+      frameIndex: 41
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 7a3880f374f3a19458ac5f1ccc11eb86
+    - name: UpgradeTubeAnimation_Frame_42
+      frameIndex: 42
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 42d2a69a99bf7574fb823acb69c39c04
+    - name: UpgradeTubeAnimation_Frame_43
+      frameIndex: 43
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: e5c44b5e8658a3e429c7e3ebf3cc4289
+    - name: UpgradeTubeAnimation_Frame_44
+      frameIndex: 44
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: bd5c1d6965e15484286ca8a6f7a07899
+    - name: UpgradeTubeAnimation_Frame_45
+      frameIndex: 45
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 11921f7b729c6724da4f9bf2b390997a
+    - name: UpgradeTubeAnimation_Frame_46
+      frameIndex: 46
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: e7a568f3201ebcb43b3c4861532f815a
+    - name: UpgradeTubeAnimation_Frame_47
+      frameIndex: 47
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 632a3d2a7444b7240b2cf4fcc2d1f01a
+    - name: UpgradeTubeAnimation_Frame_48
+      frameIndex: 48
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: d2f48478ccfaad84a8d4bb8b061401d6
+    - name: UpgradeTubeAnimation_Frame_49
+      frameIndex: 49
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 5ea70ba553250404da96730627b46b28
+    - name: UpgradeTubeAnimation_Frame_50
+      frameIndex: 50
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 45be8fb0a86f32d489b98730d1f230b2
+    - name: UpgradeTubeAnimation_Frame_51
+      frameIndex: 51
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: efeffddd5fb9d7846a7255702a0f908e
+    - name: UpgradeTubeAnimation_Frame_52
+      frameIndex: 52
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: d047c62bf623da242a242c4ef4a5136f
+    - name: UpgradeTubeAnimation_Frame_53
+      frameIndex: 53
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 9b3d88847d2f39047b67749b3ccfd8cc
+    - name: UpgradeTubeAnimation_Frame_54
+      frameIndex: 54
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 7ad85df76a3b773439e13cc6acee87cf
+    - name: UpgradeTubeAnimation_Frame_55
+      frameIndex: 55
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 59fb355f5a120f94e9d45bb330552ccd
+    - name: UpgradeTubeAnimation_Frame_56
+      frameIndex: 56
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 437bb244e0ccd504fa30cdb6b592a8c3
+    - name: UpgradeTubeAnimation_Frame_57
+      frameIndex: 57
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 338bf2ce29ab08841914165213bc252b
+    - name: UpgradeTubeAnimation_Frame_58
+      frameIndex: 58
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: c0aa728d121e09a438fd1c8a2b5bb2ab
+    - name: UpgradeTubeAnimation_Frame_59
+      frameIndex: 59
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: f6e569d9d079ca54d92402fb865567e0
+    - name: UpgradeTubeAnimation_Frame_60
+      frameIndex: 60
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 43977a74c5db915439c11ed63189c06f
+    - name: UpgradeTubeAnimation_Frame_61
+      frameIndex: 61
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: c35e542fc664d744f9362dddd5b11602
+    - name: UpgradeTubeAnimation_Frame_62
+      frameIndex: 62
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 6423719a2cc366f42a6c19a29cb37dc5
+    - name: UpgradeTubeAnimation_Frame_63
+      frameIndex: 63
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: f214e60bd0e95a84fb30537b035b68d5
+    - name: UpgradeTubeAnimation_Frame_64
+      frameIndex: 64
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: aa0e2917fd01dea40a9cdb8c87d4cc54
+    - name: UpgradeTubeAnimation_Frame_65
+      frameIndex: 65
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: ade2f4d0b3391334a987a2b20fe97e30
+    - name: UpgradeTubeAnimation_Frame_66
+      frameIndex: 66
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 8ac98a5ec3f1e7f48980bb09305c66c4
+    - name: UpgradeTubeAnimation_Frame_67
+      frameIndex: 67
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 65d82ddf7f180df41bb5e90a5cd0f86d
+    - name: UpgradeTubeAnimation_Frame_68
+      frameIndex: 68
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: a676427a5f7b53b41a796ef168299769
+    - name: UpgradeTubeAnimation_Frame_69
+      frameIndex: 69
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 2062bf009b6ae4d41b8ab3b3363fa927
+    - name: UpgradeTubeAnimation_Frame_70
+      frameIndex: 70
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 6d92a36f5fbcdb747ba18ccd57b02e5d
+    - name: UpgradeTubeAnimation_Frame_71
+      frameIndex: 71
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 4f3641af5cf02d94ba5814ebfe6874d7
+    - name: UpgradeTubeAnimation_Frame_72
+      frameIndex: 72
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 97ce8d521cc3fc54ca861f8a7f5adaaf
+    - name: UpgradeTubeAnimation_Frame_73
+      frameIndex: 73
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 0a86571708362fb4eaed42aa3f0862cb
+    - name: UpgradeTubeAnimation_Frame_74
+      frameIndex: 74
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: c25a2c395e5365e4c9d3b67e21826dee
+    - name: UpgradeTubeAnimation_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: dbb9d9ffb3da66c41aee52a5dd7c1c7b
+    - name: UpgradeTubeAnimation_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 276ec0177a4bcfd4890274f6a806ea17
+    - name: UpgradeTubeAnimation_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 5433cf1d7211b8b478c594a3d49bad3f
+    - name: UpgradeTubeAnimation_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: f7ac113cc6e586e4caae7df6384d8b3c
+    - name: UpgradeTubeAnimation_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: ff798d75ea7565f438235b3b2cace6ed
+    - name: UpgradeTubeAnimation_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 93055d1b4ebd21342922473cde48a2b1
+    - name: UpgradeTubeAnimation_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 54689703cdeeddb42b54993490ea22ae
+    - name: UpgradeTubeAnimation_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 25fcfc3945454c146a7014967b6f8111
+    - name: UpgradeTubeAnimation_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: ecd2236e68441224c95c0bd4361b328c
+    - name: UpgradeTubeAnimation_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: ff5cc8b66c565be41aafc27cb947070a
+    - name: UpgradeTubeAnimation_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: eeccdffaabbef444180d7e472985827a
+    - name: UpgradeTubeAnimation_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: badcef75749e62042b56d95d9a51a882
+    - name: UpgradeTubeAnimation_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: bae3e9d0bd39ef1478594e6a1d9a2573
+    - name: UpgradeTubeAnimation_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: a75278d4c00b60948a55a7a4ebaf14c0
+    - name: UpgradeTubeAnimation_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 2e0b2becac6903e419f18f300c75fa79
+    - name: UpgradeTubeAnimation_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 81ceb99de131f3644821d7d094106f18
+    - name: UpgradeTubeAnimation_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 9884cec3cb30e4c4eac7d0399c6c7014
+    - name: UpgradeTubeAnimation_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: c480d71fd5597504cb5286dc204f367a
+    - name: UpgradeTubeAnimation_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: ddb6594fc8148304f86f42f09598f082
+    - name: UpgradeTubeAnimation_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 2bcc05079ddfe0341bc07e77f2eae931
+    - name: UpgradeTubeAnimation_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 8fd7c4fb60db84a45be659939021d249
+    - name: UpgradeTubeAnimation_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: dc4c609b525a17642a03dcef18a3dd6c
+    - name: UpgradeTubeAnimation_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 8f3f1dcb37f2c2849a01328fb9eee906
+    - name: UpgradeTubeAnimation_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: a59155952f69c784c803da397cc00919
+    - name: UpgradeTubeAnimation_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 12
+        y: 1
+        width: 24
+        height: 48
+      spriteId: 13533bdbadd5e7542bf70c20a3337225
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 48, y: 50}
