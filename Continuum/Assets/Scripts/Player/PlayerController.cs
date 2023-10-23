@@ -664,6 +664,11 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("AnimMoveX", lastMoveDir.x);
             anim.SetFloat("AnimMoveY", lastMoveDir.y);
         }
+
+        if (falling)
+        {
+            anim.speed = ANIM_SPEED_MULTI;
+        }
     }
 
     public void ResetScene(InputAction.CallbackContext context)

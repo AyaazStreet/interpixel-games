@@ -88,6 +88,9 @@ public class ThrowController : MonoBehaviour
     {
         if(context.performed && gameObject.activeSelf && pc.throwCooldownTimer <= 0)
         {
+            //Anim
+            anim.SetTrigger("Throw");
+            
             //Cooldown
             pc.throwCooldownTimer = pc.throwCooldownDuration;
 

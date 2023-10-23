@@ -75,7 +75,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -87,7 +87,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638336005276873457
+  platformSettingsDirtyTick: 638336010796720324
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Player_Falling
+  - name: Player_Falling_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 186
+      width: 10
       height: 16
-    spriteID: 8d493a72bb04efb40be3b69bd6cb702e
+    spriteID: 944560454efdd15438fc8ad8bb7f67f8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,16 +141,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Player_Falling_Frame_1
     originalName: 
-    pivot: {x: 0.5470588, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 28
-      width: 170
+      width: 10
       height: 16
-    spriteID: 46666202d0b455e4194b7dbe96ae6e09
+    spriteID: 584a7974c9ee25a49b9d283ad05512e9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,16 +161,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 28}
   - name: Player_Falling_Frame_2
     originalName: 
-    pivot: {x: 0.6038961, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 52
-      width: 154
+      width: 10
       height: 16
-    spriteID: 84e961760b0397a4489b8ac9893862ac
+    spriteID: 07bb0601a381b874599e95cc3473db09
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,16 +181,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 52}
   - name: Player_Falling_Frame_3
     originalName: 
-    pivot: {x: 0.67391306, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 76
-      width: 138
+      width: 10
       height: 16
-    spriteID: 906e77aa8938bc34596c3a47d572462b
+    spriteID: e73bfc1a72854cd40bc45328e928b18d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -201,16 +201,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 76}
   - name: Player_Falling_Frame_4
     originalName: 
-    pivot: {x: 0.7622951, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 100
-      width: 122
+      width: 10
       height: 16
-    spriteID: ef2beafc79a456d45b92a5abe4fc1c77
+    spriteID: d373c96d6dd9c6d48a7d8fb6ae050e8a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -221,136 +221,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 100}
   - name: Player_Falling_Frame_5
     originalName: 
-    pivot: {x: 0.8773585, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 134
-      y: 100
-      width: 106
-      height: 16
-    spriteID: 4af09cfc4cdebf4479e4228dd855d58c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 134, y: 100}
-  - name: Player_Falling_Frame_6
-    originalName: 
-    pivot: {x: 1.0333334, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 150
-      y: 76
-      width: 90
-      height: 16
-    spriteID: c5077cd292acbd2428e8b6c1e6bd4c6b
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 150, y: 76}
-  - name: Player_Falling_Frame_7
-    originalName: 
-    pivot: {x: 1.2567567, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 166
-      y: 52
-      width: 74
-      height: 16
-    spriteID: 17fec76ce2e23de48bf2820d7ef6fa6a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 166, y: 52}
-  - name: Player_Falling_Frame_8
-    originalName: 
-    pivot: {x: 1.6034483, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 182
-      y: 28
-      width: 58
-      height: 16
-    spriteID: 563c7cf0982408a4db484e8810be1b47
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 182, y: 28}
-  - name: Player_Falling_Frame_9
-    originalName: 
-    pivot: {x: 2.2142859, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 198
+      x: 22
       y: 4
-      width: 42
-      height: 16
-    spriteID: 21a2807a0461f0346909874b5a8abe6a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 198, y: 4}
-  - name: Player_Falling_Frame_10
-    originalName: 
-    pivot: {x: 3.5769231, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 124
-      width: 26
-      height: 16
-    spriteID: c70f24d96bfc61443aad67672dc6630a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 124}
-  - name: Player_Falling_Frame_11
-    originalName: 
-    pivot: {x: 9.3, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 38
-      y: 124
       width: 10
       height: 16
-    spriteID: c39580d663af78d468fa65fa5207631a
+    spriteID: f0502094b1d728842ac0ffd280f9a7da
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -358,7 +238,127 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 38, y: 124}
+    uvTransform: {x: 22, y: 4}
+  - name: Player_Falling_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 22
+      y: 28
+      width: 10
+      height: 16
+    spriteID: e047f497341b252478154ce9114b9467
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 22, y: 28}
+  - name: Player_Falling_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 22
+      y: 52
+      width: 10
+      height: 16
+    spriteID: b4ddd87fc92b6f14881f0be7497fcb89
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 22, y: 52}
+  - name: Player_Falling_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 22
+      y: 76
+      width: 10
+      height: 16
+    spriteID: 0775eee9520daa646b16be05681d9d04
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 22, y: 76}
+  - name: Player_Falling_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 22
+      y: 100
+      width: 10
+      height: 16
+    spriteID: 43b72e7011a0c2b47a03713de23e100e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 22, y: 100}
+  - name: Player_Falling_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 4
+      width: 10
+      height: 16
+    spriteID: 94a952986d095bb41a2d31a9015c910a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 4}
+  - name: Player_Falling_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 28
+      width: 10
+      height: 16
+    spriteID: 1339aeebd681ece40bdab7df83fc174b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 28}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -373,89 +373,89 @@ ScriptedImporter:
       cellRect:
         x: 3
         y: 0
-        width: 186
+        width: 10
         height: 16
-      spriteId: 8d493a72bb04efb40be3b69bd6cb702e
+      spriteId: 944560454efdd15438fc8ad8bb7f67f8
     - name: Player_Falling_Frame_1
       frameIndex: 1
       cellRect:
         x: 3
         y: 0
-        width: 170
+        width: 10
         height: 16
-      spriteId: 46666202d0b455e4194b7dbe96ae6e09
+      spriteId: 584a7974c9ee25a49b9d283ad05512e9
     - name: Player_Falling_Frame_2
       frameIndex: 2
       cellRect:
         x: 3
         y: 0
-        width: 154
+        width: 10
         height: 16
-      spriteId: 84e961760b0397a4489b8ac9893862ac
+      spriteId: 07bb0601a381b874599e95cc3473db09
     - name: Player_Falling_Frame_3
       frameIndex: 3
       cellRect:
         x: 3
         y: 0
-        width: 138
+        width: 10
         height: 16
-      spriteId: 906e77aa8938bc34596c3a47d572462b
+      spriteId: e73bfc1a72854cd40bc45328e928b18d
     - name: Player_Falling_Frame_4
       frameIndex: 4
       cellRect:
         x: 3
         y: 0
-        width: 122
+        width: 10
         height: 16
-      spriteId: ef2beafc79a456d45b92a5abe4fc1c77
+      spriteId: d373c96d6dd9c6d48a7d8fb6ae050e8a
     - name: Player_Falling_Frame_5
       frameIndex: 5
       cellRect:
         x: 3
         y: 0
-        width: 106
+        width: 10
         height: 16
-      spriteId: 4af09cfc4cdebf4479e4228dd855d58c
+      spriteId: f0502094b1d728842ac0ffd280f9a7da
     - name: Player_Falling_Frame_6
       frameIndex: 6
       cellRect:
         x: 3
         y: 0
-        width: 90
+        width: 10
         height: 16
-      spriteId: c5077cd292acbd2428e8b6c1e6bd4c6b
+      spriteId: e047f497341b252478154ce9114b9467
     - name: Player_Falling_Frame_7
       frameIndex: 7
       cellRect:
         x: 3
         y: 0
-        width: 74
+        width: 10
         height: 16
-      spriteId: 17fec76ce2e23de48bf2820d7ef6fa6a
+      spriteId: b4ddd87fc92b6f14881f0be7497fcb89
     - name: Player_Falling_Frame_8
       frameIndex: 8
       cellRect:
         x: 3
         y: 0
-        width: 58
+        width: 10
         height: 16
-      spriteId: 563c7cf0982408a4db484e8810be1b47
+      spriteId: 0775eee9520daa646b16be05681d9d04
     - name: Player_Falling_Frame_9
       frameIndex: 9
       cellRect:
         x: 3
         y: 0
-        width: 42
+        width: 10
         height: 16
-      spriteId: 21a2807a0461f0346909874b5a8abe6a
+      spriteId: 43b72e7011a0c2b47a03713de23e100e
     - name: Player_Falling_Frame_10
       frameIndex: 10
       cellRect:
         x: 3
         y: 0
-        width: 26
+        width: 10
         height: 16
-      spriteId: c70f24d96bfc61443aad67672dc6630a
+      spriteId: 94a952986d095bb41a2d31a9015c910a
     - name: Player_Falling_Frame_11
       frameIndex: 11
       cellRect:
@@ -463,7 +463,7 @@ ScriptedImporter:
         y: 0
         width: 10
         height: 16
-      spriteId: c39580d663af78d468fa65fa5207631a
+      spriteId: 1339aeebd681ece40bdab7df83fc174b
     linkedCells: []
     parentIndex: -1
   platformSettings:

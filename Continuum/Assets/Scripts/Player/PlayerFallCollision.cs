@@ -32,6 +32,8 @@ public class PlayerFallCollision : MonoBehaviour
            player.GetComponent<PlayerController>().falling = true;
            falling = true;
 
+           GameManager.Instance.pc.anim.SetTrigger("Fall");
+
            SoundManager.PlaySound(SoundManager.Sound.snd_fall);
        }
     }
