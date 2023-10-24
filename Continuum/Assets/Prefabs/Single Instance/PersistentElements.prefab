@@ -4724,7 +4724,6 @@ MonoBehaviour:
   continueText: {fileID: 3306119073400285801}
   lines: []
   textSpeed: 0.03
-  input: {fileID: 2845158107912135952}
 --- !u!1 &4499975356499325134
 GameObject:
   m_ObjectHideFlags: 0
@@ -5242,6 +5241,7 @@ MonoBehaviour:
   cmPrefab: {fileID: 395592352888599715, guid: 87cf002b3f8aca849b296a548b68d440, type: 3}
   checkpointManager: {fileID: 0}
   aimCursor: {fileID: 2800000, guid: d89225ac37ea3b3439277189e084e3d6, type: 3}
+  aimCursorX: {fileID: 2800000, guid: e18bef95c2a98634fa4e8c92f5946875, type: 3}
   currLevel: 1
 --- !u!114 &7902538428877877917
 MonoBehaviour:

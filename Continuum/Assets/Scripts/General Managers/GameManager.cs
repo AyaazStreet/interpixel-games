@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using TMPro;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     public CheckpointManager checkpointManager;
 
     public Texture2D aimCursor;
+    public Texture2D aimCursorX;
 
     public int currLevel;
 
@@ -254,6 +256,19 @@ public class GameManager : MonoBehaviour
     {
         // Set the last activated checkpoint position.
         respawnPosition = position;
+    }
+
+    public void ChangeCursor()
+    {
+        StartCoroutine(CursorCoroutine());
+    }
+
+    private IEnumerator CursorCoroutine()
+    {
+        Cursor.SetCursor(GameManager.Instance.aimCursorX, new Vector2(GameManager.Instance.aimCursorX.width / 2, GameManager.Instance.aimCursorX.height / 2), CursorMode.Auto);
+        yield return new WaitForSeconds(0.25f);
+        Cursor.SetCursor(GameManager.Instance.aimCursor, new Vector2(GameManager.Instance.aimCursor.width / 2, GameManager.Instance.aimCursor.height / 2), CursorMode.Auto);
+        yield break;
     }
 }
 

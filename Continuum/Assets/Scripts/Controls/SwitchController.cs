@@ -42,7 +42,7 @@ public class SwitchController : Controller
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Check player collision
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !blocked)
         {
             interactable = true;
             sr.material.SetFloat("_Outline_Thickness", OUTLINE_THICKNESS);
@@ -54,6 +54,12 @@ public class SwitchController : Controller
             ChangeState();
             SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);
         }
+
+        //Barrier
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            blocked = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -63,11 +69,17 @@ public class SwitchController : Controller
             interactable = false;
             sr.material.SetFloat("_Outline_Thickness", 0f);
         }
+
+        //Barrier
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            blocked = false;
+        }
     }
 
     public void Interact_performed(InputAction.CallbackContext context)
     {
-        if (interactable && context.performed)
+        if (interactable && context.performed && !blocked)
         {
             ChangeState();
             SoundManager.PlaySound(SoundManager.Sound.snd_interact_switch, transform.position);

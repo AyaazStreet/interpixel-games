@@ -62,10 +62,16 @@ public class KeyScannerController : Controller
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Check player collision
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !blocked)
         {
             interactable = true;
             sr.material.SetFloat("_Outline_Thickness", OUTLINE_THICKNESS);
+        }
+
+        //Barrier
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            blocked = true;
         }
     }
 
@@ -76,11 +82,17 @@ public class KeyScannerController : Controller
             interactable = false;
             sr.material.SetFloat("_Outline_Thickness", 0f);
         }
+
+        //Barrier
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            blocked = false;
+        }
     }
 
     public void Interact_performed(InputAction.CallbackContext context)
     {
-        if (interactable && context.performed)
+        if (interactable && context.performed && !blocked)
         {
             if (!activated)
             {

@@ -6,12 +6,18 @@ public class BarrierHandler : MonoBehaviour
 {
     bool hit = false;
 
+    public Sprite broke;
+
     Animator anim;
+    SpriteRenderer sr;
     
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+
+        anim.speed = 0;
     }
 
     public void Hit()
@@ -20,7 +26,9 @@ public class BarrierHandler : MonoBehaviour
         {
             hit = true;
 
-            //CHANGE SPRITE
+            sr.sprite = broke;
+
+            anim.SetTrigger("Break");
         }
         else
         {
@@ -30,7 +38,7 @@ public class BarrierHandler : MonoBehaviour
 
     IEnumerator Destruct()
     {
-        //anim.setTrigger("Break");
+        anim.speed = 1;
         //SOUND
 
         yield return new WaitForSeconds(0.2f);

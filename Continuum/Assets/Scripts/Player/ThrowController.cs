@@ -88,12 +88,6 @@ public class ThrowController : MonoBehaviour
     {
         if(context.performed && gameObject.activeSelf && pc.throwCooldownTimer <= 0)
         {
-            //Anim
-            anim.SetTrigger("Throw");
-            
-            //Cooldown
-            pc.throwCooldownTimer = pc.throwCooldownDuration;
-
             //Instantiate throwable object
             switch (selected)
             {
@@ -103,6 +97,17 @@ public class ThrowController : MonoBehaviour
                         _ = Instantiate(boltPrefab, throwPoint.position, throwPoint.rotation);
                         SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                         em.E1_count--;
+
+                        //Anim
+                        anim.SetTrigger("Throw");
+
+                        //Cooldown
+                        pc.throwCooldownTimer = pc.throwCooldownDuration;
+                    }
+                    else
+                    {
+                        GameManager.Instance.ChangeCursor();
+                        pc.DisplayPopup("No bolts");
                     }
                     break;
                 case 2:
@@ -120,6 +125,17 @@ public class ThrowController : MonoBehaviour
                                 obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_slow; //set the correct infuse type
                                 SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                                 em.E2_count--;
+
+                                //Anim
+                                anim.SetTrigger("Throw");
+
+                                //Cooldown
+                                pc.throwCooldownTimer = pc.throwCooldownDuration;
+                            }
+                            else
+                            {
+                                GameManager.Instance.ChangeCursor();
+                                pc.DisplayPopup("No cannisters");
                             }
                         }
                             break; 
@@ -131,6 +147,17 @@ public class ThrowController : MonoBehaviour
                                 obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_acc; //set the correct infuse type
                                 SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                                 em.E2_count--;
+
+                                //Anim
+                                anim.SetTrigger("Throw");
+
+                                //Cooldown
+                                pc.throwCooldownTimer = pc.throwCooldownDuration;
+                            }
+                            else
+                            {
+                                GameManager.Instance.ChangeCursor();
+                                pc.DisplayPopup("No cannisters");
                             }
                         }
                             break;
@@ -142,6 +169,17 @@ public class ThrowController : MonoBehaviour
                                 obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_stop; //set the correct infuse type
                                 SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                                 em.E2_count--;
+
+                                //Anim
+                                anim.SetTrigger("Throw");
+
+                                //Cooldown
+                                pc.throwCooldownTimer = pc.throwCooldownDuration;
+                            }
+                            else
+                            {
+                                GameManager.Instance.ChangeCursor();
+                                pc.DisplayPopup("No cannisters");
                             }
                         }
                             break;
@@ -154,6 +192,17 @@ public class ThrowController : MonoBehaviour
                         _ = Instantiate(rodPrefab, throwPoint.position, throwPoint.rotation);
                         SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                         em.E3_count--;
+
+                        //Anim
+                        anim.SetTrigger("Throw");
+
+                        //Cooldown
+                        pc.throwCooldownTimer = pc.throwCooldownDuration;
+                    }
+                    else
+                    {
+                        GameManager.Instance.ChangeCursor();
+                        pc.DisplayPopup("No rods");
                     }
                     break;
                 default: Debug.Log("No Throwable Selected");
@@ -162,4 +211,6 @@ public class ThrowController : MonoBehaviour
         }
     }
 
+
+    
 }
