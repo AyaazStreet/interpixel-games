@@ -11,7 +11,8 @@ public class DialogueManager : MonoBehaviour
     public string[] lines;
     public float textSpeed;
 
-    public PlayerInput input;
+    private PlayerInput input;
+
 
     private int index;
 
@@ -21,12 +22,14 @@ public class DialogueManager : MonoBehaviour
         text.text = string.Empty;
         continueText.text = string.Empty;
         gameObject.SetActive(false);
+
+        input = GameManager.Instance.pc.GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Fire1"))
         {
             if (text.text == lines[index])
             {
@@ -48,14 +51,14 @@ public class DialogueManager : MonoBehaviour
             StopAllCoroutines();
             text.text = string.Empty;
 
-            /*if (input.currentControlScheme == "Gamepad")
+            if (input.currentControlScheme == "Gamepad")
             {
                 continueText.text = "press A to continue...";
             }
             else if (input.currentControlScheme == "Keyboard")
-            {*/
+            {
                 continueText.text = "click anywhere to continue...";
-            //}
+            }
 
             lines = l;
             index = 0;

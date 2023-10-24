@@ -84,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   on: 0
+  sendSignalSprite: 0
   active_time: 2
   interactable: 0
   timer: 0
@@ -92,8 +93,22 @@ MonoBehaviour:
   interact: {fileID: 2927881971485266601, guid: 177cf0a76cd54d047a2017789023784f, type: 3}
   sr: {fileID: 4151500511083642408}
   activated: 0
-  btnIn: {fileID: 1631439066, guid: 84753066ea7cb6140b807623f5633698, type: 3}
-  btnOut: {fileID: 303738941, guid: 84753066ea7cb6140b807623f5633698, type: 3}
+  inputType: 3
+  cardPrefabs:
+  - {fileID: 8628143942297875598, guid: 4e482976917baf5449744ff4e402ffd8, type: 3}
+  - {fileID: 876882737626467479, guid: 0594065d6b9068a498409256a008ba6c, type: 3}
+  - {fileID: 3874795807257291219, guid: 64ff6026f28a22d44bd39167ffde54b4, type: 3}
+  - {fileID: 5170142199548984669, guid: a5c1bad41ada61648b5f5dc72a9e0de7, type: 3}
+  offSprites:
+  - {fileID: 303738941, guid: 84753066ea7cb6140b807623f5633698, type: 3}
+  - {fileID: -1308943201, guid: 84753066ea7cb6140b807623f5633698, type: 3}
+  - {fileID: -1115218418, guid: 84753066ea7cb6140b807623f5633698, type: 3}
+  - {fileID: -1866459656, guid: 84753066ea7cb6140b807623f5633698, type: 3}
+  onSprites:
+  - {fileID: 1631439066, guid: 84753066ea7cb6140b807623f5633698, type: 3}
+  - {fileID: 2059481501, guid: 84753066ea7cb6140b807623f5633698, type: 3}
+  - {fileID: 1921694846, guid: 84753066ea7cb6140b807623f5633698, type: 3}
+  - {fileID: 1710061593, guid: 84753066ea7cb6140b807623f5633698, type: 3}
 --- !u!114 &3914045115204109928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 7008024015933487960}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.16, z: 1.8389034}
+  m_LocalPosition: {x: 0, y: 0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -158,7 +173,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: eac9a93418089dc46857c1775547f45a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 303738941, guid: 84753066ea7cb6140b807623f5633698, type: 3}
+  m_Sprite: {fileID: -1866459656, guid: 84753066ea7cb6140b807623f5633698, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
