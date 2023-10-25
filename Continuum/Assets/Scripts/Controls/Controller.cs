@@ -14,6 +14,7 @@ public class Controller : MonoBehaviour
 
     public float active_time = 2f;
     public bool interactable = false;
+    public bool blocked = false;
     public float timer;
 
     public const float OUTLINE_THICKNESS = 0.75f;

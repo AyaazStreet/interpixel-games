@@ -44,7 +44,7 @@ public class ButtonController : Controller
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Check player collision
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !blocked)
         {
             interactable = true;
             sr.material.SetFloat("_Outline_Thickness", OUTLINE_THICKNESS);
@@ -61,6 +61,12 @@ public class ButtonController : Controller
 
             SoundManager.PlaySound(SoundManager.Sound.snd_interact_btn, transform.position);
         }
+
+        //Barrier
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            blocked = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -70,11 +76,26 @@ public class ButtonController : Controller
             interactable = false;
             sr.material.SetFloat("_Outline_Thickness", 0f);
         }
+
+        //Barrier
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            blocked = false;
+        }
     }
+
+    /*private void OnTriggerStay2D(Collider2D collision)
+    {
+        //Barrier
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            blocked = true;
+        }
+    }*/
 
     public void Interact_performed(InputAction.CallbackContext context)
     {
-        if (interactable && context.performed)
+        if (interactable && context.performed && !blocked)
         {
             sr.sprite = btnIn;
             timer = active_time;

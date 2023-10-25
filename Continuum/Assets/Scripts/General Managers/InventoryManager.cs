@@ -10,7 +10,7 @@ public class InventoryManager : MonoBehaviour
 {
     public Image[] inventoryDisplay;
     public Sprite[] collectableSprites;
-    public GameObject[] collectablePrefabs;
+    //public GameObject[] collectablePrefabs;
 
     public List<InventoryItem> inventory = new();
 
@@ -67,7 +67,15 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("Item Used");
     }
 
-    public void ReturnItemsFromInventory(List<InventoryItem> items)
+    public void UnuseInventoryItem(int t)
+    {
+        inventory.First(item => item.type == t && item.used == true).used = false;
+
+        UpdateInventoryDisplay();
+        Debug.Log("Item Unused");
+    }
+
+    /*public void ReturnItemsFromInventory(List<InventoryItem> items)
     {
         foreach(InventoryItem item in items)
         {
@@ -76,7 +84,7 @@ public class InventoryManager : MonoBehaviour
         }
         UpdateInventoryDisplay();
         Debug.Log("Inventory Items Returned");
-    }
+    }*/
 
     public void UpdateInventoryDisplay()
     {

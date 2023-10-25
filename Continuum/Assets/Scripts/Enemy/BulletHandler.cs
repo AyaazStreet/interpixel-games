@@ -62,7 +62,7 @@ public class BulletHandler : MonoBehaviour
         if (collision.gameObject.CompareTag("Barrier"))
         {
             //collision.gameObject.SetActive(false);
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<BarrierHandler>().Hit();
 
             Explode();
         }

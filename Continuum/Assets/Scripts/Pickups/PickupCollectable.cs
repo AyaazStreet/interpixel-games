@@ -13,7 +13,9 @@ public class PickupCollectable : MonoBehaviour
     private bool collected = false;
     private bool close = false;
 
-    [Range(0, 2)]
+    public List<Sprite> sprites = new List<Sprite>();
+
+    [Range(0, 3)]
     public int collectableType;
 
     private Rigidbody2D rb;
@@ -29,6 +31,8 @@ public class PickupCollectable : MonoBehaviour
 
     private void FixedUpdate()
     {
+        sr.sprite = sprites[collectableType];
+
         if (collected)
         {
             targetPoint = (Vector2)GameObject.Find("Player").transform.position + new Vector2(0, offset);
