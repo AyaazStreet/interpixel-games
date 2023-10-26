@@ -17,7 +17,6 @@ public class LaserPatrol : MonoBehaviour
     public bool forwardTraverse;
 
     private Rigidbody2D rb;
-    private Animator anim;
     private Transform targetPoint;
     private Vector2 moveDir;
 
@@ -28,7 +27,6 @@ public class LaserPatrol : MonoBehaviour
     {
         //Init components
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
 
         pointArrPos = 0;
         targetPoint = pointArr[0].transform;
@@ -50,14 +48,11 @@ public class LaserPatrol : MonoBehaviour
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = localTimescale ?? globalTimescale;
 
-        //Adjust animation speed based on timeMod
-        anim.speed = timeMod;
-
         //Adjust move direction and aim angle based on target point
         moveDir = targetPoint.position - transform.position;
 
         //Check if point reached
-        if (Vector2.Distance(transform.position, targetPoint.position) < 0.05)
+        if (Vector2.Distance(transform.position, targetPoint.position) < 0.01)
         {
             if (!stationary)
             {
@@ -99,7 +94,14 @@ public class LaserPatrol : MonoBehaviour
         }
         else //if (GameManager.Instance.pc.alive)
         {
-            rb.velocity = MOVE_SPEED * timeMod * moveDir.normalized;
+            if ((Time.fixedDeltaTime * rb.velocity).magnitude < Vector2.Distance(transform.position, targetPoint.position))
+            {
+                rb.velocity = MOVE_SPEED * timeMod * moveDir.normalized;
+            }
+            else
+            {
+                rb.velocity = (moveDir.normalized * Vector2.Distance(transform.position, targetPoint.position)) / Time.fixedDeltaTime;
+            }
         }
         /*else
         {

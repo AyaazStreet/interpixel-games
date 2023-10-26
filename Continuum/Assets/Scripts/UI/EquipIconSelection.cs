@@ -11,12 +11,17 @@ public class EquipIconSelection : MonoBehaviour
     public  int slot;
     public Sprite bg0;
     public Sprite bg1;
+    public Sprite p1;
+    public Sprite p2;
+    public Sprite p3;
     public GameObject icon;
     public TextMeshProUGUI count;
 
     private EquipManager em;
     private PlayerController pc;
     private Image sr;
+
+    private Animator anim;
 
     [SerializeField] private int active;
     [SerializeField] private bool full = false;
@@ -31,13 +36,25 @@ public class EquipIconSelection : MonoBehaviour
         {
             sr.sprite = bg0;
         }
+
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        if (em.selected != active)
+        active = em.selected;
+
+        if (active == 2 && slot == 2)
         {
-            active = em.selected;
+            switch (pc.throwController.infused)
+            {
+                case 1: icon.GetComponent<Image>().sprite = p1; break;
+                case 2: icon.GetComponent<Image>().sprite = p2; break;
+                case 3: icon.GetComponent<Image>().sprite = p3; break;
+            }
+        }
+
+            
 
             if (slot == active)
             {
@@ -51,7 +68,6 @@ public class EquipIconSelection : MonoBehaviour
             {
                 sr.sprite = bg1;
             }
-        }
 
         switch (slot)
         {

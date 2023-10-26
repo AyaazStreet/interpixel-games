@@ -42,7 +42,14 @@ public class LevelTransition : MonoBehaviour
 
         yield return new WaitForSeconds(1.2f);
         
-        SceneManager.LoadScene("Level_" + (GameManager.Instance.currLevel + 1));
+        if (GameManager.Instance.currLevel == 10)
+        {
+            SceneManager.LoadScene("Menu_Main");
+        }
+        else
+        {
+            SceneManager.LoadScene("Level_" + (GameManager.Instance.currLevel + 1));
+        }
 
         yield break;
     }

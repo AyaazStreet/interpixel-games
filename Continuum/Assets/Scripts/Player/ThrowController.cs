@@ -7,7 +7,12 @@ using UnityEngine.UI;
 public class ThrowController : MonoBehaviour
 {
     public GameObject boltPrefab;
-    public GameObject canisterPrefab;
+
+    public GameObject canisterPrefab1;
+    public GameObject canisterPrefab2;
+    public GameObject canisterPrefab3;
+
+
     public GameObject rodPrefab;
 
     public GameObject fieldPrefab_slow;
@@ -149,7 +154,7 @@ public class ThrowController : MonoBehaviour
                         {
                             if (em.E2_count > 0)
                             {
-                                GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
+                                GameObject obj = Instantiate(canisterPrefab1, throwPoint.position, throwPoint.rotation);
                                 obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_slow; //set the correct infuse type
                                 SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                                 em.E2_count--;
@@ -177,7 +182,7 @@ public class ThrowController : MonoBehaviour
                         {
                             if (em.E2_count > 0)
                             {
-                                GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
+                                GameObject obj = Instantiate(canisterPrefab2, throwPoint.position, throwPoint.rotation);
                                 obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_acc; //set the correct infuse type
                                 SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                                 em.E2_count--;
@@ -205,7 +210,7 @@ public class ThrowController : MonoBehaviour
                         {
                             if (em.E2_count > 0)
                             {
-                                GameObject obj = Instantiate(canisterPrefab, throwPoint.position, throwPoint.rotation);
+                                GameObject obj = Instantiate(canisterPrefab3, throwPoint.position, throwPoint.rotation);
                                 obj.GetComponent<Canister>().fieldPrefab = fieldPrefab_stop; //set the correct infuse type
                                 SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                                 em.E2_count--;

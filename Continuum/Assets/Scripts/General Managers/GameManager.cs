@@ -186,7 +186,9 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(obj.gameObject);
             }
-        }
+
+            em.selected = checkpointManager.selectedEquip;
+}
         else
         {
             foreach (Transform obj in checkpointManager.transform)

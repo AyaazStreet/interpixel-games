@@ -17,6 +17,8 @@ public class EquipManager : MonoBehaviour
     public int E2_count = 0;
     public int E3_count = 0;
 
+    
+
     public class Collectable
     {
         public int unlockNum;
@@ -35,6 +37,8 @@ public class EquipManager : MonoBehaviour
     {
         //deactivate throw mode at start
         throwPointer.SetActive(false);
+
+        
     }
 
     private void Update()
@@ -47,6 +51,8 @@ public class EquipManager : MonoBehaviour
         {
             pc.infusing = false;
         }
+
+        
     }
 
     public void Manual_Aim_Performed(InputAction.CallbackContext context)

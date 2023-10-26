@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyPatrol : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EnemyPatrol : MonoBehaviour
 
     public bool circular;
     public bool stationary;
+
+    private bool dying;
 
     public GameObject[] pointArr;
     public int pointArrPos;
@@ -177,5 +180,32 @@ public class EnemyPatrol : MonoBehaviour
         anim.SetFloat("AnimMoveX", moveDir.x);
         anim.SetFloat("AnimMoveY", moveDir.y);
         anim.SetFloat("AnimMoveMagnitude", rb.velocity.magnitude);
+    }
+
+    public void Die()
+    {
+        
+        if(!dying )
+        {
+            StartCoroutine(Death_Laser_Enemy());
+            GetComponent<CapsuleCollider2D>().enabled = false;
+            dying = true;
+        }
+        
+    }
+
+    private IEnumerator Death_Laser_Enemy()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.snd_burn);
+
+        rb.velocity = Vector2.zero;
+
+        anim.SetTrigger("Laser");
+
+        yield return new WaitForSeconds(1.2f);
+
+        Destroy(transform.parent.gameObject);
+
+        yield break;
     }
 }

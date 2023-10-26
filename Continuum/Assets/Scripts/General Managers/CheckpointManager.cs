@@ -15,6 +15,7 @@ public class CheckpointManager : MonoBehaviour
     public List<bool> interactableStates;
     public bool togglePowers;
     public bool skipIntro;
+    public int selectedEquip;
 
     public List<GameObject> saveStateObjects;
 

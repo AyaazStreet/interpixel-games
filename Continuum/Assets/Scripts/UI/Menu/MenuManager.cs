@@ -249,6 +249,12 @@ public class MenuManager : MonoBehaviour
             case 9:
                 ChangeScene("Level_9");
                 break;
+            case 10:
+                ChangeScene("Level_10");
+                break;
+            case 11:
+                ChangeScene("Level_11");
+                break;
             default:
                 ChangeScene("Level_Tutorial");
                 break;

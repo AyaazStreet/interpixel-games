@@ -118,7 +118,7 @@ public class PowerUnlock : MonoBehaviour
             started = true;
             animator.SetTrigger("StartAnim");
 
-            SoundManager.PlaySound(SoundManager.Sound.snd_interact_btn, transform.position);
+            SoundManager.PlaySound(SoundManager.Sound.snd_tube, transform.position);
         }
     }
 }

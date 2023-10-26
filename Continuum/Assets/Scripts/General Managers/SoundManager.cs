@@ -84,7 +84,11 @@ public class SoundManager : MonoBehaviour
         msc_music5,
         snd_burn,
         snd_infuse,
-        snd_canSmash
+        snd_canSmash,
+        snd_beam,
+        snd_tube,
+        snd_piston,
+        snd_pistonOpen
     }
 
     private static Dictionary<Sound, float> soundTimerDictionary;
@@ -182,6 +186,28 @@ public class SoundManager : MonoBehaviour
 
             Destroy(soundGameObject, audioSource.clip.length + 0.1f);
         }
+    }
+
+    public static void PlaySound(Sound sound, Vector3 positon, Transform parent)
+    {
+        
+            Debug.Log("SpatTest");
+            GameObject soundGameObject = new GameObject("SpatialSoundPlayer");
+            soundGameObject.transform.parent = parent;
+            soundGameObject.transform.position = positon;
+
+            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            audioSource.clip = GetAudioClip(sound);
+            audioSource.maxDistance = 15f;
+            audioSource.minDistance = 8f;
+            audioSource.spatialBlend = 1f;
+            audioSource.rolloffMode = AudioRolloffMode.Linear;
+            audioSource.dopplerLevel = 0f;
+            audioSource.loop = true;
+
+            audioSource.outputAudioMixerGroup = Instance.grp_spatial;
+            audioSource.Play();
+
     }
 
     public static void PlaySound(Sound sound)

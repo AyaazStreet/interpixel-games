@@ -15,12 +15,11 @@ public class LaserHandler : MonoBehaviour
 
     public Transform gun;
     public Transform firePoint;
-    public LayerMask layerMask;
+    public LayerMask layerMaskWall;
+    public LayerMask layerMaskPlayer;
 
     private Vector2 aimDir;
     private float aimAngle;
-
-    private Animator anim;
 
     public GameObject laserPrefab;
     private GameObject laser;
@@ -33,8 +32,7 @@ public class LaserHandler : MonoBehaviour
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = 1f;
 
-        //Init
-        anim = GetComponent<Animator>();
+        SoundManager.PlaySound(SoundManager.Sound.snd_beam, transform.position, transform);
     }
 
     void Update()
@@ -61,14 +59,10 @@ public class LaserHandler : MonoBehaviour
             aimDir = new Vector2(Mathf.Cos(zRotation * Mathf.Deg2Rad), Mathf.Sin(zRotation * Mathf.Deg2Rad));
         }*/
 
-        float zRotation = gun.transform.eulerAngles.z + 90f;
+        float zRotation = gun.transform.eulerAngles.z - 90f;
         aimDir = new Vector2(Mathf.Cos(zRotation * Mathf.Deg2Rad), Mathf.Sin(zRotation * Mathf.Deg2Rad));
 
         DrawLaser();
-
-        //Anim
-        anim.SetBool("Tracking", tracking);
-        anim.speed = timeMod;
     }
 
     private void DrawLaser()
@@ -78,23 +72,13 @@ public class LaserHandler : MonoBehaviour
         float laserZ = -1f;
         
         // Create a raycast hit2D variable to store information about the hit
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, aimDir, laserLength, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, aimDir, laserLength, layerMaskWall);
         if (hit.collider != null)
         {
             Vector2 hitPoint = hit.point;
             Debug.DrawLine(firePoint.position, hitPoint, Color.red);
 
             target = hitPoint;
-
-            if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Player" && timeMod > 0)
-            {
-                Vector2 rayEnd = ((Vector2)firePoint.transform.position) + (aimDir * laserLength);
-                Debug.DrawLine(firePoint.position, rayEnd, Color.green);
-
-                target = rayEnd;
-
-                GameManager.Instance.pc.Die("laser");
-            }
         }
         else
         {
@@ -104,18 +88,32 @@ public class LaserHandler : MonoBehaviour
             target = rayEnd;
         }
 
+        RaycastHit2D playerHit = Physics2D.Raycast(firePoint.position, aimDir, laserLength, layerMaskPlayer);
+        if (playerHit.collider != null && Vector2.Distance(firePoint.position, playerHit.point) < Vector2.Distance(firePoint.position, target))
+        {
+            if (LayerMask.LayerToName(playerHit.collider.gameObject.layer) == "Player") 
+            {
+                GameManager.Instance.pc.Die("laser");
+            }
+            else if (LayerMask.LayerToName(playerHit.collider.gameObject.layer) == "Enemy")
+            {
+                playerHit.collider.gameObject.GetComponent<EnemyPatrol>().Die();
+            }
+
+        }
+
         if (!laser)
         {
-            laser = Instantiate(laserPrefab, new Vector3(start.x, start.y, laserZ), gun.transform.rotation);
+            laser = Instantiate(laserPrefab, new Vector3(start.x, start.y, laserZ), firePoint.transform.rotation);
             laserSr = laser.GetComponent<SpriteRenderer>();
         }
         else
         {
             laser.transform.position = new Vector3(start.x, start.y, laserZ);
-            laser.transform.rotation = gun.transform.rotation;
+            laser.transform.rotation = firePoint.transform.rotation;
         }
 
-        laserSr.size = new Vector2(0.5f, ((target - start).magnitude) / laser.transform.localScale.x);
+        laserSr.size = new Vector2(0.1875f, ((target - start).magnitude) / laser.transform.localScale.x);
 
 
         if (!on)

@@ -17,10 +17,6 @@ PrefabInstance:
       value: Field (Accellerate)
       objectReference: {fileID: 0}
     - target: {fileID: 1839131607641009184, guid: 5b80c66f86f004d458a78c4b5b3dfeaa, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1839131607641009184, guid: 5b80c66f86f004d458a78c4b5b3dfeaa, type: 3}
       propertyPath: m_TagString
       value: Acc Field
       objectReference: {fileID: 0}
@@ -68,22 +64,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4045246116782039567, guid: 5b80c66f86f004d458a78c4b5b3dfeaa, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: -1740388392233825272, guid: cee02c57041bc964195cfc90d949f057, type: 3}
     - target: {fileID: 5182053562287491573, guid: 5b80c66f86f004d458a78c4b5b3dfeaa, type: 3}
-      propertyPath: m_Color.a
-      value: 0.29803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 5182053562287491573, guid: 5b80c66f86f004d458a78c4b5b3dfeaa, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5182053562287491573, guid: 5b80c66f86f004d458a78c4b5b3dfeaa, type: 3}
-      propertyPath: m_Color.g
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5182053562287491573, guid: 5b80c66f86f004d458a78c4b5b3dfeaa, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1446426568376698275, guid: cee02c57041bc964195cfc90d949f057, type: 3}
     m_RemovedComponents:
     - {fileID: 8436076632821580683, guid: 5b80c66f86f004d458a78c4b5b3dfeaa, type: 3}
     m_RemovedGameObjects: []

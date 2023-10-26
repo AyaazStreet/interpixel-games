@@ -32,7 +32,7 @@ public class Checkpoint : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.1f);
 
-        
+        cm.selectedEquip = em.selected;
         
         cm.savedLevel = GameManager.Instance.currLevel;
 

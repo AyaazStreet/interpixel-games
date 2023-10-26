@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 using UnityEngine;
 
 public class Canister : MonoBehaviour
@@ -22,6 +21,8 @@ public class Canister : MonoBehaviour
     private bool isSlowing = false;
     private float currSpeed = 20f;
 
+    private bool broken;
+
     private void Awake()
     {
         moveDir = transform.up;
@@ -34,6 +35,9 @@ public class Canister : MonoBehaviour
         //Initialise components
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        anim.speed = 0;
+
     }
 
     private void Update()
@@ -60,9 +64,6 @@ public class Canister : MonoBehaviour
             }
         }
 
-        //Animation
-        anim.SetBool("AnimMoving", isMoving);
-        anim.speed = timeMod;
     }
 
     private void FixedUpdate()
@@ -83,7 +84,13 @@ public class Canister : MonoBehaviour
             {
                 currSpeed = 0f;
                 isMoving = false;
-                Break(null);
+
+                if(!broken)
+                {
+                    broken = true;
+                    StartCoroutine(Break(null));
+                }
+                
             }
         }
     }
@@ -92,13 +99,23 @@ public class Canister : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Bolt"))
         {
-            Break(collision.transform);
+            if (!broken)
+            {
+                broken = true;
+                StartCoroutine(Break(collision.transform));
+            }
+            
         }
     }
 
-    public void Break(Transform target)
+    public IEnumerator Break(Transform target)
     {
-        GameObject field = Instantiate(fieldPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        anim.speed = 1;
+        currSpeed = 0f;
+
+        yield return new WaitForSeconds(0.3f);
+        
+        GameObject field = Instantiate(fieldPrefab, gameObject.transform.position, Quaternion.Euler(0f,0f, Random.Range(0f, 360f)));
 
         if (target != null)
         {
@@ -109,5 +126,7 @@ public class Canister : MonoBehaviour
 
         field.GetComponent<Field>().stickTarget = target;
         Destroy(gameObject);
+
+        yield break;
     }
 }

@@ -50,7 +50,7 @@ public class Field : MonoBehaviour
         //if a time adjustable object enters, adjust it's local timescale
         if (collision != null && localMod != null)
         {
-            collision.gameObject.GetComponent<LocalModifier>().value = timeFactor;
+            localMod.value = timeFactor;
             Debug.Log("object affected by timescale");
         }
 
