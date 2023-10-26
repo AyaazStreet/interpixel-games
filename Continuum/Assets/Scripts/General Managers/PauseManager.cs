@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,12 +10,39 @@ public class PauseManager : MonoBehaviour
 {
     public static PauseManager Instance { get; private set;}
 
+    public InputActionAsset inputs;
+
     public GameObject pauseUI;
 
     public GameObject optionsUI;
 
     public Texture2D cursor;
     public Texture2D aimCursor;
+
+    [Header("Buttons")]
+    [SerializeField] private Button startSelect;
+    [SerializeField] private Toggle optionsSelect;
+
+    private void OnEnable()
+    {
+        inputs.FindAction("Restart").performed += Back_performed;
+    }
+
+    private void OnDisable()
+    {
+        inputs.FindAction("Restart").performed += Back_performed;
+    }
+
+    public void Back_performed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if ((pauseUI && pauseUI.activeSelf) || (optionsUI && optionsUI.activeSelf))
+            {
+                TogglePause();
+            }
+        }
+    }
 
     private void Awake()
     {
@@ -41,12 +69,14 @@ public class PauseManager : MonoBehaviour
             else if (optionsUI.activeSelf)
             {
                 CloseOptions();
+                
             }
-            else
+            else if (GameManager.Instance.pc.alive)
             {
                 Cursor.SetCursor(cursor, new Vector2(0, 0), CursorMode.Auto);
 
                 pauseUI.SetActive(true);
+                startSelect.Select();
                 Time.timeScale = 0f;
             }
         }
@@ -72,6 +102,8 @@ public class PauseManager : MonoBehaviour
 
         optionsUI.SetActive(true);
         pauseUI.SetActive(false);
+
+        optionsSelect.Select();
     }
 
     public void CloseOptions()
@@ -80,6 +112,8 @@ public class PauseManager : MonoBehaviour
 
         optionsUI.SetActive(false);
         pauseUI.SetActive(true);
+
+        startSelect.Select();
     }
 
     public void RestartLevel()

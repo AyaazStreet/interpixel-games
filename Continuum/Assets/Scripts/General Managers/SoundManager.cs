@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class SoundManager : MonoBehaviour
@@ -31,6 +32,22 @@ public class SoundManager : MonoBehaviour
 
         Instance.peristentSoundPlayer = new GameObject("PeristentSoundPlayer");
         peristentAudioSource = Instance.peristentSoundPlayer.AddComponent<AudioSource>();
+
+        if (MusicManager.Instance.transform.Find("MusicPlayer") != null)
+        {
+            musicPlayer = MusicManager.Instance.transform.Find("MusicPlayer").gameObject;
+        }
+        else
+        {
+            musicPlayer = null;
+        }
+
+        if (musicPlayer == null)
+        {
+            musicPlayer = new GameObject("MusicPlayer");
+            musicAudioSource = musicPlayer.AddComponent<AudioSource>();
+            musicAudioSource.transform.parent = MusicManager.Instance.transform;
+        }
     }
 
     public enum Sound
@@ -55,7 +72,19 @@ public class SoundManager : MonoBehaviour
         snd_secret,
         msc_music1,
         snd_type,
-        snd_pickup
+        snd_pickup,
+        snd_error,
+        snd_slowLoop,
+        snd_accelLoop,
+        snd_stopLoop,
+        msc_musicMenu,
+        msc_music2,
+        msc_music3,
+        msc_music4,
+        msc_music5,
+        snd_burn,
+        snd_infuse,
+        snd_canSmash
     }
 
     private static Dictionary<Sound, float> soundTimerDictionary;
@@ -215,28 +244,74 @@ public class SoundManager : MonoBehaviour
         }
         loopAudioSource.clip = GetAudioClip(sound);
         loopAudioSource.loop = true;
-        loopAudioSource.volume = 0.5f;
+        loopAudioSource.volume = 0.3f;
 
         loopAudioSource.outputAudioMixerGroup = Instance.grp_ambience;
         loopAudioSource.Play();
     }
 
-    public static void PlaySoundMusic(Sound sound)
+    public static AudioSource PlaySoundCutoff(Sound sound)
+    {
+        
+        GameObject player = new GameObject("CutoffPlayer");
+        AudioSource audioSource = player.AddComponent<AudioSource>();
+
+        audioSource.clip = GetAudioClip(sound);
+        //loopAudioSource.loop = true;
+        //loopAudioSource.volume = 0.5f;
+
+        audioSource.outputAudioMixerGroup = Instance.grp_nonspatial;
+        audioSource.Play();
+
+        return audioSource;
+    }
+
+    public static IEnumerator CutoffSound(AudioSource audioSource, float fadeOutDuration)
+    {
+        float fadeStartTime = Time.time;
+
+        while (audioSource.volume > 0)
+        {
+            float timeSinceFadeStart = Time.time - fadeStartTime;
+
+            audioSource.volume = 1.0f - (timeSinceFadeStart / fadeOutDuration);
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+
+        audioSource.volume = 0;
+        audioSource.Stop();
+
+        Destroy(audioSource.gameObject);
+
+        yield break;
+    }
+
+    public static void PlayMusic(Sound sound)
     {
         Debug.Log("Playing Music");
 
-        if (musicPlayer == null)
+        if (musicAudioSource.clip != GetAudioClip(sound))
         {
-            musicPlayer = new GameObject("MusicPlayer");
-            musicAudioSource = musicPlayer.AddComponent<AudioSource>();
-            musicAudioSource.transform.parent = CheckpointManager.Instance.transform;
-        }
-        musicAudioSource.clip = GetAudioClip(sound);
-        musicAudioSource.loop = true;
-        musicAudioSource.volume = 0.5f;
+            Debug.Log("Music Change");
+            
+            musicAudioSource.clip = GetAudioClip(sound);
+            musicAudioSource.loop = true;
+            musicAudioSource.volume = 1f;
 
-        musicAudioSource.outputAudioMixerGroup = Instance.grp_music;
-        musicAudioSource.Play();
+            musicAudioSource.outputAudioMixerGroup = Instance.grp_music;
+            musicAudioSource.Play();
+        }
+        else if (!musicAudioSource.isPlaying)
+        {
+            musicAudioSource.Play();
+        }
+    }
+
+    public static void StopMusic()
+    {
+        Debug.Log("Stopping Music");
+
+        musicAudioSource.Stop();
     }
 
     private static AudioClip GetAudioClip(Sound sound)

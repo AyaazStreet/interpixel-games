@@ -42,6 +42,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject ButtonCont;
     private CheckpointManager checkpointManager;
     [SerializeField] private GameObject cmPrefab;
+    private MusicManager musicManager;
+    [SerializeField] private GameObject mmPrefab;
 
     public Animator backgroundAnim;
     public Animator titleAnim;
@@ -77,7 +79,19 @@ public class MenuManager : MonoBehaviour
             cm.name = "CheckpointManager";
             checkpointManager = cm.GetComponent<CheckpointManager>();
         }
-        
+
+        //Music Object Create
+        if (GameObject.FindGameObjectWithTag("MusicManager"))
+        {
+            musicManager = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
+        }
+        else
+        {
+            GameObject mm = Instantiate(mmPrefab);
+            mm.name = "MusicManager";
+            musicManager = mm.GetComponent<MusicManager>();
+        }
+
         powerSetting.isOn = CheckpointManager.Instance.togglePowers;
         fullscreenSetting.isOn = Screen.fullScreen;
 
@@ -99,6 +113,14 @@ public class MenuManager : MonoBehaviour
         {
             nav.GetComponentInChildren<TypeTextHandler>().on = true;
         }
+
+        
+    }
+
+    private void Start()
+    {
+        //Music
+        SoundManager.PlayMusic(SoundManager.Sound.msc_musicMenu);
     }
 
     private void Update()
@@ -108,6 +130,7 @@ public class MenuManager : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 StartButton();
+                SoundManager.PlaySound(SoundManager.Sound.snd_click);
             }
         }
     }

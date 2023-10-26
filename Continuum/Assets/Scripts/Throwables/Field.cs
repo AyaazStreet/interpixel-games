@@ -9,6 +9,8 @@ public class Field : MonoBehaviour
     private float timeFactor;
     private float despawnTimer = 3f;
 
+    public Transform stickTarget;
+
     private void Awake()
     {
         //change effect based on infused ability 

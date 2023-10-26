@@ -63,7 +63,7 @@ public class PlayerFallCollision : MonoBehaviour
                 if (player.GetComponent<PlayerController>().alive)
                 {
                     player.GetComponent<PlayerController>().alive = false;
-                    StartCoroutine(DelayedDeath(1f));
+                    StartCoroutine(DelayedDeath(0.5f));
                 }
             }
         }
@@ -122,6 +122,8 @@ public class PlayerFallCollision : MonoBehaviour
         SoundManager.PlaySound(SoundManager.Sound.snd_splat);
 
         GameManager.Instance.deathText.text = "You've fallen to your death";
+
+        player.GetComponent<PlayerController>().alive = true;
         GameManager.Instance.pc.Die("fall");
 
         falling = false;

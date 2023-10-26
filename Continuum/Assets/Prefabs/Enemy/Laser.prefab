@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9025190405226649970, guid: 83e2b018c6387794b845c6848bff1dc5, type: 3}
       propertyPath: m_Name
-      value: Laser Variant
+      value: Laser
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2479099594394812399, guid: 83e2b018c6387794b845c6848bff1dc5, type: 3}
@@ -132,4 +132,4 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1152
-  laserPrefab: {fileID: 5260144241373447896, guid: 43fafeb82703b674f9de720498bc5f6b, type: 3}
+  laserPrefab: {fileID: 8740046082895713811, guid: 1afdbc0f4f191fa4e9228d1ee91bf6a8, type: 3}

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public bool resetCollectables = false;
-    private bool activated = false;
+    //private bool activated = false;
 
     private CheckpointManager cm;
     private PlayerController pc;
@@ -23,7 +23,7 @@ public class Checkpoint : MonoBehaviour
 
     public IEnumerator ActivateCheckpoint()
     {
-        activated = true;
+        //activated = true;
 
         if (Vector2.Distance(pc.transform.position, new Vector3(transform.position.x, transform.position.y, 0)) > 0.1f)
         {
@@ -83,7 +83,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (!activated)
+            if (cm.savedPosition != new Vector3(transform.position.x, transform.position.y, 0))
             {
                 StartCoroutine(ActivateCheckpoint());
             }

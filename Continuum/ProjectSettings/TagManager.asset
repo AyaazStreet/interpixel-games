@@ -17,6 +17,7 @@ TagManager:
   - Singleton
   - Barrier
   - PlayerDetectionCollider
+  - MusicManager
   layers:
   - Default
   - TransparentFX

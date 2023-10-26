@@ -75,6 +75,8 @@ public class PlayerController : MonoBehaviour
 
     public SoundManager.Sound walkSound;
 
+    private AudioSource powerSoundSource;
+
     private void Awake()
     {
         //Initialise components
@@ -190,6 +192,8 @@ public class PlayerController : MonoBehaviour
                         {
                             activeAbility = 0;
 
+                            if (powerSoundSource) StartCoroutine(SoundManager.CutoffSound(powerSoundSource, 0.5f));
+
                             if (abilityCooldownTimer <= 0f)
                             {
                                 abilityCooldownTimer = CD_DUR;
@@ -223,6 +227,8 @@ public class PlayerController : MonoBehaviour
                         if (abilityActiveTimer <= 0f)
                         {
                             activeAbility = 0;
+
+                            if (powerSoundSource) StartCoroutine(SoundManager.CutoffSound(powerSoundSource, 0.5f));
 
                             if (abilityCooldownTimer <= 0f)
                             {
@@ -258,6 +264,8 @@ public class PlayerController : MonoBehaviour
                         {
                             comboActive = false;
                             activeAbility = 0;
+
+                            if (powerSoundSource) StartCoroutine(SoundManager.CutoffSound(powerSoundSource, 0.5f));
 
                             if (abilityCooldownTimer <= 0f)
                             {
@@ -407,7 +415,8 @@ public class PlayerController : MonoBehaviour
 
                 if (infusing)
                 {
-                    throwController.infused = 1;
+                    throwController.SetInfusion(1);
+                    SoundManager.PlaySound(SoundManager.Sound.snd_infuse);
                     Debug.Log("Infuse 1");
                 }
             }
@@ -464,7 +473,8 @@ public class PlayerController : MonoBehaviour
 
                 if (infusing)
                 {
-                    throwController.infused = 2;
+                    throwController.SetInfusion(2);
+                    SoundManager.PlaySound(SoundManager.Sound.snd_infuse);
                     Debug.Log("Infuse 2");
                 }
             }
@@ -514,6 +524,7 @@ public class PlayerController : MonoBehaviour
                         abilityActiveTimer = A3_DUR;
                         Debug.Log("Time Stop Active");
                         SoundManager.PlaySound(SoundManager.Sound.snd_stopTime);
+                        powerSoundSource = SoundManager.PlaySoundCutoff(SoundManager.Sound.snd_stopLoop);
                     }
                 }
 
@@ -524,7 +535,8 @@ public class PlayerController : MonoBehaviour
 
                 if (infusing)
                 {
-                    throwController.infused = 3;
+                    throwController.SetInfusion(3);
+                    SoundManager.PlaySound(SoundManager.Sound.snd_infuse);
                     Debug.Log("Infuse 3");
                 }
             }
@@ -587,8 +599,9 @@ public class PlayerController : MonoBehaviour
                 {
                     activeAbility = 1; //change active ability 
                     abilityActiveTimer = A1_DUR; //set ability duration
-                    Debug.Log("Time Slow Active");
+                    //Debug.Log("Time Slow Active");
                     SoundManager.PlaySound(SoundManager.Sound.snd_slowTime);
+                    powerSoundSource = SoundManager.PlaySoundCutoff(SoundManager.Sound.snd_slowLoop);
                 }
             }
             else
@@ -597,8 +610,9 @@ public class PlayerController : MonoBehaviour
                 {
                     activeAbility = 1; //change active ability 
                     abilityActiveTimer = A1_DUR; //set ability duration
-                    Debug.Log("Time Slow Active");
+                    //Debug.Log("Time Slow Active");
                     SoundManager.PlaySound(SoundManager.Sound.snd_slowTime);
+                    powerSoundSource = SoundManager.PlaySoundCutoff(SoundManager.Sound.snd_slowLoop);
                 }
             }
         }
@@ -616,8 +630,9 @@ public class PlayerController : MonoBehaviour
                 {
                     activeAbility = 2;
                     abilityActiveTimer = A2_DUR;
-                    Debug.Log("Time Accelerate Active");
+                    //Debug.Log("Time Accelerate Active");
                     SoundManager.PlaySound(SoundManager.Sound.snd_accelTime);
+                    powerSoundSource = SoundManager.PlaySoundCutoff(SoundManager.Sound.snd_accelLoop);
                 }
             }
             else
@@ -626,8 +641,9 @@ public class PlayerController : MonoBehaviour
                 {
                     activeAbility = 2;
                     abilityActiveTimer = A2_DUR;
-                    Debug.Log("Time Accelerate Active");
+                    //Debug.Log("Time Accelerate Active");
                     SoundManager.PlaySound(SoundManager.Sound.snd_accelTime);
+                    powerSoundSource = SoundManager.PlaySoundCutoff(SoundManager.Sound.snd_accelLoop);
                 }
             }
         }
@@ -641,7 +657,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         transform.localScale = Vector3.zero;
-        GameManager.Instance.deathText.text = "You were crushed";
+        
         Die("crush");
 
         yield break;
@@ -716,7 +732,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die(string causeOfDeath)
     {
-        if (!invincible)
+        if (!invincible && alive)
         {
             switch (causeOfDeath)
             {
@@ -733,14 +749,23 @@ public class PlayerController : MonoBehaviour
                 break;
                 case "crush":
                 {
+                    GameManager.Instance.deathText.text = "You were crushed";
                     alive = false;
                     GameManager.Instance.ShowDeathScreen();
                 }
                 break;
                 case "bullet":
                 {
+                    GameManager.Instance.deathText.text = "You have been obliterated";
                     alive = false;
-                    GameManager.Instance.ShowDeathScreen();
+                    StartCoroutine(Death_Laser());
+                }
+                break;
+                case "laser":
+                {
+                    GameManager.Instance.deathText.text = "You have been incinerated";
+                    alive = false;
+                    StartCoroutine(Death_Laser());
                 }
                 break;
                 case "fall":
@@ -764,6 +789,24 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
 
         
+        GameManager.Instance.ShowDeathScreen();
+
+        yield break;
+    }
+
+    private IEnumerator Death_Laser()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.snd_burn);
+
+        hasControl = false;
+        alive = false;
+        rb.velocity = Vector2.zero;
+
+        anim.SetTrigger("Laser");
+
+        yield return new WaitForSeconds(1.2f);
+
+
         GameManager.Instance.ShowDeathScreen();
 
         yield break;

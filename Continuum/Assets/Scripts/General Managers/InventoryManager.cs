@@ -94,7 +94,7 @@ public class InventoryManager : MonoBehaviour
             if (!item.used)
             {
                 unusedInventory.Add(item);
-                Debug.Log("Showing: " + item);
+                //Debug.Log("Showing: " + item);
             }
         }
 
@@ -110,5 +110,28 @@ public class InventoryManager : MonoBehaviour
                 inventoryDisplay[i].GetComponent<Image>().enabled = false;
             }
         }
+    }
+
+    public int GetInventorySize()
+    {
+        List<InventoryItem> unusedInventory = new();
+        foreach (InventoryItem item in inventory)
+        {
+            if (!item.used)
+            {
+                unusedInventory.Add(item);
+            }
+        }
+
+        if (unusedInventory.Count > 3)
+        {
+            return 3;
+        }
+        else
+        {
+            return unusedInventory.Count;
+        }
+
+        
     }
 }

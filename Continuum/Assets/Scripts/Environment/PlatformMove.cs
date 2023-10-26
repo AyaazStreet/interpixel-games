@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
-using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class PlatformMove : MonoBehaviour
 {

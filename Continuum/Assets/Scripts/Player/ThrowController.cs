@@ -16,6 +16,9 @@ public class ThrowController : MonoBehaviour
 
     public Transform throwPoint;
 
+    public Image arrow;
+    private Color defaultColor = new Color32(0xC5, 0xCA, 0xCC, 0xFF); //#C5CACC
+
     public int selected = 0;
     public int infused = 0;
     
@@ -42,6 +45,14 @@ public class ThrowController : MonoBehaviour
     void Update()
     {
         selected = em.selected;
+        if (selected != 2) 
+        {
+            arrow.color = defaultColor;
+        }
+        else
+        {
+            SetInfusion(infused);
+        }
 
         //Get mouse aim direction
         mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -72,6 +83,16 @@ public class ThrowController : MonoBehaviour
             //Calculate quaternion and apply to rotation
             Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, q, 10 * Time.deltaTime);
+
+            //Arrow Fill
+            if (arrow.fillAmount < 1)
+            {
+                arrow.fillAmount = 1 - pc.throwCooldownTimer;
+            }
+            else if (arrow.fillAmount > 1) 
+            {
+                arrow.fillAmount = 1;
+            }
         }
     }
 
@@ -103,19 +124,26 @@ public class ThrowController : MonoBehaviour
 
                         //Cooldown
                         pc.throwCooldownTimer = pc.throwCooldownDuration;
+                        arrow.fillAmount = 0;
                     }
                     else
                     {
                         GameManager.Instance.ChangeCursor();
                         pc.DisplayPopup("No bolts");
                     }
+                    arrow.color = defaultColor;
                     break;
                 case 2:
                 {
                     //special case for canisters, fire correct cannister based on infusion
                     switch(infused)
                     {
-                        case 0: Debug.Log("Not Infused"); //no infusion
+                        case 0:
+                        {
+                            Debug.Log("Not Infused"); //no infusion
+                            GameManager.Instance.ChangeCursor();
+                            pc.DisplayPopup("No infusion");
+                        }
                             break;
                         case 1:
                         {
@@ -126,11 +154,17 @@ public class ThrowController : MonoBehaviour
                                 SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                                 em.E2_count--;
 
+                                if (em.E2_count == 0)
+                                {
+                                    arrow.color = defaultColor;
+                                }
+
                                 //Anim
                                 anim.SetTrigger("Throw");
 
                                 //Cooldown
                                 pc.throwCooldownTimer = pc.throwCooldownDuration;
+                                arrow.fillAmount = 0;
                             }
                             else
                             {
@@ -148,11 +182,17 @@ public class ThrowController : MonoBehaviour
                                 SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                                 em.E2_count--;
 
+                                if (em.E2_count == 0)
+                                {
+                                    arrow.color = defaultColor;
+                                }
+
                                 //Anim
                                 anim.SetTrigger("Throw");
 
                                 //Cooldown
                                 pc.throwCooldownTimer = pc.throwCooldownDuration;
+                                arrow.fillAmount = 0;
                             }
                             else
                             {
@@ -170,11 +210,17 @@ public class ThrowController : MonoBehaviour
                                 SoundManager.PlaySound(SoundManager.Sound.snd_throw);
                                 em.E2_count--;
 
+                                if (em.E2_count == 0)
+                                {
+                                    arrow.color = defaultColor;
+                                }
+
                                 //Anim
                                 anim.SetTrigger("Throw");
 
                                 //Cooldown
                                 pc.throwCooldownTimer = pc.throwCooldownDuration;
+                                arrow.fillAmount = 0;
                             }
                             else
                             {
@@ -198,12 +244,14 @@ public class ThrowController : MonoBehaviour
 
                         //Cooldown
                         pc.throwCooldownTimer = pc.throwCooldownDuration;
+                        arrow.fillAmount = 0;
                     }
                     else
                     {
                         GameManager.Instance.ChangeCursor();
                         pc.DisplayPopup("No rods");
                     }
+                    arrow.color = defaultColor;
                     break;
                 default: Debug.Log("No Throwable Selected");
                     break;
@@ -211,6 +259,27 @@ public class ThrowController : MonoBehaviour
         }
     }
 
+    public void SetInfusion(int inf)
+    {
+        
+        
+        infused = inf;
 
-    
+        arrow.fillAmount = 0;
+
+        switch (inf)
+        { 
+            case 1:
+                arrow.color = TimeScaleManager.A1_COLOR;
+                break; 
+            case 2:
+                arrow.color = TimeScaleManager.A2_COLOR;
+                break;
+            case 3:
+                arrow.color = TimeScaleManager.A3_COLOR;
+                break;
+        }
+        
+    }
+
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 using UnityEngine;
 
 public class Canister : MonoBehaviour
@@ -82,6 +83,7 @@ public class Canister : MonoBehaviour
             {
                 currSpeed = 0f;
                 isMoving = false;
+                Break(null);
             }
         }
     }
@@ -90,8 +92,22 @@ public class Canister : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Bolt"))
         {
-            _ = Instantiate(fieldPrefab, gameObject.transform.position, gameObject.transform.rotation);
-            Destroy(gameObject);
+            Break(collision.transform);
         }
+    }
+
+    public void Break(Transform target)
+    {
+        GameObject field = Instantiate(fieldPrefab, gameObject.transform.position, gameObject.transform.rotation);
+
+        if (target != null)
+        {
+            field.transform.parent = target.transform;
+        }
+
+        SoundManager.PlaySound(SoundManager.Sound.snd_canSmash);
+
+        field.GetComponent<Field>().stickTarget = target;
+        Destroy(gameObject);
     }
 }

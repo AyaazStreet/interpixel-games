@@ -12377,10 +12377,6 @@ PrefabInstance:
       propertyPath: lines.Array.data[1]
       value: Two scanners...
       objectReference: {fileID: 0}
-    - target: {fileID: 7902538428877877917, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
-      propertyPath: soundAudioClipArray.Array.data[7].audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: fb2b517c6716a7c47b91f44065472d8f, type: 3}
     - target: {fileID: 8320528105089862250, guid: 3e24ca84f4c1a2347964aff99010f239, type: 3}
       propertyPath: m_LocalPosition.y
       value: -2.0000002

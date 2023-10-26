@@ -1,0 +1,388 @@
+fileFormatVersion: 2
+guid: 5b4ab9b96325e9c4084a19d3e138fdba
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Character_Ash_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 170
+      height: 128
+    spriteID: ae37ec0c7b4693241a4c9f5766bc967e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Character_Ash_Frame_1
+    originalName: 
+    pivot: {x: -7.5000005, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 140
+      width: 10
+      height: 128
+    spriteID: aa2eac6f24d69134f808dd856dc45587
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 140}
+  - name: Character_Ash_Frame_2
+    originalName: 
+    pivot: {x: -7.5000005, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 276
+      width: 10
+      height: 128
+    spriteID: dabc33ab761c4a147981efeb4ca6aaaf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 276}
+  - name: Character_Ash_Frame_3
+    originalName: 
+    pivot: {x: -7.5000005, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 140
+      width: 10
+      height: 127
+    spriteID: 08168393452a4c747b79f996f7b0f052
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 140}
+  - name: Character_Ash_Frame_4
+    originalName: 
+    pivot: {x: -7.5000005, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 275
+      width: 10
+      height: 126
+    spriteID: dce003a6ba1a64b4d9721726c0cbdc97
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 275}
+  - name: Character_Ash_Frame_5
+    originalName: 
+    pivot: {x: -7.5000005, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 140
+      width: 10
+      height: 124
+    spriteID: 81dada1585c941a48a01131708bc4927
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 140}
+  - name: Character_Ash_Frame_6
+    originalName: 
+    pivot: {x: -7.5000005, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 272
+      width: 10
+      height: 124
+    spriteID: f8110747b026d4649acf5fcd76f2af8f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 272}
+  - name: Character_Ash_Frame_7
+    originalName: 
+    pivot: {x: -6.166667, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 140
+      width: 12
+      height: 123
+    spriteID: 76f91b8b710f8ea4abe1d78a65e54e5e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 140}
+  - name: Character_Ash_Frame_8
+    originalName: 
+    pivot: {x: -6.166667, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 271
+      width: 12
+      height: 121
+    spriteID: d507fc789ded0c647975e9de6367e264
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 271}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1687310154
+    name: Character_Ash
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Character_Ash_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 3
+        y: 0
+        width: 170
+        height: 128
+      spriteId: ae37ec0c7b4693241a4c9f5766bc967e
+    - name: Character_Ash_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 163
+        y: 0
+        width: 10
+        height: 128
+      spriteId: aa2eac6f24d69134f808dd856dc45587
+    - name: Character_Ash_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 163
+        y: 0
+        width: 10
+        height: 128
+      spriteId: dabc33ab761c4a147981efeb4ca6aaaf
+    - name: Character_Ash_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 163
+        y: 0
+        width: 10
+        height: 127
+      spriteId: 08168393452a4c747b79f996f7b0f052
+    - name: Character_Ash_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 163
+        y: 0
+        width: 10
+        height: 126
+      spriteId: dce003a6ba1a64b4d9721726c0cbdc97
+    - name: Character_Ash_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 163
+        y: 0
+        width: 10
+        height: 124
+      spriteId: 81dada1585c941a48a01131708bc4927
+    - name: Character_Ash_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 163
+        y: 0
+        width: 10
+        height: 124
+      spriteId: f8110747b026d4649acf5fcd76f2af8f
+    - name: Character_Ash_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 162
+        y: 0
+        width: 12
+        height: 123
+      spriteId: 76f91b8b710f8ea4abe1d78a65e54e5e
+    - name: Character_Ash_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 162
+        y: 0
+        width: 12
+        height: 121
+      spriteId: d507fc789ded0c647975e9de6367e264
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 176, y: 128}

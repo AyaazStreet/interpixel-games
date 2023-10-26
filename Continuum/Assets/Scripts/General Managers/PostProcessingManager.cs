@@ -25,7 +25,7 @@ public class PostProcessingManager : MonoBehaviour
 
     void Update()
     {
-        if (TimeScaleManager.globalTimescale == TimeScaleManager.A1_EFFECT)
+        if (GameManager.Instance.pc.activeAbility == 1)
         {
             //Saturation
             if (area.GetFloat("_Saturation") > sat1 + Time.deltaTime * changeSpeed)
@@ -35,6 +35,9 @@ public class PostProcessingManager : MonoBehaviour
             }
 
             //Vignette
+            fullscreen.SetFloat("_VoronoiSpeed", 0.5f);
+            fullscreen.SetInt("_Cells", 0);
+
             if (fullscreen.GetColor("_Color") != TimeScaleManager.A1_COLOR)
             {
                 fullscreen.SetColor("_Color", TimeScaleManager.A1_COLOR);
@@ -48,7 +51,7 @@ public class PostProcessingManager : MonoBehaviour
                 fullscreen.SetFloat("_FullscreenIntesity", 1);
             }
         }
-        else if (TimeScaleManager.globalTimescale == TimeScaleManager.A2_EFFECT)
+        else if (GameManager.Instance.pc.activeAbility == 2)
         {
             //Saturation
             if (area.GetFloat("_Saturation") < sat2 - Time.deltaTime * changeSpeed)
@@ -58,6 +61,9 @@ public class PostProcessingManager : MonoBehaviour
             }
 
             //Vignette
+            fullscreen.SetFloat("_VoronoiSpeed", 10f);
+            fullscreen.SetInt("_Cells", 0);
+
             if (fullscreen.GetColor("_Color") != TimeScaleManager.A2_COLOR)
             {
                 fullscreen.SetColor("_Color", TimeScaleManager.A2_COLOR);
@@ -71,7 +77,7 @@ public class PostProcessingManager : MonoBehaviour
                 fullscreen.SetFloat("_FullscreenIntesity", 1);
             }
         }
-        else if (TimeScaleManager.globalTimescale == TimeScaleManager.A3_EFFECT)
+        else if (GameManager.Instance.pc.activeAbility == 3)
         {
             //Saturation
             if (area.GetFloat("_Saturation") > sat3 + Time.deltaTime * changeSpeed)
@@ -81,6 +87,9 @@ public class PostProcessingManager : MonoBehaviour
             }
 
             //Vignette
+            fullscreen.SetFloat("_VoronoiSpeed", 0);
+            fullscreen.SetInt("_Cells", 1);
+
             if (fullscreen.GetColor("_Color") != TimeScaleManager.A3_COLOR)
             {
                 fullscreen.SetColor("_Color", TimeScaleManager.A3_COLOR);
@@ -113,8 +122,8 @@ public class PostProcessingManager : MonoBehaviour
                 sprite.SetFloat("_Saturation", 1);
             }
 
-            //Vignette
             
+
             if (fullscreen.GetFloat("_Radius") > 0.5f + Time.deltaTime * radiusChange)
             {
                 fullscreen.SetFloat("_Radius", fullscreen.GetFloat("_Radius") - Time.deltaTime * radiusChange);
@@ -122,6 +131,10 @@ public class PostProcessingManager : MonoBehaviour
             else if(fullscreen.GetFloat("_FullscreenIntesity") != 0)
             {
                 fullscreen.SetFloat("_FullscreenIntesity", 0);
+
+                //Vignette
+                fullscreen.SetFloat("_VoronoiSpeed", 1f);
+                fullscreen.SetInt("_Cells", 0);
             }
         }
     }

@@ -21,10 +21,15 @@ public class PickupCollectable : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
 
+    KeycardIcon[] icons;
+    RectTransform iconTransform;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        icons = GameManager.Instance.inventory.GetComponentsInChildren<KeycardIcon>();
 
         startPos = transform.position;
     }
@@ -35,7 +40,14 @@ public class PickupCollectable : MonoBehaviour
 
         if (collected)
         {
-            targetPoint = (Vector2)GameObject.Find("Player").transform.position + new Vector2(0, offset);
+            if (iconTransform)
+            {
+                targetPoint = iconTransform.TransformPoint(iconTransform.rect.center);
+            }
+            else
+            {
+                targetPoint = (Vector2)GameObject.Find("Player").transform.position + new Vector2(0, offset);
+            }
 
             // Check if the target point is set
             if (targetPoint == null)
@@ -84,8 +96,10 @@ public class PickupCollectable : MonoBehaviour
             if (!collected) 
             {
                 collision.GetComponent<InventoryManager>().AddInventoryItem(collectableType, transform.position);
+                SoundManager.PlaySound(SoundManager.Sound.snd_pickup);
             }
             collected = true;
+            iconTransform = icons[GameManager.Instance.im.GetInventorySize() - 1].GetComponent<RectTransform>();
         }
     }
 }

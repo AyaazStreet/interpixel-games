@@ -28,7 +28,7 @@ public class TurretHandler : MonoBehaviour
     void Start()
     {
         //Initialise timescales
-        localTimescale = null;
+        localTimescale = gameObject.GetComponent<LocalModifier>().value;
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = 1f;
 
@@ -39,6 +39,7 @@ public class TurretHandler : MonoBehaviour
     void Update()
     {
         //Adjust timeMod based on timescales, preferring local over global
+        localTimescale = gameObject.GetComponent<LocalModifier>().value;
         globalTimescale = TimeScaleManager.globalTimescale;
         timeMod = localTimescale ?? globalTimescale;
 

@@ -37,6 +37,18 @@ public class EquipManager : MonoBehaviour
         throwPointer.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (throwPointer.activeSelf && selected == 2)
+        {
+            pc.infusing = true;
+        }
+        else
+        {
+            pc.infusing = false;
+        }
+    }
+
     public void Manual_Aim_Performed(InputAction.CallbackContext context)
     {
         if (context.performed && !PauseManager.Instance.pauseUI.activeSelf && !PauseManager.Instance.optionsUI.activeSelf)
@@ -45,10 +57,7 @@ public class EquipManager : MonoBehaviour
             throwPointer.SetActive(true);
 
             //
-            if (selected == 2)
-            {
-                pc.infusing = true;
-            }
+            
         }
         else if (context.canceled)
         {
@@ -56,7 +65,7 @@ public class EquipManager : MonoBehaviour
             throwPointer.SetActive(false);
 
             //
-            pc.infusing = false;
+            
         }
     }
 

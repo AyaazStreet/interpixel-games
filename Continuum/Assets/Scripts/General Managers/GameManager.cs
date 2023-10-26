@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     public GameObject cmPrefab;
     public CheckpointManager checkpointManager;
 
+    public GameObject mmPrefab;
+    public MusicManager musicManager;
+
     public Texture2D aimCursor;
     public Texture2D aimCursorX;
 
@@ -70,6 +73,18 @@ public class GameManager : MonoBehaviour
             GameObject cm = Instantiate(cmPrefab);
             cm.name = "CheckpointManager";
             checkpointManager = cm.GetComponent<CheckpointManager>();
+        }
+
+        //Music Object Create
+        if (GameObject.FindGameObjectWithTag("MusicManager"))
+        {
+            musicManager = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
+        }
+        else
+        {
+            GameObject mm = Instantiate(mmPrefab);
+            mm.name = "MusicManager";
+            musicManager = mm.GetComponent<MusicManager>();
         }
 
         //Load info from checkpoint manager
@@ -180,17 +195,53 @@ public class GameManager : MonoBehaviour
             }
             checkpointManager.saveStateObjects.Clear();
 
-            //Music
-            SoundManager.PlaySoundMusic(SoundManager.Sound.msc_music1);
+            
         }
-
-        
 
     }
 
     private void Start()
     {
-        
+        //Music
+        switch (currLevel)
+        {
+            case 0: 
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music1);
+                break;
+            case 1:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music1);
+                break;
+            case 2:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music1);
+                break;
+            case 3:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music2);
+                break;
+            case 4:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music2);
+                break;
+            case 5:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music2);
+                break;
+            case 6:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music3);
+                break;
+            case 7:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music3);
+                break;
+            case 8:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music3);
+                break;
+            case 9:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music4);
+                break;
+            case 10:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music4);
+                break;
+            case 11:
+                SoundManager.PlayMusic(SoundManager.Sound.msc_music4);
+                break;
+        }
     }
 
     public void ShowDeathScreen()

@@ -41,6 +41,18 @@ public class KeyScannerController : Controller
         sr.sprite = offSprites[inputType];
     }
 
+    private void Update()
+    {
+        if(activated && sr.sprite != onSprites[inputType])
+        {
+            sr.sprite = onSprites[inputType];
+        }
+        else if (!activated && sr.sprite != offSprites[inputType])
+        {
+            sr.sprite = offSprites[inputType];
+        }
+    }
+
     public new void ChangeState()
     {
         if (!activated) 
@@ -100,8 +112,13 @@ public class KeyScannerController : Controller
                 {
                     im.UseInventoryItem(inputType);
                     ChangeState();
+                    SoundManager.PlaySound(SoundManager.Sound.snd_interact_btn, transform.position);
                 }
-                SoundManager.PlaySound(SoundManager.Sound.snd_interact_btn, transform.position);
+                else
+                {
+                    SoundManager.PlaySound(SoundManager.Sound.snd_error, transform.position);
+                }
+                
             }
             else
             {
