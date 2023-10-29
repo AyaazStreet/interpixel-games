@@ -166,6 +166,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ResetTimes",
+                    "type": "Button",
+                    "id": "b4b97b19-8da6-4ca9-9d76-cf1a05d089b9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1101,6 +1110,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "TEST",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "59012942-9d07-4474-882c-095b390f8974",
+                    "path": "<Keyboard>/end",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard;Gamepad",
+                    "action": "ResetTimes",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -657,7 +657,9 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         transform.localScale = Vector3.zero;
-        
+
+        alive = true;
+
         Die("crush");
 
         yield break;
@@ -841,5 +843,12 @@ public class PlayerController : MonoBehaviour
     {
         GameObject popup = Instantiate(popupTextPrefab, playerCanvas.transform);
         popup.GetComponent<TextMeshProUGUI>().text = popupText;
+    }
+
+    public void DisplayPopup(string popupText, Color c)
+    {
+        GameObject popup = Instantiate(popupTextPrefab, playerCanvas.transform);
+        popup.GetComponent<TextMeshProUGUI>().text = popupText;
+        popup.GetComponent<TextMeshProUGUI>().color = c;
     }
 }

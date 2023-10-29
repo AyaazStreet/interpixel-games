@@ -119,12 +119,15 @@ public class PauseManager : MonoBehaviour
     public void RestartLevel()
     {
         CheckpointManager.Instance.ResetCheckpointData();
+        TimeScoreManager.Instance.RestartTimer();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitToMenu()
     {
         SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_click);
+
+        TimeScoreManager.Instance.CancelTimer();
 
         CheckpointManager.Instance.skipIntro = true;
         SceneManager.LoadScene("Menu_Main");

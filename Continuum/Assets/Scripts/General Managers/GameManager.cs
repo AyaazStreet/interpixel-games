@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject deathScreen;
     public TextMeshProUGUI deathText;
+
+    public TextMeshProUGUI gameTimer;
 
     public GameObject timer;
     public GameObject equipment;
@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject mmPrefab;
     public MusicManager musicManager;
+
+    public GameObject tmPrefab;
+    public TimeScoreManager timeScoreManager;
 
     public Texture2D aimCursor;
     public Texture2D aimCursorX;
@@ -85,6 +88,18 @@ public class GameManager : MonoBehaviour
             GameObject mm = Instantiate(mmPrefab);
             mm.name = "MusicManager";
             musicManager = mm.GetComponent<MusicManager>();
+        }
+
+        //TimeScore Object Create
+        if (GameObject.FindGameObjectWithTag("TimeScoreManager"))
+        {
+            timeScoreManager = GameObject.FindGameObjectWithTag("TimeScoreManager").GetComponent<TimeScoreManager>();
+        }
+        else
+        {
+            GameObject tm = Instantiate(tmPrefab);
+            tm.name = "TimeScoreManager";
+            timeScoreManager = tm.GetComponent<TimeScoreManager>();
         }
 
         //Load info from checkpoint manager
@@ -204,6 +219,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        TimeScoreManager.Instance.StartTimer();
+        
         //Music
         switch (currLevel)
         {

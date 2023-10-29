@@ -40,6 +40,8 @@ public class LevelTransition : MonoBehaviour
         GameManager.Instance.pc.hasControl = false;
         GameManager.Instance.pc.externalVelocityObjs.Add(GameManager.Instance.pc.GetComponent<Rigidbody2D>());
 
+        TimeScoreManager.Instance.StopTimer();
+
         yield return new WaitForSeconds(1.2f);
         
         if (GameManager.Instance.currLevel == 10)

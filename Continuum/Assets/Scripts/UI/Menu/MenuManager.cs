@@ -44,6 +44,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject cmPrefab;
     private MusicManager musicManager;
     [SerializeField] private GameObject mmPrefab;
+    private TimeScoreManager timeScoreManager;
+    [SerializeField] private GameObject tmPrefab;
+
+    public TextMeshProUGUI bestTimes;
 
     public Animator backgroundAnim;
     public Animator titleAnim;
@@ -92,6 +96,18 @@ public class MenuManager : MonoBehaviour
             musicManager = mm.GetComponent<MusicManager>();
         }
 
+        //TimeScore Object Create
+        if (GameObject.FindGameObjectWithTag("TimeScoreManager"))
+        {
+            timeScoreManager = GameObject.FindGameObjectWithTag("TimeScoreManager").GetComponent<TimeScoreManager>();
+        }
+        else
+        {
+            GameObject tm = Instantiate(tmPrefab);
+            tm.name = "TimeScoreManager";
+            timeScoreManager = tm.GetComponent<TimeScoreManager>();
+        }
+
         powerSetting.isOn = CheckpointManager.Instance.togglePowers;
         fullscreenSetting.isOn = Screen.fullScreen;
 
@@ -133,18 +149,49 @@ public class MenuManager : MonoBehaviour
                 SoundManager.PlaySound(SoundManager.Sound.snd_click);
             }
         }
+
+        if (levelSelect.gameObject.activeSelf)
+        {
+            int minutes;
+            int seconds;
+            
+            if (timeScoreManager.times[timeScoreManager.selectedBest] != float.PositiveInfinity)
+            {
+                minutes = Mathf.FloorToInt(timeScoreManager.times[timeScoreManager.selectedBest] / 60);
+                seconds = Mathf.FloorToInt(timeScoreManager.times[timeScoreManager.selectedBest] % 60);
+            }
+            else
+            {
+                minutes = 0;
+                seconds = 0;
+            }
+            
+            int pminutes = Mathf.FloorToInt(timeScoreManager.parTimes[timeScoreManager.selectedBest] / 60);
+            int pseconds = Mathf.FloorToInt(timeScoreManager.parTimes[timeScoreManager.selectedBest] % 60);
+
+            bestTimes.text = "Best Time:  " + string.Format("{0:00}:{1:00}", minutes, seconds) + "\nChallenge Time:  " + string.Format("{0:00}:{1:00}", pminutes, pseconds) + "";
+        }
     }
 
     private void OnEnable()
     {
         inputs.FindAction("Cancel").performed += Back_performed;
+        inputs.FindAction("ResetTimes").performed += ResetTimes_Performed;
     }
 
     private void OnDisable()
     {
-        inputs.FindAction("Cancel").performed += Back_performed;
+        inputs.FindAction("Cancel").performed -= Back_performed;
+        inputs.FindAction("ResetTimes").performed -= ResetTimes_Performed;
     }
 
+    public void ResetTimes_Performed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            TimeScoreManager.Instance.EraseTimes();
+        }
+    }
 
     public void Back_performed(InputAction.CallbackContext context)
     {

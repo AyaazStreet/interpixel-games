@@ -10,6 +10,8 @@ public class HoverSelect : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     public Toggle t;
     public Slider s;
 
+    public int level = -1;
+
     private void Awake()
     {
         b = GetComponent<Button>();
@@ -27,5 +29,10 @@ public class HoverSelect : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     public void OnSelect(BaseEventData eventData)
     {
         SoundManager.PlaySoundPersistent(SoundManager.Sound.snd_hover);
+
+        if (level != -1)
+        {
+            TimeScoreManager.Instance.selectedBest = level;
+        }
     }
 }

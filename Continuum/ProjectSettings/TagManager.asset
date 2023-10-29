@@ -18,6 +18,8 @@ TagManager:
   - Barrier
   - PlayerDetectionCollider
   - MusicManager
+  - TimeScoreManager
+  - LevelButton
   layers:
   - Default
   - TransparentFX
