@@ -19,6 +19,8 @@ public class PlayerFallCollision : MonoBehaviour
     [SerializeField] private bool shouldFall = false;
     [SerializeField] private int stable = 0;
     private Vector3 fallPoint;
+    private Vector2 fallDir;
+    public bool dirSet = false;
 
     private void Start()
     {
@@ -44,6 +46,11 @@ public class PlayerFallCollision : MonoBehaviour
         {
             Vector2 moveDir = fallPoint - transform.position;
             player.GetComponent<Rigidbody2D>().velocity = moveDir * speed;
+
+            float targetAngle = Mathf.Atan2(fallDir.y, fallDir.x);
+            float targetRotation = (targetAngle * Mathf.Rad2Deg) - 90;
+            Quaternion targetQuaternion = Quaternion.Euler(0, 0, targetRotation);
+            GameManager.Instance.pc.transform.rotation = Quaternion.Slerp(transform.rotation, targetQuaternion, 2 * Time.deltaTime);
 
             Color tmp = player.GetComponent<SpriteRenderer>().color;
 
@@ -85,18 +92,17 @@ public class PlayerFallCollision : MonoBehaviour
             stable++;
         }
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Pits"))
+        /*if (collision.gameObject.layer == LayerMask.NameToLayer("Pits"))
         {
-            shouldFall = true;
-            fallPoint = (Vector2)transform.position + player.GetComponent<Rigidbody2D>().velocity.normalized * 0.5f;
-        }
+            StartCoroutine(BecomeFalling());
+        }*/
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Platforms"))
         {
-            StartCoroutine(BecomeUnstable());
+            StartCoroutine(BecomeUnstable(collision.ClosestPoint(transform.position)));
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Pits"))
@@ -105,12 +111,27 @@ public class PlayerFallCollision : MonoBehaviour
         }
     }
 
-    private IEnumerator BecomeUnstable()
+    public IEnumerator BecomeFalling(Vector2 pos)
     {
         yield return new WaitForSeconds(0.1f);
 
-        stable--;
-        fallPoint = (Vector2)transform.position + player.GetComponent<Rigidbody2D>().velocity.normalized * 0.5f;
+            shouldFall = true;
+            fallPoint = (Vector2)transform.position + player.GetComponent<Rigidbody2D>().velocity.normalized * 0.5f;
+            fallDir = pos.normalized;
+            
+            dirSet = false;
+
+        yield break;
+    }
+
+    private IEnumerator BecomeUnstable(Vector2 pos)
+    {
+        yield return new WaitForSeconds(0.1f);
+
+            stable--;
+            fallPoint = (Vector2)transform.position + player.GetComponent<Rigidbody2D>().velocity.normalized * 1f;
+            fallDir = pos.normalized;
+        
 
         yield break;
     }

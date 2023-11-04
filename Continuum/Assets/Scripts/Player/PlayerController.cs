@@ -788,7 +788,7 @@ public class PlayerController : MonoBehaviour
 
         anim.SetTrigger("Caught");
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.2f);
 
         
         GameManager.Instance.ShowDeathScreen();
