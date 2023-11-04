@@ -80,7 +80,6 @@ public class EnemyDetection : MonoBehaviour
             }
             else
             {
-                Debug.Log("test");
                 playerIndicator = Instantiate(playerIndicatorPrefab, GameManager.Instance.pc.indicators.transform);
                 playerIndicator.GetComponent<DetectionIndicator>().enemy = this;
             }

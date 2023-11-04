@@ -104,12 +104,13 @@ public class TimeScoreManager : MonoBehaviour
             if (currentTime < parTimes[currLevel]) 
             {
                 GameManager.Instance.pc.DisplayPopup("" + string.Format("{0:00}:{1:00}", minutes, seconds), Color.green);
-                times[currLevel] = currentTime;
             }
             else
             {
                 GameManager.Instance.pc.DisplayPopup("" + string.Format("{0:00}:{1:00}", minutes, seconds));
             }
+
+            times[currLevel] = currentTime;
 
             currentTime = 0;
         }

@@ -113,16 +113,17 @@ public class Canister : MonoBehaviour
         anim.speed = 1;
         currSpeed = 0f;
 
+        GameObject field = Instantiate(fieldPrefab, gameObject.transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
+        SoundManager.PlaySound(SoundManager.Sound.snd_canSmash);
+
         yield return new WaitForSeconds(0.3f);
         
-        GameObject field = Instantiate(fieldPrefab, gameObject.transform.position, Quaternion.Euler(0f,0f, Random.Range(0f, 360f)));
-
         if (target != null)
         {
             field.transform.parent = target.transform;
         }
 
-        SoundManager.PlaySound(SoundManager.Sound.snd_canSmash);
+        
 
         field.GetComponent<Field>().stickTarget = target;
         Destroy(gameObject);
